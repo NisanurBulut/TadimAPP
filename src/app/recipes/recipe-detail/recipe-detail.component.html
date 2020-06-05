@@ -1,11 +1,14 @@
 <div class="row">
     <div class="col-xs-12">
-       <img src="" alt="" class="img-responsive">
+       <img [src]="recipe.imagePath"
+       alt="recipe.name"
+       class="img-responsive"
+       style="max-height: 300px;">
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
-      <h1>Tarif Adı</h1>
+      <h1>{{recipe.name}}</h1>
     </div>
 </div>
 <div class="row">
@@ -24,7 +27,7 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-      Tarif Açıklaması
+        {{recipe.description}}
     </div>
 </div>
 <div class="row">
