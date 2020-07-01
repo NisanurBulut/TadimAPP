@@ -13,9 +13,7 @@ ingredients: Ingredient[];
   constructor(private slService: ShoppingListService) { }
 
   ngOnInit() {
-    this.ingredients =this.slService.getIngredients();
+    this.ingredients = this.slService.getIngredients();
   }
-  onIngredientAdded(ingredient: Ingredient) {
-this.ingredients.push(ingredient);
-  }
+
 }
