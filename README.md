@@ -10,3 +10,5 @@
 ![Ana Ekran-Yemek Malzemesi Ekleme](https://github.com/NisanurBulut/TadimAPP/blob/master/src/assets/Trailer/anaEkran_1.gif)
 
 ![Ana Ekran- DropDown Directive Örneği](https://github.com/NisanurBulut/TadimAPP/blob/master/src/assets/Trailer/anaEkran_2.gif)
+
+![Ana Ekran- Yemek Malzemesi Listeleme](https://github.com/NisanurBulut/TadimAPP/blob/master/src/assets/Trailer/anaEkran_3.gif)
