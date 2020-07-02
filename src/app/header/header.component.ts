@@ -5,9 +5,6 @@ import { Component,EventEmitter, Output } from '@angular/core';
 
 })
 export class HeaderComponent {
-    //output sayesinde parentine haber verecektir.
-    @Output() featureSelected=new EventEmitter<string>();
-    onSelect(feature:string){
-this.featureSelected.emit(feature);
-    }
+
+
 }
