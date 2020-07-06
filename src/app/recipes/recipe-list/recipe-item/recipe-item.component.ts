@@ -9,7 +9,7 @@ import { Recipe } from '../../recipe.model';
 })
 export class RecipeItemComponent implements OnInit {
 @Input() recipe: Recipe;
-
+@Input() index: number; // recipe listten input olarak buraya gelecek
   ngOnInit() {
   }
 }
