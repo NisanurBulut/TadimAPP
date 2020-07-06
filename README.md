@@ -22,3 +22,6 @@ Yemek Malzemesi Detay Gösterimi - URL Parametre gönderimi
 
 Yemek Malzemesi Detay Gösterimi - Aktif Eleman Gösterimi
 ![Ana Ekran - Aktif Eleman Gösterimi](https://github.com/NisanurBulut/TadimAPP/blob/master/src/assets/Trailer/anaEkran_5.gif)
+
+Yeni Tarif ekleme Sayfası - Router Link Ekleme
+![Yeni Tarif ekleme Sayfası - Router Link Ekleme](https://github.com/NisanurBulut/TadimAPP/blob/master/src/assets/Trailer/anaEkran_6.gif)

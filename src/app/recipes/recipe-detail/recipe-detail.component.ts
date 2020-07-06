@@ -27,4 +27,7 @@ id: number;
   onAddToShoppingList() {
     this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
   }
+  onEditRecipe(){
+
+  }
 }
