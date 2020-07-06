@@ -19,3 +19,6 @@ Yemek Malzemesi Listeleme - Servis Kullanarak
 
 Yemek Malzemesi Detay Gösterimi - URL Parametre gönderimi
 ![Ana Ekran - Yemek Malzemesi Detay Gösterimi](https://github.com/NisanurBulut/TadimAPP/blob/master/src/assets/Trailer/anaEkran_4.gif)
+
+Yemek Malzemesi Detay Gösterimi - Aktif Eleman Gösterimi
+![Ana Ekran - Aktif Eleman Gösterimi](https://github.com/NisanurBulut/TadimAPP/blob/master/src/assets/Trailer/anaEkran_5.gif)
