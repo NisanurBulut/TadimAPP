@@ -19,6 +19,6 @@ recipes: Recipe [];
     this.recipes = this.rService.getRecipes();
   }
   onNewRecipe() {
-this.router.navigate(['yeni'], { relativeTo: this.route });
+    this.router.navigate(['yeni'], { relativeTo: this.route });
   }
 }
