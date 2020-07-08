@@ -36,14 +36,17 @@
               name="imagePath"
               formControlName="imagePath"
               class="form-control"
-              id=""
+              #imagePath
             />
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <img src="" id="imagePath" class="image-responsive" />
+          <img [src]="imagePath.value"
+          id="imagePath"
+          class="img-responsive"
+          style="max-height: 300px;" />
         </div>
       </div>
       <div class="row">
