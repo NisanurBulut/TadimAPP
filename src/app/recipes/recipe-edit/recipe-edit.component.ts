@@ -44,6 +44,7 @@ export class RecipeEditComponent implements OnInit {
     } else {
       this.rpService.addRecipe(this.recipeForm.value);
     }
+    this.onCancel();
   }
   get controls() { // a getter!
     return (<FormArray>this.recipeForm.get('ingredients')).controls;
