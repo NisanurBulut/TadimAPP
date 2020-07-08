@@ -34,5 +34,7 @@ id: number;
   }
   onDeleteRecipe(){
     this.recipeService.deleteRecipe(this.id);
+    // silme işlemi sonrası yönlendirme yazalım
+    this.router.navigate(['/recipes']);
   }
 }
