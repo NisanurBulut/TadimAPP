@@ -31,4 +31,9 @@ export class ShoppingListService {
     // emit next'e dönüştü
     this.ingredientsChanged.next(this.ingredients.slice());
   }
+  updateIngredient(index: number, newIngredient: Ingredient) {
+    // mevcut malzemeyi alalım
+    this.ingredients[index] = newIngredient;
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
 }
