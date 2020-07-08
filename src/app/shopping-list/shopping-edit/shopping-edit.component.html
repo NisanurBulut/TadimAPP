@@ -23,8 +23,14 @@
           <button class="btn btn-success btn-sm"
           type="submit" [disabled]="!f.valid">
           {{editMode ? 'Güncelle' : 'Kaydet'}}</button>
-          <button class="btn btn-danger btn-sm" type="button">Sil</button>
-          <button class="btn btn-dark btn-sm" type="button" (click)="onClear()">Temizle</button>
+          <button class="btn btn-danger btn-sm"
+          type="button"
+          *ngIf="editMode"
+           (click)="onDeleteItem()">Sil</button>
+          <button class="btn btn-dark btn-sm"
+          type="button"
+          (click)="onClear()"
+          >Temizle</button>
         </div>
       </div>
     </form>

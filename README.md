@@ -14,6 +14,8 @@ Yemek Malzemesi Ekleme
 * Submit işlemi lokal referans ile değil ngForm üzerinden yapılır.
 * Güncelleme işlemi yapılır.
 * Ekleme ya da güncelleme işleminden sonra form temizlenir.
+* Silme butonu, bir malzeme seçildiğinde görünür olur.
+* Malzeme listesinde silme işlemi yapılır.
 
 ![Ana Ekran - Yemek Malzemesi Ekleme](https://github.com/NisanurBulut/TadimAPP/blob/master/src/assets/Trailer/anaEkran_1.gif)
 
