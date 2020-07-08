@@ -16,6 +16,11 @@ recipes: Recipe [];
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.rService.recipesChanged.subscribe(
+      (recipeList:Recipe[])=>{
+        this.recipes = recipeList;
+      }
+    );
     this.recipes = this.rService.getRecipes();
   }
   onNewRecipe() {

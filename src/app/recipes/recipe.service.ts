@@ -8,7 +8,7 @@ import { Subject, Subscription } from 'rxjs';
 export class RecipeService {
   // EventEmitter subject' dönüştü
   public recipeSelected = new Subject<Recipe>();
-
+  recipesChanged = new Subject<Recipe[]>();
   private recipes: Recipe[] = [
     new Recipe(
       'Karnıyarık',
@@ -32,5 +32,13 @@ export class RecipeService {
   }
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.slService.addIngredients(ingredients);
+  }
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipesChanged.next(this.recipes.slice());
+  }
+  updateRecipe(index: number, updatedRecipe: Recipe) {
+    this.recipes[index] = updatedRecipe;
+    this.recipesChanged.next(this.recipes.slice());
   }
 }

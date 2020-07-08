@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
+import { Recipe } from '../recipe.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -27,7 +28,21 @@ export class RecipeEditComponent implements OnInit {
       );
   }
   onsubmit() {
-    console.log(this.recipeForm);
+    // const newRecipe = new Recipe(this.recipeForm.value['name'],
+    //   this.recipeForm.value['description'],
+    //   this.recipeForm.value['imagePath'],
+    //   this.recipeForm.value['ingredients']);
+    // if (this.editMode === true) {
+    //   this.rpService.updateRecipe(this.id, newRecipe);
+    // } else {
+    //   this.rpService.addRecipe(newRecipe);
+    // }
+// her iki şekilde de yapılabilir aşağıdaki öntemin faydası reactive form kullanılmasından dolayıdır
+    if (this.editMode === true) {
+      this.rpService.updateRecipe(this.id, this.recipeForm.value);
+    } else {
+      this.rpService.addRecipe(this.recipeForm.value);
+    }
   }
   get controls() { // a getter!
     return (<FormArray>this.recipeForm.get('ingredients')).controls;
@@ -69,7 +84,7 @@ export class RecipeEditComponent implements OnInit {
     );
   }
   onAddIngredient() {
-    (<FormArray> this.recipeForm.get('ingredients')).push(
+    (<FormArray>this.recipeForm.get('ingredients')).push(
       new FormGroup(
         {
           'name': new FormControl(null, Validators.required),
