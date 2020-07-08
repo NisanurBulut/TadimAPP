@@ -41,4 +41,10 @@ export class RecipeService {
     this.recipes[index] = updatedRecipe;
     this.recipesChanged.next(this.recipes.slice());
   }
+  deleteRecipe(index:number)
+  {
+    this.recipes.splice(index,1);
+    //haber verelim abonelere
+    this.recipesChanged.next(this.recipes.slice());
+  }
 }
