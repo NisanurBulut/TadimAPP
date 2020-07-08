@@ -13,6 +13,8 @@ Yemek Malzemesi Ekleme
 * Form doldurulmamış ise ekle butonu aktif olmaz.
 * Submit işlemi lokal referans ile değil ngForm üzerinden yapılır.
 * Güncelleme işlemi yapılır.
+* Ekleme ya da güncelleme işleminden sonra form temizlenir.
+
 ![Ana Ekran - Yemek Malzemesi Ekleme](https://github.com/NisanurBulut/TadimAPP/blob/master/src/assets/Trailer/anaEkran_1.gif)
 
 DropDown Directive Örneği

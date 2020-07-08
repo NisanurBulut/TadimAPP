@@ -24,7 +24,7 @@
           type="submit" [disabled]="!f.valid">
           {{editMode ? 'Güncelle' : 'Kaydet'}}</button>
           <button class="btn btn-danger btn-sm" type="button">Sil</button>
-          <button class="btn btn-dark btn-sm" type="button">Temizle</button>
+          <button class="btn btn-dark btn-sm" type="button" (click)="onClear()">Temizle</button>
         </div>
       </div>
     </form>
