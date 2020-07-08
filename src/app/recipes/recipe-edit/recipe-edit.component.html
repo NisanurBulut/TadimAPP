@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
-    <form>
+    <form [formGroup]="recipeForm" (submit)="onsubmit()">
       <div class="row">
         <div class="col-xs-12">
           <button type="submit" class="btn btn-success">Kaydet</button>
@@ -11,7 +11,12 @@
         <div class="col-xs-12">
           <div class="form-group">
             <label for="name">Malzeme</label>
-            <input type="text" name="name" class="form-control" id="" />
+            <input
+              type="text"
+              name="name"
+              class="form-control"
+              formControlName="name"
+            />
           </div>
         </div>
       </div>
@@ -19,13 +24,19 @@
         <div class="col-xs-12">
           <div class="form-group">
             <label for="imagePath">Resim Bilgisi</label>
-            <input type="text" name="imagePath" class="form-control" id="" />
+            <input
+              type="text"
+              name="imagePath"
+              formControlName="imagePath"
+              class="form-control"
+              id=""
+            />
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <img src="" class="image-responsive" />
+          <img src="" id="imagePath" class="image-responsive" />
         </div>
       </div>
       <div class="row">
@@ -36,7 +47,9 @@
               type="text"
               name="description"
               class="form-control"
-              rows="6" >
+              formControlName="description"
+              rows="6"
+            >
             </textarea>
           </div>
         </div>
@@ -45,10 +58,10 @@
         <div class="col-xs-12">
           <div class="row">
             <div class="col-xs-8">
-                <input type="text" class="form-control" />
+              <input type="text" class="form-control" />
             </div>
             <div class="col-xs-2">
-                <input type="number" class="form-control" />
+              <input type="number" class="form-control" />
             </div>
             <div class="col-xs-2">
               <button class="btn btn-danger">X</button>
