@@ -5,6 +5,8 @@ import { Ingredient } from '../shared/ingredient.model';
 export class ShoppingListService {
   // eventemitter subjet'e dönüştü
   ingredientsChanged = new Subject<Ingredient[]>();
+  // subject sınıfı generic tipte
+  startedEditing = new Subject<number>();
   private ingredients: Ingredient[] = [
     new Ingredient('Domates', 5),
     new Ingredient('Kabak', 1),
