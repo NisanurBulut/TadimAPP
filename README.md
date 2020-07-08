@@ -9,6 +9,9 @@ Taslak-Ana Ekran
 ![Ana Ekran - TASLAK](https://github.com/NisanurBulut/TadimAPP/blob/master/src/assets/Trailer/anaEkran.gif)
 
 Yemek Malzemesi Ekleme
+* Sıfırdan küçük miktar eklenemez.
+* Form doldurulmamış ise ekle butonu aktif olmaz.
+* submit işlemi lokal referans ile değil ngForm üzerinden yapılır.
 ![Ana Ekran - Yemek Malzemesi Ekleme](https://github.com/NisanurBulut/TadimAPP/blob/master/src/assets/Trailer/anaEkran_1.gif)
 
 DropDown Directive Örneği
