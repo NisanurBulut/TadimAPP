@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
-import { Recipe } from '../recipe.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -13,7 +12,9 @@ export class RecipeEditComponent implements OnInit {
   id: number;
   editMode: boolean = false;
   recipeForm: FormGroup;
-  constructor(private route: ActivatedRoute, private rpService: RecipeService) { }
+  constructor(private route: ActivatedRoute,
+    private rpService: RecipeService,
+    private router: Router) { }
 
   ngOnInit() {
     // id değerini almak için
@@ -37,7 +38,7 @@ export class RecipeEditComponent implements OnInit {
     // } else {
     //   this.rpService.addRecipe(newRecipe);
     // }
-// her iki şekilde de yapılabilir aşağıdaki öntemin faydası reactive form kullanılmasından dolayıdır
+    // her iki şekilde de yapılabilir aşağıdaki öntemin faydası reactive form kullanılmasından dolayıdır
     if (this.editMode === true) {
       this.rpService.updateRecipe(this.id, this.recipeForm.value);
     } else {
@@ -96,5 +97,9 @@ export class RecipeEditComponent implements OnInit {
   }
   deleteIngredient(index: number) {
     (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
+  }
+  onCancel() {
+    //bir önceki ekrana gel
+    this.router.navigate(['../'],{relativeTo:this.route});
   }
 }

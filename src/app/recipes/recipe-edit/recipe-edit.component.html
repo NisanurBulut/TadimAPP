@@ -4,8 +4,13 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="btn-group">
-            <button type="submit" [disabled]="!recipeForm.valid" class="btn btn-success btn-sm">Kaydet</button>
-            <button type="submit" class="btn btn-danger btn-sm">İptal</button>
+            <button type="submit"
+            [disabled]="!recipeForm.valid"
+            class="btn btn-success btn-sm">Kaydet</button>
+            <button type="submit"
+            class="btn btn-danger btn-sm"
+            (click)="onCancel()"
+            >İptal</button>
           </div>
         </div>
       </div>
