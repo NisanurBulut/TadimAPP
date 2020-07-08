@@ -39,7 +39,7 @@ import { RecipeService } from './recipes/recipe.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ShoppingListService, ecipeService],
+  providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
