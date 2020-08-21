@@ -42,6 +42,7 @@ import { AuthComponent } from './auth/auth.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
+
   ],
   providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]
