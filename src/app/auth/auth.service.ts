@@ -1,23 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { throwError, Subject } from 'rxjs';
+import { AuthResponseData } from './authresponsedata.interface';
+import { User } from './user.model';
 
-export interface AuthResponseData {
-    kind: string;
-    idToken: string;
-    email: string;
-    password: string;
-    refreshToken: string;
-    expiresIn: string;
-    localId: string;
-    registered?: boolean;
-}
+
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
+    user = new Subject<User>();
     constructor(private httpClient: HttpClient) { }
     signup(pemail: string, ppassword: string) {
         return this.httpClient.post<AuthResponseData>(
@@ -26,7 +20,10 @@ export class AuthService {
             password: ppassword,
             returnSecureToken: true
         }
-        ).pipe(catchError(this.handleError));
+        ).pipe(catchError(this.handleError),
+            tap(tapRes => {
+                this.handleAuthentication(tapRes.email, tapRes.localId, tapRes.idToken, +tapRes.expiresIn);
+            }));
     }
     login(pemail: string, ppassword: string) {
         return this.httpClient.post<AuthResponseData>(
@@ -37,6 +34,11 @@ export class AuthService {
         }
         ).pipe(
             catchError(this.handleError));
+    }
+    private handleAuthentication(email: string, localId: string, idToken: string, expiresIn: number) {
+        const expirationDate = new Date(new Date().getDate() + expiresIn * 1000);
+        const user = new User(email, localId, idToken, expirationDate);
+        this.user.next(user);
     }
     private handleError(errorRes: HttpErrorResponse) {
         let errMessage = 'Bilinmeyen bir hata ile karşılaşıldı.';
