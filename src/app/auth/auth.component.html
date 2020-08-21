@@ -1,16 +1,32 @@
 <div class="row">
   <div class="col-xs-12 col-md-6 col-md-offset-3">
-    <form action="">
+    <form #authForm="ngForm" (submit)="onSubmit(authForm)">
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="text" id="email" class="form-control" />
+        <input
+          type="text"
+          id="email"
+          class="form-control"
+          ngModel
+          name="email"
+          email
+          required
+        />
       </div>
       <div class="form-group">
         <label for="password">Parola</label>
-        <input type="password" id="password" class="form-control" />
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          ngModel
+          name="password"
+          required
+          minlength="6"
+        />
       </div>
       <div>
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary" [disabled]="!authForm.valid">
           {{ isLoggingMode ? "Oturum Aç" : "Kaydol" }}
         </button>
         |
