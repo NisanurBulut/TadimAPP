@@ -26,7 +26,6 @@ export class AuthComponent {
 
         let authObs: Observable<AuthResponseData>;
 
-        this.isLogingMode = true;
         if (this.isLogingMode) {
             authObs = this.as.login(email, password);
         } else {
@@ -34,6 +33,7 @@ export class AuthComponent {
             authForm.reset();
         }
         authObs.subscribe(resData => {
+            this.isLogingMode = true;
             this.isLoadingMode = false;
             this.router.navigate(['/recipes']);
         }, errData => {
