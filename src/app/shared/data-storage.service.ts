@@ -18,4 +18,10 @@ export class DataStorageService {
                 console.log(error);
             });
     }
+    fetchRecipes() {
+        return this.http.get<Recipe[]>('https://tadimapp-ca4fc.firebaseio.com/recipes.json')
+        .subscribe(resultRecipes => {
+            this.rs.setRecipes(resultRecipes);
+        });
+    }
 }
