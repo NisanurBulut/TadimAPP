@@ -21,20 +21,18 @@ export class DataStorageService {
             });
     }
     fetchRecipes() {
-        return this.as.user.pipe(take(1), exhaustMap(user => {
-            return this.http.get<Recipe[]>(environment.firebase.dataURL,
-                {
-                    params: new HttpParams().set('auth', user.getToken())
+
+        return this.http
+            .get<Recipe[]>(environment.firebase.dataURL)
+            .pipe(map(recipes => {
+                return recipes.map(recipe => {
+                    return {
+                        ...recipe,
+                        ingredients: recipe.ingredients ? recipe.ingredients : []
+                    };
                 });
-        }), map(recipes => {
-            return recipes.map(recipe => {
-                return {
-                    ...recipe,
-                    ingredients: recipe.ingredients ? recipe.ingredients : []
-                };
-            });
-        }), tap(resultRecipes => {
-            this.rs.setRecipes(resultRecipes);
-        }));
+            }), tap(resultRecipes => {
+                this.rs.setRecipes(resultRecipes);
+            }));
     }
 }
