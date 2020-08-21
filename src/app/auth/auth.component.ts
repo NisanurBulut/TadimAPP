@@ -33,7 +33,6 @@ export class AuthComponent {
             authForm.reset();
         }
         authObs.subscribe(resData => {
-            this.isLogingMode = true;
             this.isLoadingMode = false;
             this.router.navigate(['/recipes']);
         }, errData => {

@@ -12,7 +12,9 @@ import { User } from './user.model';
 })
 export class AuthService {
     user = new Subject<User>();
+
     constructor(private httpClient: HttpClient) { }
+
     signup(pemail: string, ppassword: string) {
         return this.httpClient.post<AuthResponseData>(
             environment.firebase.signUpURL + environment.firebase.apiKey, {
@@ -32,12 +34,15 @@ export class AuthService {
             password: ppassword,
             returnSecureToken: true
         }
-        ).pipe(
-            catchError(this.handleError));
+        ).pipe(catchError(this.handleError),
+        tap(tapRes => {
+            this.handleAuthentication(tapRes.email, tapRes.localId, tapRes.idToken, +tapRes.expiresIn);
+        }));
     }
     private handleAuthentication(email: string, localId: string, idToken: string, expiresIn: number) {
         const expirationDate = new Date(new Date().getDate() + expiresIn * 1000);
         const user = new User(email, localId, idToken, expirationDate);
+        console.log(user);
         this.user.next(user);
     }
     private handleError(errorRes: HttpErrorResponse) {

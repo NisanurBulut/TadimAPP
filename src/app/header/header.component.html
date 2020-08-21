@@ -4,7 +4,7 @@
       <a href="#" class="navbar-brand">Yemek Tarifi Kitabı</a>
     </div>
     <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav">
         <li routerLinkActive="active" *ngIf="!isAuthenticated">
           <a routerLink="/auth">Kimlik Doğrulama</a>
         </li>
@@ -19,7 +19,7 @@
         <li *ngIf="isAuthenticated">
           <a style="cursor: pointer;" (click)="logOut()">Oturum Kapat</a>
         </li>
-        <li class="dropdown" appDropdown *ngIf="isAuthenticated">
+        <li class="dropdown" appDropdown>
           <a style="cursor: pointer;" class="dropdown-toggle" role="button">
             Yönet <span class="caret"></span>
           </a>
