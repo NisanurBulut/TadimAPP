@@ -7,24 +7,29 @@ import { AuthService } from './auth.service';
     templateUrl: './auth.component.html'
 })
 export class AuthComponent {
-    isLoggingMode = true;
+    isLogingMode = true;
+    isLoadingMode = false;
+    errorStr: string = null;
     constructor(private as: AuthService) { }
     onSwitchMode() {
-        this.isLoggingMode = !this.isLoggingMode;
+        this.isLogingMode = !this.isLogingMode;
     }
     onSubmit(authForm: NgForm) {
         if (!authForm.valid) {
             return;
         }
-        if (!this.isLoggingMode) {
+        this.isLogingMode = true;
+        if (!this.isLogingMode) {
 
         } else {
             const email = authForm.value.email;
             const password = authForm.value.password;
             this.as.signup(email, password).subscribe(resData => {
-                console.log(resData);
+                this.isLoadingMode = false;
             }, errData => {
-                console.log(errData);
+                this.isLoadingMode = false;
+                this.errorStr = 'Bir hata ile karşılaşıldı.';
+                console.log(this.errorStr);
             });
             authForm.reset();
         }

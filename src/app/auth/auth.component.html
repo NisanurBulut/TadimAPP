@@ -1,6 +1,16 @@
 <div class="row">
   <div class="col-xs-12 col-md-6 col-md-offset-3">
-    <form #authForm="ngForm" (submit)="onSubmit(authForm)">
+    <div class="alert alert-danger" *ngIf="errorStr">
+      <p>{{ errorStr }}</p>
+    </div>
+    <div *ngIf="isLoadingMode" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+    </div>
+    <form
+      #authForm="ngForm"
+      (submit)="onSubmit(authForm)"
+      *ngIf="!isLoadingMode"
+    >
       <div class="form-group">
         <label for="email">Email</label>
         <input
@@ -26,7 +36,11 @@
         />
       </div>
       <div>
-        <button type="submit" class="btn btn-primary" [disabled]="!authForm.valid">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!authForm.valid"
+        >
           {{ isLoggingMode ? "Oturum Aç" : "Kaydol" }}
         </button>
         |
