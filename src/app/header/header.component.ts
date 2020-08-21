@@ -11,6 +11,6 @@ export class HeaderComponent {
         this.dss.storeRecipes();
     }
     onFetchData() {
-this.dss.fetchRecipes();
+        this.dss.fetchRecipes().subscribe();
     }
 }

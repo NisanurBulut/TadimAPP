@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Recipe } from '../recipes/recipe.model';
 import { RecipeService } from '../recipes/recipe.service';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
 })
@@ -19,14 +19,18 @@ export class DataStorageService {
             });
     }
     fetchRecipes() {
-        return this.http.get<Recipe[]>('https://tadimapp-ca4fc.firebaseio.com/recipes.json')
-            .pipe(map(recipes => {
+        return this.http.get<Recipe[]>(
+            'https://tadimapp-ca4fc.firebaseio.com/recipes.json')
+            .pipe(
+                map(recipes => {
                 return recipes.map(recipe => {
-                    return { ...recipe, ingredients: recipe.ingredients ? recipe.ingredients : [] };
+                    return {
+                         ...recipe,
+                         ingredients: recipe.ingredients ? recipe.ingredients : []
+                    };
                 });
-            }))
-            .subscribe(resultRecipes => {
-                this.rs.setRecipes(resultRecipes);
-            });
+            }), tap(resultRecipes => {
+                    this.rs.setRecipes(resultRecipes);
+                }));
     }
 }
