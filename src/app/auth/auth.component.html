@@ -10,7 +10,13 @@
         <input type="password" id="password" class="form-control" />
       </div>
       <div>
-        <button class="btn btn-primary">Kaydol</button> | <button class="btn btn-primary">Oturum Aç</button>
+        <button type="submit" class="btn btn-primary">
+          {{ isLoggingMode ? "Oturum Aç" : "Kaydol" }}
+        </button>
+        |
+        <button type="button" class="btn btn-success" (click)="onSwitchMode()">
+          {{ isLoggingMode ? "Kaydol" : "Oturum Aç" }}
+        </button>
       </div>
     </form>
   </div>
