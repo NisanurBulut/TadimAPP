@@ -28,8 +28,8 @@ export class AuthComponent {
                 this.isLoadingMode = false;
             }, errData => {
                 this.isLoadingMode = false;
-                this.errorStr = 'Bir hata ile karşılaşıldı.';
-                console.log(this.errorStr);
+                console.log(errData);
+                this.errorStr = errData;
             });
             authForm.reset();
         }
