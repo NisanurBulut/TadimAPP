@@ -6,7 +6,6 @@ import { throwError, BehaviorSubject } from 'rxjs';
 import { AuthResponseData } from './auth-response-data.interface';
 import { User } from './user.model';
 import { Router } from '@angular/router';
-import { clearTimeout } from 'timers';
 
 
 @Injectable({
@@ -46,7 +45,7 @@ export class AuthService {
         this.router.navigate(['/auth']);
         localStorage.removeItem('userData');
         if (this.tokenExpirationTimer) {
-            clearTimeout(this.tokenExpirationTimer);
+           clearTimeout(this.tokenExpirationTimer);
         }
         this.tokenExpirationTimer = null;
     }
@@ -63,7 +62,7 @@ export class AuthService {
             _token: string;
             _tokenExpirationDate: string;
         } = JSON.parse(localStorage.getItem('userData'));
-        if (userData) {
+        if (!userData) {
             return;
         }
         const loadedUser = new User(
@@ -72,7 +71,7 @@ export class AuthService {
             userData._token,
             new Date(userData._tokenExpirationDate));
         const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - (new Date().getTime());
-        if (loadedUser.getToken()) {
+        if (loadedUser.token) {
             this.user.next(loadedUser);
             this.autoLogOut(expirationDuration);
         }

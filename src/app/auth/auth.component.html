@@ -41,11 +41,11 @@
           class="btn btn-primary"
           [disabled]="!authForm.valid"
         >
-          {{ isLoggingMode ? "Oturum Aç" : "Kaydol" }}
+          {{ isLogingMode ? "Oturum Aç" : "Kaydol" }}
         </button>
         |
         <button type="button" class="btn btn-success" (click)="onSwitchMode()">
-          {{ isLoggingMode ? "Kaydol" : "Oturum Aç" }}
+          {{ isLogingMode ? "Kaydol" : "Oturum Aç" }}
         </button>
       </div>
     </form>
