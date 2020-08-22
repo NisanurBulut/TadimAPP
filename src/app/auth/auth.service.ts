@@ -6,6 +6,7 @@ import { throwError, BehaviorSubject } from 'rxjs';
 import { AuthResponseData } from './auth-response-data.interface';
 import { User } from './user.model';
 import { Router } from '@angular/router';
+import { clearTimeout } from 'timers';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
     user = new BehaviorSubject<User>(null);
-
+    private tokenExpirationTimer: any;
     constructor(private httpClient: HttpClient, private router: Router) { }
 
     signup(pemail: string, ppassword: string) {
@@ -43,6 +44,16 @@ export class AuthService {
     logOut() {
         this.user.next(null);
         this.router.navigate(['/auth']);
+        localStorage.removeItem('userData');
+        if (this.tokenExpirationTimer) {
+            clearTimeout(this.tokenExpirationTimer);
+        }
+        this.tokenExpirationTimer = null;
+    }
+    autoLogOut(expirationDuration: number) {
+        this.tokenExpirationTimer = setTimeout(() => {
+            this.logOut();
+        }, expirationDuration);
     }
     autoLogin() {
         // string formatta tutulan bu veri json parse olmalı
@@ -55,15 +66,22 @@ export class AuthService {
         if (userData) {
             return;
         }
-        const loadedUser = new User(userData.email, userData.id, userData._token, new Date(userData._tokenExpirationDate));
+        const loadedUser = new User(
+            userData.email,
+            userData.id,
+            userData._token,
+            new Date(userData._tokenExpirationDate));
+        const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - (new Date().getTime());
         if (loadedUser.getToken()) {
             this.user.next(loadedUser);
+            this.autoLogOut(expirationDuration);
         }
     }
     private handleAuthentication(email: string, localId: string, idToken: string, expiresIn: number) {
         const expirationDate = new Date(new Date().getDate() + expiresIn * 1000);
         const user = new User(email, localId, idToken, expirationDate);
         this.user.next(user);
+        this.autoLogOut(expiresIn * 1000);
         localStorage.setItem('userData', JSON.stringify(user));
     }
     private handleError(errorRes: HttpErrorResponse) {
