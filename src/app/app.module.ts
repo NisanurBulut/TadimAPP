@@ -11,6 +11,7 @@ import { AuthInterceptorService } from './auth/auth-interceptor-service';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
+import { RecipesModule } from './recipes/recipes.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AuthModule } from './auth/auth.module';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
+    RecipesModule,
     SharedModule,
     ShoppingListModule
   ],

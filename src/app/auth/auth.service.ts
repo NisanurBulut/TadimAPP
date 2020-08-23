@@ -14,48 +14,54 @@ import { Router } from '@angular/router';
 export class AuthService {
     user = new BehaviorSubject<User>(null);
     private tokenExpirationTimer: any;
-    constructor(private httpClient: HttpClient, private router: Router) { }
-
+    constructor(private http: HttpClient, private router: Router) { }
     signup(pemail: string, ppassword: string) {
-        return this.httpClient.post<AuthResponseData>(
-            environment.firebase.signUpURL + environment.firebase.apiKey, {
-            email: pemail,
-            password: ppassword,
-            returnSecureToken: true
-        }
-        ).pipe(catchError(this.handleError),
-            tap(tapRes => {
-                this.handleAuthentication(tapRes.email, tapRes.localId, tapRes.idToken, +tapRes.expiresIn);
-            }));
+        return this.http
+            .post<AuthResponseData>(
+                environment.firebase.signUpURL + environment.firebase.apiKey,
+                {
+                    email: pemail,
+                    password: ppassword,
+                    returnSecureToken: true
+                }
+            )
+            .pipe(
+                catchError(this.handleError),
+                tap(resData => {
+                    this.handleAuthentication(
+                        resData.email,
+                        resData.localId,
+                        resData.idToken,
+                        +resData.expiresIn
+                    );
+                })
+            );
     }
+
     login(pemail: string, ppassword: string) {
-        return this.httpClient.post<AuthResponseData>(
-            environment.firebase.loginURL + environment.firebase.apiKey, {
-            email: pemail,
-            password: ppassword,
-            returnSecureToken: true
-        }
-        ).pipe(catchError(this.handleError),
-            tap(tapRes => {
-                this.handleAuthentication(tapRes.email, tapRes.localId, tapRes.idToken, +tapRes.expiresIn);
-            }));
+        return this.http
+            .post<AuthResponseData>(
+                environment.firebase.loginURL + environment.firebase.apiKey,
+                {
+                    email: pemail,
+                    password: ppassword,
+                    returnSecureToken: true
+                }
+            )
+            .pipe(
+                catchError(this.handleError),
+                tap(resData => {
+                    this.handleAuthentication(
+                        resData.email,
+                        resData.localId,
+                        resData.idToken,
+                        +resData.expiresIn
+                    );
+                })
+            );
     }
-    logOut() {
-        this.user.next(null);
-        this.router.navigate(['/auth']);
-        localStorage.removeItem('userData');
-        if (this.tokenExpirationTimer) {
-           clearTimeout(this.tokenExpirationTimer);
-        }
-        this.tokenExpirationTimer = null;
-    }
-    autoLogOut(expirationDuration: number) {
-        this.tokenExpirationTimer = setTimeout(() => {
-            this.logOut();
-        }, expirationDuration);
-    }
+
     autoLogin() {
-        // string formatta tutulan bu veri json parse olmalı
         const userData: {
             email: string;
             id: string;
@@ -65,40 +71,68 @@ export class AuthService {
         if (!userData) {
             return;
         }
+
         const loadedUser = new User(
             userData.email,
             userData.id,
             userData._token,
-            new Date(userData._tokenExpirationDate));
-        const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - (new Date().getTime());
+            new Date(userData._tokenExpirationDate)
+        );
+
         if (loadedUser.token) {
             this.user.next(loadedUser);
-            this.autoLogOut(expirationDuration);
+            const expirationDuration =
+                new Date(userData._tokenExpirationDate).getTime() -
+                new Date().getTime();
+            this.autoLogout(expirationDuration);
         }
     }
-    private handleAuthentication(email: string, localId: string, idToken: string, expiresIn: number) {
-        const expirationDate = new Date(new Date().getDate() + expiresIn * 1000);
-        const user = new User(email, localId, idToken, expirationDate);
+
+    logOut() {
+        this.user.next(null);
+        this.router.navigate(['/auth']);
+        localStorage.removeItem('userData');
+        if (this.tokenExpirationTimer) {
+            clearTimeout(this.tokenExpirationTimer);
+        }
+        this.tokenExpirationTimer = null;
+    }
+
+    autoLogout(expirationDuration: number) {
+        this.tokenExpirationTimer = setTimeout(() => {
+            this.logOut();
+        }, expirationDuration);
+    }
+
+    private handleAuthentication(
+        email: string,
+        userId: string,
+        token: string,
+        expiresIn: number
+    ) {
+        const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+        const user = new User(email, userId, token, expirationDate);
         this.user.next(user);
-        this.autoLogOut(expiresIn * 1000);
+        this.autoLogout(expiresIn * 1000);
         localStorage.setItem('userData', JSON.stringify(user));
     }
+
     private handleError(errorRes: HttpErrorResponse) {
-        let errMessage = 'Bilinmeyen bir hata ile karşılaşıldı.';
+        let errorMessage = 'An unknown error occurred!';
         if (!errorRes.error || !errorRes.error.error) {
-            return throwError(errMessage);
+            return throwError(errorMessage);
         }
         switch (errorRes.error.error.message) {
             case 'EMAIL_EXISTS':
-                errMessage = 'Bu mail adresi zaten kayıtlıdır.';
+                errorMessage = 'This email exists already';
                 break;
-            case 'INVALID_EMAIL':
-                errMessage = 'Bu mail adresi tanımlı değildir.';
+            case 'EMAIL_NOT_FOUND':
+                errorMessage = 'This email does not exist.';
                 break;
             case 'INVALID_PASSWORD':
-                errMessage = 'Bu parola tanımlı değildir.';
+                errorMessage = 'This password is not correct.';
                 break;
         }
-        return throwError(errMessage);
+        return throwError(errorMessage);
     }
 }

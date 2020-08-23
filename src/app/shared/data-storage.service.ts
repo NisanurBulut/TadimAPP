@@ -21,7 +21,6 @@ export class DataStorageService {
             });
     }
     fetchRecipes() {
-
         return this.http
             .get<Recipe[]>(environment.firebase.dataURL)
             .pipe(map(recipes => {

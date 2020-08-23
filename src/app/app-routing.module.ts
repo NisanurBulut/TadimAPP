@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { RecipesComponent } from './recipes/recipes.component';
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   // Lazy loading
   {
-    path: 'recipes',
-    loadChildren: () => import('./recipes/recipes.module').then(m => m.RecipesModule)
+    path: 'recipes', component: RecipesComponent
+    // loadChildren: () => import('./recipes/recipes.module').then(m => m.RecipesModule)
   }
 ];
 @NgModule({

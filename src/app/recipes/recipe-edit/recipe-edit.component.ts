@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -14,7 +15,8 @@ export class RecipeEditComponent implements OnInit {
   recipeForm: FormGroup;
   constructor(private route: ActivatedRoute,
     private rpService: RecipeService,
-    private router: Router) { }
+    private router: Router,
+    private dss:DataStorageService) { }
 
   ngOnInit() {
     // id değerini almak için
@@ -43,6 +45,7 @@ export class RecipeEditComponent implements OnInit {
       this.rpService.updateRecipe(this.id, this.recipeForm.value);
     } else {
       this.rpService.addRecipe(this.recipeForm.value);
+      this.dss.storeRecipes();
     }
     this.onCancel();
   }

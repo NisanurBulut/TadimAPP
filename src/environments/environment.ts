@@ -6,8 +6,8 @@
 export const environment = {
   production: false,
   firebase: {
-    signUpURL: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=',
-    loginURL: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=',
+    signUpURL: 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=',
+    loginURL: 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=',
     dataURL: 'https://tadimapp-ca4fc.firebaseio.com/recipes.json',
     apiKey: 'AIzaSyD8RC-SDBnkSqKFyuNVgsgG1UKJg15iagE',
     authDomain: 'tadimapp-ca4fc.firebaseapp.com',
