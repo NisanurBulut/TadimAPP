@@ -25,10 +25,8 @@ import { BrowserModule } from '@angular/platform-browser';
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        BrowserModule,
         LoadingSpinnerComponent,
         DropdownDirective
-
     ]
 })
 export class SharedModule { }
