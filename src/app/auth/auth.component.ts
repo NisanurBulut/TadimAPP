@@ -40,4 +40,7 @@ export class AuthComponent {
             this.errorStr = errData;
         });
     }
+    onHandleError() {
+        this.errorStr = null;
+    }
 }
