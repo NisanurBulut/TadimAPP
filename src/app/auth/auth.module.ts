@@ -7,7 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 @NgModule({
     declarations: [AuthComponent],
     imports: [CommonModule, SharedModule, RouterModule.forChild([{
-        path: 'auth',
+        // lazy loading yapıyorsan buradaki path boş olmalı
+        path: '',
         component: AuthComponent,
     }])],
     exports: []

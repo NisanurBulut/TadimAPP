@@ -11,7 +11,8 @@ import { SharedModule } from '../shared/shared.module';
     imports: [
         RouterModule.forChild(
             [{
-                path: 'shopping-list',
+                // lazy loading yapıyorsan burasının empty olmasına dikkat et
+                path: '',
                 component: ShoppingListComponent,
             }
             ]

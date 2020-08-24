@@ -21,10 +21,7 @@ import { RecipesModule } from './recipes/recipes.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule,
-    RecipesModule,
-    SharedModule,
-    ShoppingListModule
+    SharedModule
   ],
   providers: [ShoppingListService, RecipeService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }],
   bootstrap: [AppComponent]
