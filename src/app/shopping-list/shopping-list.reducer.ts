@@ -1,4 +1,6 @@
 import { Ingredient } from '../shared/ingredient.model';
+import { Action } from '@ngrx/store';
+import { ActionSequence } from 'protractor';
 
 const initialState = {
     ingredients: [
@@ -6,4 +8,13 @@ const initialState = {
         new Ingredient('Kabak', 1),
     ]
 };
-export function shoppingListReducer(state=initialState, action) { }
+// buradaki actiona aslında bir interface
+export function shoppingListReducer(state = initialState, action: Action) {
+    switch (action.type) {
+        case 'ADD_INGREDIENT':
+            return {
+                ...state,
+                ingredients: [...state.ingredients, action]
+            };
+    }
+}
