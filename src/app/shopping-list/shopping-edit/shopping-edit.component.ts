@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
 
+import * as shoppingListActions from '../store/shopping-list.actions';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list.service';
 
@@ -16,7 +18,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   editedItemIndex: number;
   editedItem: Ingredient;
   @ViewChild('f', { static: false }) slForm: NgForm;
-  constructor(private slService: ShoppingListService) { }
+  constructor(private slService: ShoppingListService, private store: Store<{ shoppingList: { ingredients: Ingredient[] } }>) { }
 
   ngOnInit() {
     // düzenlenmek istenen nesneye abona olalım
@@ -41,7 +43,9 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
       this.slService.updateIngredient(this.editedItemIndex, newIngredient);
     } else {
       // ekleme yap
-      this.slService.addIngredient(newIngredient);
+      //  this.slService.addIngredient(newIngredient);
+      // dispathch
+      this.store.dispatch(new shoppingListActions.AddIngredient(newIngredient));
     }
     this.onClear();
   }
