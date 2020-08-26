@@ -12,7 +12,7 @@ export class AddIngredient implements Action {
     }
 }
 // önce action tanımı yapılır
-export class AddIngredients {
+export class AddIngredients implements Action {
     readonly type = ADD_INGREDIENTS;
     constructor(public payload: Ingredient[]) { }
 }
@@ -29,4 +29,8 @@ export class DeleteIngredient implements Action {
     }
 }
 // multiple action olduğu için payload erişimi olabilmesi adına bu tanımlama yapıldı
-export type ShoppingListActions = AddIngredient | AddIngredient | UpdateIngredient | DeleteIngredient;
+export type ShoppingListActions =
+    AddIngredient |
+    AddIngredients |
+    UpdateIngredient |
+    DeleteIngredient;
