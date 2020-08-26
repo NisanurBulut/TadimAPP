@@ -1,6 +1,6 @@
 import { Ingredient } from '../../shared/ingredient.model';
-import { Action } from '@ngrx/store';
 import * as ShoppingListActions from './shopping-list.actions';
+import { Action } from '@ngrx/store';
 
 const initialState = {
     ingredients: [
@@ -9,14 +9,22 @@ const initialState = {
     ]
 };
 // buradaki actiona aslında bir interface
-export function shoppingListReducer(state = initialState, action: ShoppingListActions.AddIngredient) {
+export function shoppingListReducer(
+    state = initialState,
+    action: ShoppingListActions.ShoppingListActions) {
     switch (action.type) {
         case ShoppingListActions.ADD_INGREDIENT:
             return {
                 ...state,
                 ingredients: [...state.ingredients, action.payload]
             };
-            default:
-                return state;
+        case ShoppingListActions.ADD_INGREDIENTS:
+            // ... spread operator
+            return {
+                ...state,
+                ingredients: [...state.ingredients, ...action.payload]
+            };
+        default:
+            return state;
     }
 }
