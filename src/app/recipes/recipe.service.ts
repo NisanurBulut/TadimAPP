@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { DataStorageService } from '../shared/data-storage.service';
 import { Store } from '@ngrx/store';
 import * as ShoppingListActions from '../shopping-list/store/shopping-list.actions';
+import * as fromShoppingList from '../shopping-list/store/shopping-list.reducer';
 @Injectable()
 export class RecipeService {
   // EventEmitter subject' dönüştü
@@ -15,7 +16,7 @@ export class RecipeService {
   constructor(
     private slService: ShoppingListService,
     private dss: DataStorageService,
-    private store: Store<{ shoppingList: { ingredients: Ingredient[] } }>) { }
+    private store: Store<fromShoppingList.AppState>) { }
 
   setRecipes(recipes: Recipe[]) {
     this.recipes = recipes;
@@ -28,8 +29,8 @@ export class RecipeService {
     return this.recipes[index];
   }
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
-   // this.slService.addIngredients(ingredients);
-   this.store.dispatch(new ShoppingListActions.AddIngredients(ingredients));
+    // this.slService.addIngredients(ingredients);
+    this.store.dispatch(new ShoppingListActions.AddIngredients(ingredients));
   }
   addRecipe(recipe: Recipe) {
     this.recipes.push(recipe);

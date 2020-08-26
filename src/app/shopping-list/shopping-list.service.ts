@@ -23,7 +23,6 @@ export class ShoppingListService {
     this.ingredientsChanged.next(this.ingredients.slice());
   }
   addIngredients(ingredients: Ingredient[]) {
-    // tslint:disable-next-line: forin
     // for (let ingredient of ingredients) {
     //   this.addIngredient(ingredient);
     // }
