@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, tap,map } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { AuthResponseData } from './auth-response-data.interface';
 import { User } from './user.model';
@@ -13,7 +13,7 @@ import * as AuthActions from '../auth/store/auth.actions';
     providedIn: 'root'
 })
 export class AuthService {
-    user = new BehaviorSubject<User>(null);
+  //  user = new BehaviorSubject<User>(null);
     private tokenExpirationTimer: any;
     constructor(private http: HttpClient, private router: Router, private store: Store<fromApp.AppState>) { }
     signup(pemail: string, ppassword: string) {
