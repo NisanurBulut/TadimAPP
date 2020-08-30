@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Recipe } from '../recipe.model';
-import { RecipeService } from '../recipe.service';
+import { Recipe, RecipeService } from '../../recipes';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
@@ -9,19 +8,20 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent implements OnInit {
-recipe: Recipe;
-id: number;
-  constructor(private recipeService: RecipeService,
-              private route: ActivatedRoute,
-              private router: Router ) { }
+  recipe: Recipe;
+  id: number;
+  constructor(
+    private recipeService: RecipeService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     // router'dan gelen id değerini alalım aşağıdaki yaklaşım doğru değil
     // const id = this.route.snapshot.params['id'];
     this.route.params.subscribe(
       (params: Params) => {
-      this.id = +params['id'];
-      this.recipe = this.recipeService.getRecipe(this.id);
+        this.id = +params['id'];
+        this.recipe = this.recipeService.getRecipe(this.id);
       }
     );
   }
@@ -30,10 +30,10 @@ id: number;
     this.router.navigate(['/shopping-list']);
   }
   onEditRecipe() {
-    this.router.navigate(['edit'], {relativeTo: this.route});
-  // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
+    this.router.navigate(['edit'], { relativeTo: this.route });
+    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
-  onDeleteRecipe(){
+  onDeleteRecipe() {
     this.recipeService.deleteRecipe(this.id);
     // silme işlemi sonrası yönlendirme yazalım
     this.router.navigate(['/recipes']);

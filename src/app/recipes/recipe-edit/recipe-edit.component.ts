@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
-import { RecipeService } from '../recipe.service';
+import { RecipeService } from '../../recipes';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 @Component({
@@ -13,10 +13,11 @@ export class RecipeEditComponent implements OnInit {
   id: number;
   editMode: boolean = false;
   recipeForm: FormGroup;
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private route: ActivatedRoute,
     private rpService: RecipeService,
     private router: Router,
-    private dss:DataStorageService) { }
+    private dss: DataStorageService) { }
 
   ngOnInit() {
     // id değerini almak için
@@ -104,6 +105,6 @@ export class RecipeEditComponent implements OnInit {
   }
   onCancel() {
     //bir önceki ekrana gel
-    this.router.navigate(['../'],{relativeTo:this.route});
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 }

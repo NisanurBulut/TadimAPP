@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
-import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { LoadingSpinnerComponent, DropdownDirective } from '../shared';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { DropdownDirective } from './dropdown.directive';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
