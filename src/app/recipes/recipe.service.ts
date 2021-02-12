@@ -1,9 +1,7 @@
 import { Recipe } from '../recipes';
 import { Injectable } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
-import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { Subject } from 'rxjs';
-import { DataStorageService } from '../shared/data-storage.service';
 import { Store } from '@ngrx/store';
 import * as ShoppingListActions from '../shopping-list/store/shopping-list.actions';
 import * as fromApp from '../store/app.reducer';
@@ -15,8 +13,6 @@ export class RecipeService {
   private recipes: Recipe[] = [];
 
   constructor(
-    private slService: ShoppingListService,
-    private dss: DataStorageService,
     private store: Store<fromApp.AppState>) { }
 
   setRecipes(recipes: Recipe[]) {
