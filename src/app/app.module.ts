@@ -10,6 +10,7 @@ import { RecipeService } from './recipes';
 import { AuthInterceptorService } from './auth/auth-interceptor-service';
 import { SharedModule } from './shared';
 import * as fromApp from './store/app.reducer';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import * as fromApp from './store/app.reducer';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    StoreModule.forRoot(fromApp.appReducer)
+    StoreModule.forRoot(fromApp.appReducer),
+    EffectsModule.forRoot([])
   ],
   providers: [ShoppingListService, RecipeService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }],
   bootstrap: [AppComponent]
