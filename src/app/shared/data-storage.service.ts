@@ -8,7 +8,9 @@ import { AuthService } from '../auth/auth.service';
     providedIn: 'root'
 })
 export class DataStorageService {
-    constructor(private http: HttpClient, private rs: RecipeService, private as: AuthService) { }
+    constructor(private http: HttpClient,
+        private rs: RecipeService,
+        private as: AuthService) { }
     storeRecipes() {
         const recipes = this.rs.getRecipes();
 
