@@ -18,7 +18,6 @@ import { CoreModule } from './core.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([AuthEffects]),
     SharedModule,

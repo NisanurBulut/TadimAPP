@@ -15,7 +15,9 @@ import * as AuthActions from '../auth/store/auth.actions';
 export class AuthService {
   //  user = new BehaviorSubject<User>(null);
     private tokenExpirationTimer: any;
-    constructor(private http: HttpClient, private router: Router, private store: Store<fromApp.AppState>) { }
+    constructor(private http: HttpClient,
+        private router: Router,
+        private store: Store<fromApp.AppState>) { }
     signup(pemail: string, ppassword: string) {
         return this.http
             .post<AuthResponseData>(
