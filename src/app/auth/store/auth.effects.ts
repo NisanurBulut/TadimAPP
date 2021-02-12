@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, switchMap, map } from 'rxjs/operators';
+import { catchError, switchMap, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { AuthResponseData } from '../auth-response-data.interface';
 
@@ -34,10 +35,32 @@ export class AuthEffects {
                             expirationDate: expirationDate
                         }))
                     }),
-                    catchError(error => {
-                        return of();
+                    catchError(errorRes => {
+                        let errorMessage = 'An unknown error occurred!';
+                        if (!errorRes.error || !errorRes.error.error) {
+                            return of(new AuthActions.LoginFailed(errorMessage));
+                        }
+                        switch (errorRes.error.error.message) {
+                            case 'EMAIL_EXISTS':
+                                errorMessage = 'This email exists already';
+                                break;
+                            case 'EMAIL_NOT_FOUND':
+                                errorMessage = 'This email does not exist.';
+                                break;
+                            case 'INVALID_PASSWORD':
+                                errorMessage = 'This password is not correct.';
+                                break;
+                        }
+                        return of(new AuthActions.LoginFailed(errorMessage));
                     }))
         })
     );
-    constructor(private actions$: Actions, private http: HttpClient) { }
+    @Effect({ dispatch: false })
+    authSuccess = this.actions$.pipe(
+        ofType(AuthActions.LOGIN),
+        tap(() => {
+            this.router.navigate(['/']);
+        })
+    );
+    constructor(private actions$: Actions, private http: HttpClient, private router: Router) { }
 }

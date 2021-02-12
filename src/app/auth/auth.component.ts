@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { AuthResponseData } from './auth-response-data.interface';
@@ -22,6 +21,9 @@ export class AuthComponent implements OnInit {
         this.store.select('auth').subscribe(authState=>{
             this.isLoadingMode=authState.loading;
             this.errorStr=authState.authError;
+            if(this.errorStr){
+                alert(this.errorStr);
+            }
         });
     }
     onSwitchMode() {
@@ -35,22 +37,12 @@ export class AuthComponent implements OnInit {
         const password = authForm.value.password;
 
         let authObs: Observable<AuthResponseData>;
-
         if (this.isLogingMode) {
-            // authObs = this.as.login(email, password);
             this.store.dispatch(new AuthActions.LoginStart({ email: email, password: password }))
         } else {
             authObs = this.as.signup(email, password);
-            authForm.reset();
         }
-
-        // authObs.subscribe(resData => {
-        //     this.isLoadingMode = false;
-        //     this.router.navigate(['/recipes']);
-        // }, errData => {
-        //     this.errorStr = errData;
-        //     this.isLoadingMode = false;
-        // });
+        authForm.reset();
     }
     onHandleError() {
         this.errorStr = null;
