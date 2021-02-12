@@ -1,4 +1,5 @@
-import { Ingredient } from '../../shared';
+
+import { Ingredient } from 'src/app/shared/ingredient.model';
 import * as ShoppingListActions from './shopping-list.actions';
 
 export interface State {
