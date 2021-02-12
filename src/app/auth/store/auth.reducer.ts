@@ -13,12 +13,14 @@ export function authReducer(
     action: AuthActions.AuthActions) {
     switch (action.type) {
         case AuthActions.LOGIN:
+            debugger;
             const userEntity = new User(
                 action.payload.email,
                 action.payload.userId,
                 action.payload.token,
                 action.payload.expirationDate
             );
+            console.log(userEntity);
             return {
                 ...state,
                 user: userEntity,

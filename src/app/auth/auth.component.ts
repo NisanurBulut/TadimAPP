@@ -39,6 +39,7 @@ export class AuthComponent implements OnInit {
         let authObs: Observable<AuthResponseData>;
 
         if (this.isLogingMode) {
+            debugger;
             this.store.dispatch(new AuthActions.LoginStart({ email: email, password: password }))
         } else {
             authObs = this.as.signup(email, password);
