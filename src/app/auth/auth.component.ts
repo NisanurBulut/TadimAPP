@@ -7,7 +7,8 @@ import * as AuthActions from './store/auth.actions';
 import { AuthModel } from '../shared/auth.model';
 @Component({
     selector: 'app-auth',
-    templateUrl: './auth.component.html'
+    templateUrl: './auth.component.html',
+    styleUrls:['./auth.component.css']
 })
 export class AuthComponent implements OnInit, OnDestroy {
     isLogingMode = true;
