@@ -1,4 +1,16 @@
 
-form {
-  padding-top: 30%;
+.formRow {
+  margin: 15%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+form{
+  width: 300px;
+}
+.btn-primary{
+  float: left;
+}
+.btn-success{
+  float: right;
 }

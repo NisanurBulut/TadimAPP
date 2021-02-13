@@ -1,5 +1,10 @@
-* {
-   /* background-color: #0a546c69; */
-    margin: 0;
-    padding: 0;
-  }
+body{
+  background-color: #0a546c34;
+  min-height: 100%;
+  background: url('./assets/backgroundHome.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+html {
+  height: 100%;
+}
