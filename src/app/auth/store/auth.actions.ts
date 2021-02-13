@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { AuthModel } from 'src/app/shared/auth.model';
+import { User } from '../user.model';
 
 export const LOGIN_START = '[Auth] Login Star';
 export const LOGIN_SUCCESS = '[Auth] Login Success';
@@ -26,12 +27,7 @@ export class LoginSuccess implements Action {
 
     readonly type = LOGIN_SUCCESS;
     constructor(
-        public payload: {
-            email: string,
-            userId: string,
-            token: string,
-            expirationDate: Date
-        }) {
+        public payload: User) {
     }
 }
 export class LoginStart implements Action {

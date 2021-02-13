@@ -13,12 +13,7 @@ const handleAuthentication = (authResponse: AuthResponseData) => {
     const expirationDate = new Date(new Date().getTime() + +authResponse.expiresIn * 1000);
     const activeUser = new User(authResponse.email, authResponse.localId, authResponse.idToken, expirationDate);
     localStorage.setItem('userData', JSON.stringify(activeUser));
-    return (new AuthActions.LoginSuccess({
-        email: authResponse.email,
-        userId: authResponse.localId,
-        token: authResponse.idToken,
-        expirationDate: expirationDate
-    }));
+    return (new AuthActions.LoginSuccess(activeUser));
 };
 
 const handleError = (errorRes: any) => {
@@ -86,12 +81,7 @@ export class AuthEffects {
                 new Date(userData._tokenExpirationDate)
             );
             if (loadedUser.token) {
-                return new AuthActions.LoginSuccess({
-                    email: loadedUser.email,
-                    userId: loadedUser.id,
-                    token: loadedUser.token,
-                    expirationDate: new Date(userData._tokenExpirationDate)
-                });
+                return new AuthActions.LoginSuccess(loadedUser);
             }
             return { type: 'DUMMY' };
         })
