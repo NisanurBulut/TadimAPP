@@ -12,8 +12,7 @@ export function authReducer(
     state = initialState,
     action: AuthActions.AuthActions) {
     switch (action.type) {
-        case AuthActions.LOGIN:
-            debugger;
+        case AuthActions.LOGIN_SUCCESS:
             const userEntity = new User(
                 action.payload.email,
                 action.payload.userId,

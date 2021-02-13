@@ -84,7 +84,7 @@ export class AuthService {
 
         if (loadedUser.token) {
             //  this.user.next(loadedUser);
-            this.store.dispatch(new AuthActions.Login({
+            this.store.dispatch(new AuthActions.LoginSuccess({
                 email: loadedUser.email,
                 userId: loadedUser.id,
                 token: loadedUser.token,
@@ -123,7 +123,7 @@ export class AuthService {
         const pexpirationDate = new Date(new Date().getTime() + pexpiresIn * 1000);
         const user = new User(pemail, puserId, ptoken, pexpirationDate);
         // this.user.next(user);
-        this.store.dispatch(new AuthActions.Login({
+        this.store.dispatch(new AuthActions.LoginSuccess({
             email: pemail,
             userId: puserId,
             token: ptoken,
