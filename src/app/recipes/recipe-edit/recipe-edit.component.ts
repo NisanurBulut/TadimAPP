@@ -3,6 +3,10 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { RecipeService } from '../recipe.service';
+import * as fromApp from '../../store/app.reducer';
+import { Store } from '@ngrx/store';
+import { map } from 'rxjs/operators';
+import { Recipe } from '../recipe.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -17,7 +21,8 @@ export class RecipeEditComponent implements OnInit {
     private route: ActivatedRoute,
     private rpService: RecipeService,
     private router: Router,
-    private dss: DataStorageService) { }
+    private dss: DataStorageService,
+    private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
     // id değerini almak için
@@ -32,16 +37,6 @@ export class RecipeEditComponent implements OnInit {
       );
   }
   onsubmit() {
-    // const newRecipe = new Recipe(this.recipeForm.value['name'],
-    //   this.recipeForm.value['description'],
-    //   this.recipeForm.value['imagePath'],
-    //   this.recipeForm.value['ingredients']);
-    // if (this.editMode === true) {
-    //   this.rpService.updateRecipe(this.id, newRecipe);
-    // } else {
-    //   this.rpService.addRecipe(newRecipe);
-    // }
-    // her iki şekilde de yapılabilir aşağıdaki öntemin faydası reactive form kullanılmasından dolayıdır
     if (this.editMode === true) {
       this.rpService.updateRecipe(this.id, this.recipeForm.value);
     } else {
@@ -54,15 +49,22 @@ export class RecipeEditComponent implements OnInit {
     return (<FormArray>this.recipeForm.get('ingredients')).controls;
   }
   initForm() {
-
+    let recipe: Recipe;
     let recipeName = '';
     let recipeImagePath = '';
     let recipeDescription = '';
     // varsayılan boş olsun istiyoruz
     let recipeIngredients = new FormArray([]);
     if (this.editMode === true) {
-      const recipe = this.rpService.getRecipe(this.id);
-
+      // const recipe = this.rpService.getRecipe(this.id);
+      this.store.select('recipes').pipe(
+        map((data) => {
+          return data.recipes.find((recipe, index) => {
+            return index === this.id
+          });
+        })).subscribe(dataRecipe => {
+          recipe = { ...dataRecipe };
+        });
       recipeName = recipe.name;
       recipeImagePath = recipe.imagePath;
       recipeDescription = recipe.description;
