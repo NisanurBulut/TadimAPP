@@ -15,14 +15,17 @@ export class SignUpStart implements Action {
 }
 
 export class LoginSuccess implements Action {
+
     readonly type = LOGIN_SUCCESS;
     constructor(
-        public payload: {
+        public payload:  {
             email: string,
             userId: string,
             token: string,
             expirationDate: Date
-        }) { }
+        }) {
+        console.log('Action Login Success');
+    }
 }
 export class LoginStart implements Action {
     readonly type = LOGIN_START;
@@ -36,7 +39,7 @@ export class Logout implements Action {
     readonly type = LOGOUT;
 }
 export type AuthActions = LoginSuccess |
-                          LoginStart |
-                          LoginFailed |
-                          SignUpStart |
-                          Logout;
+    LoginStart |
+    LoginFailed |
+    SignUpStart |
+    Logout;

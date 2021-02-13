@@ -1,5 +1,5 @@
 import { User } from '../user.model';
-import * as AuthActions from './auth.actions';
+import * as fromAuthActions from './auth.actions';
 
 export interface State {
     user: User;
@@ -10,9 +10,12 @@ const initialState: State = { user: null, authError: null, loading: false };
 
 export function authReducer(
     state = initialState,
-    action: AuthActions.AuthActions) {
+    action: fromAuthActions.AuthActions) {
+        console.log('reducer');
     switch (action.type) {
-        case AuthActions.LOGIN_SUCCESS:
+
+        case fromAuthActions.LOGIN_SUCCESS:
+            console.log('reducer LOGIN_SUCCESS');
             const userEntity = new User(
                 action.payload.email,
                 action.payload.userId,
@@ -25,20 +28,20 @@ export function authReducer(
                 authError: null,
                 loading: false
             };
-        case AuthActions.LOGIN_START:
+        case fromAuthActions.LOGIN_START:
             return {
                 ...state,
                 authError: null,
                 loading: true
             };
-        case AuthActions.LOGIN_FAIL:
+        case fromAuthActions.LOGIN_FAIL:
             return {
                 ...state,
                 user: null,
                 authError: action.payload,
                 loading: false
             };
-        case AuthActions.LOGOUT:
+        case fromAuthActions.LOGOUT:
             return {
                 ...state,
                 user: null,

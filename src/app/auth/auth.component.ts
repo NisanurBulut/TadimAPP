@@ -6,6 +6,7 @@ import { AuthResponseData } from './auth-response-data.interface';
 import { Store } from '@ngrx/store';
 import * as fromApp from './store/auth.reducer';
 import * as AuthActions from './store/auth.actions';
+import { AuthModel } from '../shared/auth.model';
 @Component({
     selector: 'app-auth',
     templateUrl: './auth.component.html'
@@ -17,7 +18,7 @@ export class AuthComponent implements OnInit, OnDestroy {
 
     constructor(private as: AuthService, private store: Store<fromApp.State>) { }
     ngOnDestroy(): void {
-        throw new Error('Method not implemented.');
+
     }
 
     ngOnInit(): void {
@@ -36,13 +37,13 @@ export class AuthComponent implements OnInit, OnDestroy {
         if (!authForm.valid) {
             return;
         }
-        const email = authForm.value.email;
-        const password = authForm.value.password;
+
+        const authData = { email: authForm.value.email, password: authForm.value.password } as AuthModel;
 
         if (this.isLogingMode) {
-            this.store.dispatch(new AuthActions.LoginStart({ email: email, password: password }))
+            this.store.dispatch(new AuthActions.LoginStart(authData))
         } else {
-            this.store.dispatch(new AuthActions.SignUpStart({ email: email, password: password }))
+            this.store.dispatch(new AuthActions.SignUpStart(authData))
         }
         authForm.reset();
     }

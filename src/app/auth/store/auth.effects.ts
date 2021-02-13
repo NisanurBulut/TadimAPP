@@ -9,9 +9,10 @@ import { AuthService } from '../auth.service';
 import * as AuthActions from './auth.actions';
 
 const handleAuthentication = (authResponse: AuthResponseData) => {
-    const expirationDate = new Date(
-        new Date().getTime() + +authResponse.expiresIn * 1000);
-    return of(new AuthActions.LoginSuccess({
+    console.log('handleAuthentication');
+
+    const expirationDate = new Date( new Date().getTime() + +authResponse.expiresIn * 1000);
+    return (new AuthActions.LoginSuccess({
         email: authResponse.email,
         userId: authResponse.localId,
         token: authResponse.idToken,

@@ -18,6 +18,7 @@ export class AuthService {
     constructor(private http: HttpClient,
         private router: Router,
         private store: Store<fromApp.AppState>) { }
+
     signup(pemail: string, ppassword: string) {
         return this.http
             .post<AuthResponseData>(
@@ -28,17 +29,6 @@ export class AuthService {
                     returnSecureToken: true
                 }
             )
-            // .pipe(
-            //     catchError(this.handleError),
-            //     tap(resData => {
-            //         this.handleAuthentication(
-            //             resData.email,
-            //             resData.localId,
-            //             resData.idToken,
-            //             +resData.expiresIn
-            //         );
-            //     })
-            // );
     }
 
     login(pemail: string, ppassword: string) {
@@ -51,17 +41,6 @@ export class AuthService {
                     returnSecureToken: true
                 }
              )
-            // .pipe(
-            //     catchError(this.handleError),
-            //     tap(resData => {
-            //         this.handleAuthentication(
-            //             resData.email,
-            //             resData.localId,
-            //             resData.idToken,
-            //             +resData.expiresIn
-            //         );
-            //     })
-            // );
     }
 
     autoLogin() {
@@ -112,43 +91,5 @@ export class AuthService {
         this.tokenExpirationTimer = setTimeout(() => {
             this.logOut();
         }, expirationDuration);
-    }
-
-    private handleAuthentication(
-        pemail: string,
-        puserId: string,
-        ptoken: string,
-        pexpiresIn: number
-    ) {
-        const pexpirationDate = new Date(new Date().getTime() + pexpiresIn * 1000);
-        const user = new User(pemail, puserId, ptoken, pexpirationDate);
-        // this.user.next(user);
-        this.store.dispatch(new AuthActions.LoginSuccess({
-            email: pemail,
-            userId: puserId,
-            token: ptoken,
-            expirationDate: pexpirationDate
-        }));
-        this.autoLogout(pexpiresIn * 1000);
-        localStorage.setItem('userData', JSON.stringify(user));
-    }
-
-    private handleError(errorRes: HttpErrorResponse) {
-        let errorMessage = 'An unknown error occurred!';
-        if (!errorRes.error || !errorRes.error.error) {
-            return throwError(errorMessage);
-        }
-        switch (errorRes.error.error.message) {
-            case 'EMAIL_EXISTS':
-                errorMessage = 'This email exists already';
-                break;
-            case 'EMAIL_NOT_FOUND':
-                errorMessage = 'This email does not exist.';
-                break;
-            case 'INVALID_PASSWORD':
-                errorMessage = 'This password is not correct.';
-                break;
-        }
-        return throwError(errorMessage);
     }
 }
