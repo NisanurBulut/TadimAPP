@@ -1,10 +1,8 @@
-import { Component, ComponentFactoryResolver, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
-import { AuthService } from './auth.service';
-import { AuthResponseData } from './auth-response-data.interface';
+import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
-import * as fromApp from './store/auth.reducer';
+import * as fromApp from '../store/app.reducer';
 import * as AuthActions from './store/auth.actions';
 import { AuthModel } from '../shared/auth.model';
 @Component({
@@ -17,7 +15,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     errorStr: string = null;
     private storeSub: Subscription;
 
-    constructor(private store: Store<fromApp.State>, private componentFactoryResolver: ComponentFactoryResolver) { }
+    constructor(private store: Store<fromApp.AppState>) { }
 
     ngOnDestroy(): void {
         if (this.storeSub) {
@@ -26,7 +24,8 @@ export class AuthComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.storeSub = this.store.select('auth').subscribe(authState => {
+        this.storeSub = this.store.select('auth')
+        .subscribe(authState => {
             this.isLoadingMode = authState.loading;
             this.errorStr = authState.authError;
             if (this.errorStr) {
@@ -45,9 +44,9 @@ export class AuthComponent implements OnInit, OnDestroy {
         const authData = { email: authForm.value.email, password: authForm.value.password } as AuthModel;
 
         if (this.isLogingMode) {
-            this.store.dispatch(new AuthActions.LoginStart(authData))
+            this.store.dispatch(new AuthActions.LoginStart(authData));
         } else {
-            this.store.dispatch(new AuthActions.SignUpStart(authData))
+            this.store.dispatch(new AuthActions.SignUpStart(authData));
         }
         authForm.reset();
     }
