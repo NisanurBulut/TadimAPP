@@ -11,9 +11,7 @@ const initialState: State = { user: null, authError: null, loading: false };
 export function authReducer(
     state = initialState,
     action: fromAuthActions.AuthActions) {
-        console.log('reducer');
     switch (action.type) {
-
         case fromAuthActions.LOGIN_SUCCESS:
             console.log('reducer LOGIN_SUCCESS');
             const userEntity = new User(
@@ -40,6 +38,12 @@ export function authReducer(
                 user: null,
                 authError: action.payload,
                 loading: false
+            };
+        case fromAuthActions.SIGNUP_START:
+            return {
+                ...state,
+                authError: null,
+                loading: true
             };
         case fromAuthActions.LOGOUT:
             return {

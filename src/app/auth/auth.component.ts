@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthService } from './auth.service';
 import { AuthResponseData } from './auth-response-data.interface';
 import { Store } from '@ngrx/store';
@@ -11,18 +11,25 @@ import { AuthModel } from '../shared/auth.model';
     selector: 'app-auth',
     templateUrl: './auth.component.html'
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnInit, OnDestroy {
     isLogingMode = true;
     isLoadingMode = false;
     errorStr: string = null;
+    private storeSub: Subscription;
 
-    constructor(private store: Store<fromApp.State>) { }
+    constructor(private store: Store<fromApp.State>, private componentFactoryResolver: ComponentFactoryResolver) { }
+
+    ngOnDestroy(): void {
+        if (this.storeSub) {
+            this.storeSub.unsubscribe();
+        }
+    }
 
     ngOnInit(): void {
-        this.store.select('auth').subscribe(authState=>{
-            this.isLoadingMode=authState.loading;
-            this.errorStr=authState.authError;
-            if(this.errorStr){
+        this.storeSub = this.store.select('auth').subscribe(authState => {
+            this.isLoadingMode = authState.loading;
+            this.errorStr = authState.authError;
+            if (this.errorStr) {
                 alert(this.errorStr);
             }
         });
@@ -46,5 +53,8 @@ export class AuthComponent implements OnInit {
     }
     onHandleError() {
         this.errorStr = null;
+    }
+    private showErrorAlert(message: string) {
+        // const alertComponentFactory = this.componentFactoryResolver.resolveComponentFactory
     }
 }

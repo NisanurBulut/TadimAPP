@@ -17,8 +17,8 @@ const handleAuthentication = (authResponse: AuthResponseData) => {
         userId: authResponse.localId,
         token: authResponse.idToken,
         expirationDate: expirationDate
-    }))
-}
+    }));
+};
 
 const handleError = (errorRes: any) => {
     let errorMessage = 'An unknown error occurred!';
@@ -37,7 +37,7 @@ const handleError = (errorRes: any) => {
             break;
     }
     return of(new AuthActions.LoginFailed(errorMessage));
-}
+};
 
 @Injectable()
 export class AuthEffects {
