@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { catchError, tap } from 'rxjs/operators';
-import { throwError } from 'rxjs';
 import { AuthResponseData } from './auth-response-data.interface';
 import { User } from './user.model';
 import { Router } from '@angular/router';
@@ -13,11 +11,11 @@ import * as AuthActions from '../auth/store/auth.actions';
     providedIn: 'root'
 })
 export class AuthService {
-  //  user = new BehaviorSubject<User>(null);
+
     private tokenExpirationTimer: any;
     constructor(private http: HttpClient,
-        private router: Router,
-        private store: Store<fromApp.AppState>) { }
+                private router: Router,
+                private store: Store<fromApp.AppState>) { }
 
     signup(pemail: string, ppassword: string) {
         return this.http
@@ -28,7 +26,7 @@ export class AuthService {
                     password: ppassword,
                     returnSecureToken: true
                 }
-            )
+            );
     }
 
     login(pemail: string, ppassword: string) {
@@ -40,7 +38,7 @@ export class AuthService {
                     password: ppassword,
                     returnSecureToken: true
                 }
-             )
+             );
     }
 
     autoLogin() {

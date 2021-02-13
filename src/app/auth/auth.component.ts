@@ -11,15 +11,12 @@ import { AuthModel } from '../shared/auth.model';
     selector: 'app-auth',
     templateUrl: './auth.component.html'
 })
-export class AuthComponent implements OnInit, OnDestroy {
+export class AuthComponent implements OnInit {
     isLogingMode = true;
     isLoadingMode = false;
     errorStr: string = null;
 
-    constructor(private as: AuthService, private store: Store<fromApp.State>) { }
-    ngOnDestroy(): void {
-
-    }
+    constructor(private store: Store<fromApp.State>) { }
 
     ngOnInit(): void {
         this.store.select('auth').subscribe(authState=>{

@@ -83,17 +83,3 @@ export class AuthEffects {
     );
     constructor(private actions$: Actions, private http: HttpClient, private router: Router, private authService: AuthService) { }
 }
-
-
-/**
- *
- * pipe(
-                map((resData)=>{
-                    const authModel= {email:resData.email, password:resData.password} as AuthModel;
-                    return of(new AuthActions.SignUpSuccess(authModel))
-                }),
-                catchError((error)=>{
-                    return of(new AuthActions.SignUpFail(error));
-                })
-            ));
- */

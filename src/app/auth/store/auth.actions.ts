@@ -18,13 +18,12 @@ export class LoginSuccess implements Action {
 
     readonly type = LOGIN_SUCCESS;
     constructor(
-        public payload:  {
+        public payload: {
             email: string,
             userId: string,
             token: string,
             expirationDate: Date
         }) {
-        console.log('Action Login Success');
     }
 }
 export class LoginStart implements Action {
