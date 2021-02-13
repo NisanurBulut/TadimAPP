@@ -3,8 +3,8 @@ import * as fromAuthActions from './auth.actions';
 
 export interface State {
     user: User;
-    authError: string,
-    loading: boolean
+    authError: string;
+    loading: boolean;
 }
 const initialState: State = { user: null, authError: null, loading: false };
 
@@ -51,6 +51,11 @@ export function authReducer(
                 user: null,
                 loading: false
             };
+        case fromAuthActions.CLEAR_ERROR:
+            return {
+                ...state,
+                authError: null
+            }
         default:
             return state;
     }

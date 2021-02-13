@@ -52,7 +52,7 @@ export class AuthComponent implements OnInit, OnDestroy {
         authForm.reset();
     }
     onHandleError() {
-        this.errorStr = null;
+        this.store.dispatch(new AuthActions.ClearError());
     }
     private showErrorAlert(message: string) {
         // const alertComponentFactory = this.componentFactoryResolver.resolveComponentFactory

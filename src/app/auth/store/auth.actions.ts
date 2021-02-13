@@ -8,7 +8,11 @@ export const LOGOUT = '[Auth] Logout';
 export const SIGNUP_START = '[Auth] SignUp Start';
 export const SIGNUP_SUCCESS = '[Auth] SignUp Success';
 export const SIGNUP_FAIL = '[Auth] SignUp Fail';
+export const CLEAR_ERROR = '[Auth] Clear Error';
 
+export class ClearError implements Action {
+    readonly type = CLEAR_ERROR;
+}
 export class SignUpStart implements Action {
     readonly type = SIGNUP_START;
     constructor(public payload: AuthModel) { }
@@ -41,4 +45,5 @@ export type AuthActions = LoginSuccess |
     LoginStart |
     LoginFailed |
     SignUpStart |
-    Logout;
+    Logout |
+    ClearError;
