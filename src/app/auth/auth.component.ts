@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -10,12 +10,15 @@ import * as AuthActions from './store/auth.actions';
     selector: 'app-auth',
     templateUrl: './auth.component.html'
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnInit, OnDestroy {
     isLogingMode = true;
     isLoadingMode = false;
     errorStr: string = null;
 
     constructor(private as: AuthService, private store: Store<fromApp.State>) { }
+    ngOnDestroy(): void {
+        throw new Error('Method not implemented.');
+    }
 
     ngOnInit(): void {
         this.store.select('auth').subscribe(authState=>{
@@ -36,13 +39,10 @@ export class AuthComponent implements OnInit {
         const email = authForm.value.email;
         const password = authForm.value.password;
 
-        let authObs: Observable<AuthResponseData>;
-
         if (this.isLogingMode) {
-            debugger;
             this.store.dispatch(new AuthActions.LoginStart({ email: email, password: password }))
         } else {
-            authObs = this.as.signup(email, password);
+            this.store.dispatch(new AuthActions.SignUpStart({ email: email, password: password }))
         }
         authForm.reset();
     }

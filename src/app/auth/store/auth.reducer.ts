@@ -19,7 +19,6 @@ export function authReducer(
                 action.payload.token,
                 action.payload.expirationDate
             );
-            console.log(userEntity);
             return {
                 ...state,
                 user: userEntity,
