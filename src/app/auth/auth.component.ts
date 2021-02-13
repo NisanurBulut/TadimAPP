@@ -8,7 +8,7 @@ import { AuthModel } from '../shared/auth.model';
 @Component({
     selector: 'app-auth',
     templateUrl: './auth.component.html',
-    styleUrls:['./auth.component.css']
+    styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit, OnDestroy {
     isLogingMode = true;
@@ -26,13 +26,13 @@ export class AuthComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.storeSub = this.store.select('auth')
-        .subscribe(authState => {
-            this.isLoadingMode = authState.loading;
-            this.errorStr = authState.authError;
-            if (this.errorStr) {
-                alert(this.errorStr);
-            }
-        });
+            .subscribe(authState => {
+                this.isLoadingMode = authState.loading;
+                this.errorStr = authState.authError;
+                if (this.errorStr) {
+                    alert(this.errorStr);
+                }
+            });
     }
     onSwitchMode() {
         this.isLogingMode = !this.isLogingMode;
