@@ -14,7 +14,6 @@ export class AuthService {
 
     private tokenExpirationTimer: any;
     constructor(private http: HttpClient,
-                private router: Router,
                 private store: Store<fromApp.AppState>) { }
 
     signup(pemail: string, ppassword: string) {
@@ -60,7 +59,6 @@ export class AuthService {
         );
 
         if (loadedUser.token) {
-            //  this.user.next(loadedUser);
             this.store.dispatch(new AuthActions.LoginSuccess({
                 email: loadedUser.email,
                 userId: loadedUser.id,
@@ -75,9 +73,7 @@ export class AuthService {
     }
 
     logOut() {
-        //  this.user.next(null);
         this.store.dispatch(new AuthActions.Logout());
-        this.router.navigate(['/auth']);
         localStorage.removeItem('userData');
         if (this.tokenExpirationTimer) {
             clearTimeout(this.tokenExpirationTimer);
