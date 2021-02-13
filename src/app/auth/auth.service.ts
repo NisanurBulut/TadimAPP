@@ -40,50 +40,5 @@ export class AuthService {
              );
     }
 
-    autoLogin() {
-        const userData: {
-            email: string;
-            id: string;
-            _token: string;
-            _tokenExpirationDate: string;
-        } = JSON.parse(localStorage.getItem('userData'));
-        if (!userData) {
-            return;
-        }
 
-        const loadedUser = new User(
-            userData.email,
-            userData.id,
-            userData._token,
-            new Date(userData._tokenExpirationDate)
-        );
-
-        if (loadedUser.token) {
-            this.store.dispatch(new AuthActions.LoginSuccess({
-                email: loadedUser.email,
-                userId: loadedUser.id,
-                token: loadedUser.token,
-                expirationDate: new Date(userData._tokenExpirationDate)
-            }));
-            const expirationDuration =
-                new Date(userData._tokenExpirationDate).getTime() -
-                new Date().getTime();
-            this.autoLogout(expirationDuration);
-        }
-    }
-
-    logOut() {
-        this.store.dispatch(new AuthActions.Logout());
-        localStorage.removeItem('userData');
-        if (this.tokenExpirationTimer) {
-            clearTimeout(this.tokenExpirationTimer);
-        }
-        this.tokenExpirationTimer = null;
-    }
-
-    autoLogout(expirationDuration: number) {
-        this.tokenExpirationTimer = setTimeout(() => {
-            this.logOut();
-        }, expirationDuration);
-    }
 }

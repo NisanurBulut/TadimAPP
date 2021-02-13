@@ -6,12 +6,13 @@ import { of, pipe } from 'rxjs';
 import { catchError, map, tap, mergeMap } from 'rxjs/operators';
 import { AuthResponseData } from '../auth-response-data.interface';
 import { AuthService } from '../auth.service';
+import { User } from '../user.model';
 import * as AuthActions from './auth.actions';
 
 const handleAuthentication = (authResponse: AuthResponseData) => {
-    console.log('handleAuthentication');
-
-    const expirationDate = new Date( new Date().getTime() + +authResponse.expiresIn * 1000);
+    const expirationDate = new Date(new Date().getTime() + +authResponse.expiresIn * 1000);
+    const activeUser = new User(authResponse.email, authResponse.localId, authResponse.idToken, expirationDate);
+    localStorage.setItem('userData', JSON.stringify(activeUser));
     return (new AuthActions.LoginSuccess({
         email: authResponse.email,
         userId: authResponse.localId,
@@ -57,6 +58,44 @@ export class AuthEffects {
                         ))
             )
         );
+    @Effect({ dispatch: false })
+    authLogout = this.actions$.pipe(
+        ofType(AuthActions.LOGOUT),
+        tap(() => {
+            localStorage.removeItem('userData');
+        })
+    );
+
+    @Effect()
+    autoLogin = this.actions$.pipe(
+        ofType(AuthActions.AUTO_LOGIN),
+        map(() => {
+            const userData: {
+                email: string;
+                id: string;
+                _token: string;
+                _tokenExpirationDate: string;
+            } = JSON.parse(localStorage.getItem('userData'));
+            if (!userData) {
+                return { type: 'DUMMY' };
+            }
+            const loadedUser = new User(
+                userData.email,
+                userData.id,
+                userData._token,
+                new Date(userData._tokenExpirationDate)
+            );
+            if (loadedUser.token) {
+                return new AuthActions.LoginSuccess({
+                    email: loadedUser.email,
+                    userId: loadedUser.id,
+                    token: loadedUser.token,
+                    expirationDate: new Date(userData._tokenExpirationDate)
+                });
+            }
+            return { type: 'DUMMY' };
+        })
+    );
 
     @Effect({ dispatch: false })
     authRedirect = this.actions$.pipe(
