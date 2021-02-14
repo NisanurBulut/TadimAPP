@@ -1,6 +1,4 @@
-.row{
-    margin: 15%;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
+
+.mat-grid-list{
+    margin: 20px 40px 20px 40px  !important;
 }

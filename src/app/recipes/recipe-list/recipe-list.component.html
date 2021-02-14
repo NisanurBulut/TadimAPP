@@ -1,7 +1,12 @@
-<div class="row">
-    <app-recipe-item
-        *ngFor="let recipeEl of recipes; let i = index"
-        [recipe]="recipeEl"
-        [index]="i"
-        ></app-recipe-item>
+<div>
+  <mat-grid-list cols="4" rowHeight="2:2">
+    <ng-container *ngFor="let recipe of recipes">
+     <mat-grid-tile>
+      <app-recipe-item
+      [recipe]="recipe"
+      [index]="recipe.id"
+    ></app-recipe-item>
+     </mat-grid-tile>
+      </ng-container>
+    </mat-grid-list>
 </div>

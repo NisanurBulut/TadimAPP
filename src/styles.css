@@ -1,3 +1,4 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 .bodyImage{
   background-image: url('./assets/backgroundHome.png');

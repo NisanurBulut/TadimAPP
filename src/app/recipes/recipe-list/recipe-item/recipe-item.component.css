@@ -1,0 +1,10 @@
+::ng-deep mat-card.mat-card{
+
+ margin:5px 5px 5px 5px !important;
+
+ }
+.mat-card-content {
+    height: 100px;
+    overflow: auto;
+    scroll-behavior: inherit;
+  }
