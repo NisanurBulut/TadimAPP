@@ -5,6 +5,7 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { RecipeService } from '../recipe.service';
 import * as fromApp from '../../store/app.reducer';
 import { Store } from '@ngrx/store';
+import * as fromRecipeActions from '../store/recipe.actions';
 import { map } from 'rxjs/operators';
 import { Recipe } from '../recipe.model';
 
@@ -38,10 +39,9 @@ export class RecipeEditComponent implements OnInit {
   }
   onsubmit() {
     if (this.editMode === true) {
-      this.rpService.updateRecipe(this.id, this.recipeForm.value);
+      this.store.dispatch(new fromRecipeActions.UpdateRecipe({ index: this.id, newRecipe: this.recipeForm.value }));
     } else {
-      this.rpService.addRecipe(this.recipeForm.value);
-      this.dss.storeRecipes();
+     this.store.dispatch(new fromRecipeActions.AddRecipe(this.recipeForm.value));
     }
     this.onCancel();
   }
