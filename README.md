@@ -1,7 +1,7 @@
 # TadimAPP
 
 Ana Ekran
-![Ana Ekran - TASLAK](https://github.com/NisanurBulut/TadimAPP/blob/master/src/assets/Trailer/Trailer.png)
+![Ana Ekran - TASLAK](https://github.com/NisanurBulut/TadimAPP/blob/master/src/assets/Trailer/Trailer_TadimApp.gif)
 
 * Materials less than zero and equal to zero cannot be added.
 * If the form is not filled in, add button cannot be active.
