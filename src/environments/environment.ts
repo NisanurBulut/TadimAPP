@@ -6,6 +6,7 @@
 export const environment = {
   production: false,
   expiresInDuraction: 1000,
+  apiUrl:'http://localhost:3000/recipes',
   firebase: {
     signUpURL: 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=',
     loginURL: 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=',
