@@ -11,6 +11,7 @@ import { CoreModule } from './core.module';
 import { SharedModule } from './shared/shared.module';
 import { RecipeEffects } from './recipes/store/recipe.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './shared/material.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EffectsModule.forRoot([AuthEffects, RecipeEffects]),
     SharedModule,
     CoreModule,
+    MaterialModule,
     BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
