@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Recipe } from '../recipe.model';
@@ -6,6 +6,7 @@ import * as fromApp from '../../store/app.reducer';
 import { map, switchMap } from 'rxjs/operators';
 import * as fromRecipeActions from '../store/recipe.actions';
 import * as fromShoppingActions from '../../shopping-list/store/shopping-list.actions';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
@@ -17,24 +18,20 @@ export class RecipeDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private store: Store<fromApp.AppState>) { }
+    private store: Store<fromApp.AppState>,
+    public dialogRef: MatDialogRef<RecipeDetailComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: number) {
+    this.id = data;
+  }
 
   ngOnInit() {
-    // router'dan gelen id değerini alalım aşağıdaki yaklaşım doğru değil
-    // const id = this.route.snapshot.params['id'];
-    this.route.params.pipe(map(params => {
-      return +params.id;
-    }), switchMap(id => {
-      this.id = id;
-      return this.store.select('recipes');
-    }),
-      map(recipeState => {
-        return recipeState.recipes.find((recipe, index) => {
-          return index === this.id;
-        });
-      }))
-      .subscribe(recipe => {
-        this.recipe = recipe;
+    this.store.select('recipes')
+      .pipe(
+        map(data => {
+          return this.recipe = data.recipes.find((item, index) => index === 0);
+        })
+      ).subscribe(result => {
+        this.recipe = result;
       });
   }
   onAddToShoppingList() {

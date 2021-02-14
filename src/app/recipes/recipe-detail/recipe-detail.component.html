@@ -1,44 +1,24 @@
-<div class="row">
-    <div class="col-xs-12">
-       <img [src]="recipe.imagePath"
-       alt="recipe.name"
-       class="img-responsive"
-       style="max-height: 300px;">
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-      <h1>{{recipe.name}}</h1>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-       <div class="btn-group" appDropdown>
-           <button
-           type="button"
-           class="btn btn-warning dropdown-toggle">Tarifle
-               <span class="caret"></span>
-           </button>
-           <ul class="dropdown-menu">
-               <li><a style="cursor:pointer;" (click)="onAddToShoppingList()" >Malzemelerini Sepete At </a></li>
-               <li><a style="cursor:pointer;" (click)="onEditRecipe()" >Tarif Düzenle</a></li>
-               <li><a style="cursor:pointer;" (click)="onDeleteRecipe()">Tarif Sil</a></li>
-           </ul>
-       </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-        {{recipe.description}}
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-<ul class="list-group">
-    <li
-    class="list-group-item"
-    *ngFor="let ingredient of recipe.ingredients">
-{{ingredient.name}} - {{ingredient.amount}}
-    </li>
-</ul>
-</div>
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </button>
+
+  <h1 mat-dialog-title>{{recipe.name}}</h1>
+  <div mat-dialog-content>
+    <img [src]="recipe.imagePath"
+    alt="recipe.name"
+    class="img-responsive"
+    style="max-height: 300px;">
+    <p> {{recipe.description}}</p>
+    <ul class="list-group">
+        <li
+        class="list-group-item"
+        *ngFor="let ingredient of recipe.ingredients">
+    {{ingredient.name}} - {{ingredient.amount}}
+        </li>
+    </ul>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onAddToShoppingList()">add to basket</button>
+    <button mat-button (click)="onEditRecipe()">edit recipe</button>
+    <button mat-button (click)="onDeleteRecipe()">delete recipe</button>
+  </div>

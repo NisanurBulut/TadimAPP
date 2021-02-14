@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { RecipeDetailComponent } from '../../recipe-detail/recipe-detail.component';
 import { Recipe } from '../../recipe.model';
 
 @Component({
@@ -9,11 +11,17 @@ import { Recipe } from '../../recipe.model';
 export class RecipeItemComponent implements OnInit {
   @Input() recipe: Recipe;
   @Input() index: number; // recipe listten input olarak buraya gelecek
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
   ngOnInit() {
   }
-  openRecipeDetailPopup(item: any): void {
-    debugger;
-    console.log(item);
+  openRecipeDetailPopup(item: Recipe): void {
+    const dialogRef = this.dialog.open(RecipeDetailComponent, {
+      width: '250px',
+      data: { id: item.id }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
   }
 }
