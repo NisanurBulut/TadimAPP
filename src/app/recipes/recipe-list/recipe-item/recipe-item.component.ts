@@ -15,13 +15,12 @@ export class RecipeItemComponent implements OnInit {
   ngOnInit() {
   }
   openRecipeDetailPopup(item: Recipe): void {
-    const dialogRef = this.dialog.open(RecipeDetailComponent, {
-      width: '250px',
-      data: { id: item.id }
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-
+    this.dialog.open(RecipeDetailComponent, {
+      disableClose: true,
+      panelClass: 'form-dialog',
+      data: {}
+    }).afterClosed().subscribe((res) => {
+      console.log('popup kapandı');
     });
   }
 }

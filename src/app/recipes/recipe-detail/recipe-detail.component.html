@@ -1,8 +1,43 @@
-<button mat-icon-button class="close-button" [mat-dialog-close]="true">
-    <mat-icon class="close-icon" color="warn">close</mat-icon>
-  </button>
+<div class="dialog-content-wrapper">
 
-  <h1 mat-dialog-title>{{recipe.name}}</h1>
+  <div class="popupHeader">
+    <span class="title dialog-title">
+     <span>{{recipe.name}}</span>
+  </span>
+  <button mat-icon-button (click)="this.dialogRef.close()">
+      x
+  </button>
+  </div>
+
+<div fxLayout="row">
+  <div class="p-16 pb-0 m-0 form-wrapper">
+    <img [src]="recipe.imagePath"
+    alt="recipe.name"
+    class="img-responsive"
+    style="max-height: 300px;">
+    <p> {{recipe.description}}</p>
+    <ul class="list-group">
+      <li
+      class="list-group-item"
+      *ngFor="let ingredient of recipe.ingredients">
+  {{ingredient.name}} - {{ingredient.amount}}
+      </li>
+  </ul>
+  </div>
+</div>
+
+  <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+    <button mat-button (click)="onAddToShoppingList()">add to basket</button>
+    <button mat-button (click)="onEditRecipe()">edit recipe</button>
+    <button mat-button (click)="onDeleteRecipe()">delete recipe</button>
+  </div>
+</div>
+
+
+
+<!--
+
+
   <div mat-dialog-content>
     <img [src]="recipe.imagePath"
     alt="recipe.name"
@@ -18,7 +53,5 @@
     </ul>
   </div>
   <div mat-dialog-actions>
-    <button mat-button (click)="onAddToShoppingList()">add to basket</button>
-    <button mat-button (click)="onEditRecipe()">edit recipe</button>
-    <button mat-button (click)="onDeleteRecipe()">delete recipe</button>
-  </div>
+
+  </div> -->
