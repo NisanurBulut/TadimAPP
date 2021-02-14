@@ -2,3 +2,8 @@
     background-image: none;
     background-color: #5C6A79;
   }
+  .mainRow{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }

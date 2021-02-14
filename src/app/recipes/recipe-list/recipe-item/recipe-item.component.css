@@ -8,3 +8,7 @@
     overflow: auto;
     scroll-behavior: inherit;
   }
+.mat-card-title {
+  margin-top: 25px;
+  float: right;
+}

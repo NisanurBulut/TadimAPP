@@ -2,3 +2,10 @@ input.ng-invalid.ng-touched,
 textarea.ng-invalid.ng-touched {
     border:1px solid red;
 }
+.formRow{
+    display: flex;
+    justify-content: center;
+}
+form.recipeForm{
+    width: 500px;
+  }
