@@ -1,16 +1,13 @@
-
-<mat-card (click)="openRecipeDetailPopup(recipe)" class="matCard">
-    <mat-card-header>
-      <mat-card-title>{{recipe.name}}</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image
-    [src]="recipe.imagePath"
-    alt="{{ recipe.name }}"
-
-  />
-    <mat-card-content>
-      <p>
-        {{ recipe.description }}
-      </p>
-    </mat-card-content>
-  </mat-card>
+<mat-card class="matCard">
+  <div class="header">
+    <div class="title">
+      {{ recipe.name }}
+    </div>
+    <div class="actions">
+      <span class="material-icons btnEdit"> app_registration </span>
+      <span class="material-icons btnDelete"> delete_forever </span>
+      <span class="material-icons btnEye" (click)="openRecipeDetailPopup(recipe)"> visibility </span>
+    </div>
+  </div>
+  <img mat-card-image [src]="recipe.imagePath" alt="{{ recipe.name }}" />
+</mat-card>

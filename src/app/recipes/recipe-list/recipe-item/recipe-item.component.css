@@ -1,14 +1,41 @@
-::ng-deep mat-card.mat-card{
 
- margin:5px 5px 5px 5px !important;
 
- }
-.mat-card-content {
-    height: 100px;
-    overflow: auto;
-    scroll-behavior: inherit;
+  .mat-card-header{
+    display: flex;
+    justify-content: space-between;
   }
-.mat-card-title {
-  margin-top: 25px;
+img{
+  width: 300px;
+  height: 250px;
+margin-top: 2px;
+margin-bottom: 2px;
+margin-left: 2px;
+margin-right: 2px;
+}
+.header{
+  display: flex;
+  justify-content: space-between;
+  margin: 1px;
+}
+.actions{
   float: right;
+  font-weight: 900;
+  color: #fff;
+  font-weight: bold !important;
+  cursor: pointer;
+}
+span{
+  margin-left: 1px;
+}
+.title{
+  float: left;
+}
+.btnEdit{
+  background-color: #1d97fa;
+}
+.btnDelete{
+  background-color: #fc1644;
+}
+.btnEye{
+  background-color: #fab700;
 }
