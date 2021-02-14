@@ -7,8 +7,13 @@ import { Recipe } from '../../recipe.model';
   styleUrls: ['./recipe-item.component.css']
 })
 export class RecipeItemComponent implements OnInit {
-@Input() recipe: Recipe;
-@Input() index: number; // recipe listten input olarak buraya gelecek
+  @Input() recipe: Recipe;
+  @Input() index: number; // recipe listten input olarak buraya gelecek
+  constructor() { }
   ngOnInit() {
+  }
+  openRecipeDetailPopup(item: any): void {
+    debugger;
+    console.log(item);
   }
 }

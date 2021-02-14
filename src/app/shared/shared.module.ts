@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { DropdownDirective } from './dropdown.directive';
+import { MaterialModule } from './material.module';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { DropdownDirective } from './dropdown.directive';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        HttpClientModule
+        HttpClientModule,
+        MaterialModule
     ],
     exports: [
         RouterModule,
@@ -25,7 +27,8 @@ import { DropdownDirective } from './dropdown.directive';
         ReactiveFormsModule,
         HttpClientModule,
         LoadingSpinnerComponent,
-        DropdownDirective
+        DropdownDirective,
+        MaterialModule
     ]
 })
 export class SharedModule { }

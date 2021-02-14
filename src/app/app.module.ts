@@ -25,7 +25,6 @@ import { MaterialModule } from './shared/material.module';
     EffectsModule.forRoot([AuthEffects, RecipeEffects]),
     SharedModule,
     CoreModule,
-    MaterialModule,
     BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
