@@ -119,7 +119,8 @@ export class AuthEffects {
                     catchError(errorRes => {
                         return handleError(errorRes);
                     }
-                    ))
+                    )
+                    )
         )
     );
     constructor(private actions$: Actions, private http: HttpClient, private router: Router, private authService: AuthService) { }

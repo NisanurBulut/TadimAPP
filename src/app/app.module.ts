@@ -9,6 +9,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth/store/auth.effects';
 import { CoreModule } from './core.module';
 import { SharedModule } from './shared/shared.module';
+import { RecipeEffects } from './recipes/store/recipe.effects';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, RecipeEffects]),
     SharedModule,
     CoreModule
   ],

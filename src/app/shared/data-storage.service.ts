@@ -26,17 +26,17 @@ export class DataStorageService {
     }
     fetchRecipes() {
         return this.http
-            .get<Recipe[]>(environment.firebase.dataURL)
-            .pipe(map(recipes => {
-                return recipes.map(recipe => {
-                    return {
-                        ...recipe,
-                        ingredients: recipe.ingredients ? recipe.ingredients : []
-                    };
-                });
-            }), tap(resultRecipes => {
-                // this.rs.setRecipes(resultRecipes);
-                this.store.dispatch(new fromRecipes.SetRecipes(resultRecipes));
-            }));
+            .get<Recipe[]>(environment.firebase.dataURL);
+            // .pipe(map(recipes => {
+            //     return recipes.map(recipe => {
+            //         return {
+            //             ...recipe,
+            //             ingredients: recipe.ingredients ? recipe.ingredients : []
+            //         };
+            //     });
+            // }), tap(resultRecipes => {
+            //     // this.rs.setRecipes(resultRecipes);
+            //     this.store.dispatch(new fromRecipes.SetRecipes(resultRecipes));
+            // }));
     }
 }
