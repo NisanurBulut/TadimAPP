@@ -8,6 +8,9 @@
         <li routerLinkActive="active" *ngIf="isAuthenticated">
           <a routerLink="/recipes">Recipes</a>
         </li>
+        <li routerLinkActive="active" *ngIf="isAuthenticated">
+          <a routerLink="recipes/new">Add Recipe</a>
+        </li>
         <li routerLinkActive="active">
           <a routerLink="/shopping-list" *ngIf="isAuthenticated">Shopping List</a>
         </li>

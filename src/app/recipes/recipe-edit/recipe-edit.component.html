@@ -1,96 +1,92 @@
-<div class="row">
-  <div class="col-xs-12">
-    <form [formGroup]="recipeForm" (submit)="onsubmit()">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="btn-group">
-            <button type="submit"
-            [disabled]="!recipeForm.valid"
-            class="btn btn-success btn-sm">Kaydet</button>
-            <button type="submit"
-            class="btn btn-danger btn-sm"
-            (click)="onCancel()"
-            >İptal</button>
-          </div>
-        </div>
+<form [formGroup]="recipeForm" (submit)="onsubmit()">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="btn-group">
+        <button type="submit"
+        [disabled]="!recipeForm.valid"
+        class="btn btn-success btn-sm">Kaydet</button>
+        <button type="submit"
+        class="btn btn-danger btn-sm"
+        (click)="onCancel()"
+        >İptal</button>
       </div>
-      <div class="row" style="margin-top: 10px;">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Yemek Adı</label>
-            <input
-              type="text"
-              name="name"
-              class="form-control"
-              formControlName="name"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="imagePath">Resim Bilgisi</label>
-            <input
-              type="text"
-              name="imagePath"
-              formControlName="imagePath"
-              class="form-control"
-              #imagePath
-            />
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <img [src]="imagePath.value"
-          id="imagePath"
-          class="img-responsive"
-          style="max-height: 300px;" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="description">Açıklama</label>
-            <textarea
-              type="text"
-              name="description"
-              class="form-control"
-              formControlName="description"
-              rows="6"
-            >
-            </textarea>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12" formArrayName="ingredients">
-          <div class="row"
-          style="margin-top: 10px;"
-          *ngFor="let ingredientControl of controls; let i=index;"
-           [formGroupName]="i">
-            <div class="col-xs-8">
-              <input type="text" class="form-control" formControlName="name" />
-            </div>
-            <div class="col-xs-2">
-              <input type="number" class="form-control" formControlName="amount" />
-            </div>
-            <div class="col-xs-2">
-              <button type="button" (click)="deleteIngredient(i)" class="btn btn-danger">X</button>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <button class="btn btn-success btn-sm"
-              type="button"
-              style="margin-top:10px;"
-              (click)="onAddIngredient()">Malzeme Ekle</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
+    </div>
   </div>
-</div>
+  <div class="row" style="margin-top: 10px;">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <label for="name">Yemek Adı</label>
+        <input
+          type="text"
+          name="name"
+          class="form-control"
+          formControlName="name"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <label for="imagePath">Resim Bilgisi</label>
+        <input
+          type="text"
+          name="imagePath"
+          formControlName="imagePath"
+          class="form-control"
+          #imagePath
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <img [src]="imagePath.value"
+      id="imagePath"
+      class="img-responsive"
+      style="max-height: 300px;" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <label for="description">Açıklama</label>
+        <textarea
+          type="text"
+          name="description"
+          class="form-control"
+          formControlName="description"
+          rows="6"
+        >
+        </textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12" formArrayName="ingredients">
+      <div class="row"
+      style="margin-top: 10px;"
+      *ngFor="let ingredientControl of controls; let i=index;"
+       [formGroupName]="i">
+        <div class="col-xs-8">
+          <input type="text" class="form-control" formControlName="name" />
+        </div>
+        <div class="col-xs-2">
+          <input type="number" class="form-control" formControlName="amount" />
+        </div>
+        <div class="col-xs-2">
+          <button type="button" (click)="deleteIngredient(i)" class="btn btn-danger">X</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button class="btn btn-success btn-sm"
+          type="button"
+          style="margin-top:10px;"
+          (click)="onAddIngredient()">Malzeme Ekle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

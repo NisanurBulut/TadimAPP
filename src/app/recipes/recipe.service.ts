@@ -26,7 +26,6 @@ export class RecipeService {
     return this.recipes[index];
   }
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
-    // this.slService.addIngredients(ingredients);
     this.store.dispatch(new ShoppingListActions.AddIngredients(ingredients));
   }
   addRecipe(recipe: Recipe) {
@@ -39,7 +38,6 @@ export class RecipeService {
   }
   deleteRecipe(index: number) {
     this.recipes.splice(index, 1);
-    // haber verelim abonelere
     this.recipesChanged.next(this.recipes.slice());
   }
 }

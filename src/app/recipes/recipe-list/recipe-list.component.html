@@ -1,10 +1,4 @@
 <div class="row">
-    <div class="col-xs-12">
-       <button class="btn btn-success btn-sm" (click)="onNewRecipe()">Yeni Tarif</button>
-    </div>
-</div>
-<hr>
-<div class="row">
     <app-recipe-item
         *ngFor="let recipeEl of recipes; let i = index"
         [recipe]="recipeEl"
