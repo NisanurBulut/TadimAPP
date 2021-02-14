@@ -1,3 +1,4 @@
+
 import { Recipe } from '../recipe.model';
 import * as fromRecipesActions from './recipe.actions';
 
@@ -19,6 +20,13 @@ export function recipeReducer(state: State = initialState, action: fromRecipesAc
                 ...state,
                 recipes: [...action.payload]
             };
+
+        case fromRecipesActions.LOAD_RECIPES:
+            return { ...state, loading: true };
+        case fromRecipesActions.LOAD_RECIPES_SUCCESS:
+            return {
+                ...state, loading: false, recipes: action.payload
+            };
         case fromRecipesActions.ADD_RECIPE:
             return {
                 ...state,
@@ -27,7 +35,8 @@ export function recipeReducer(state: State = initialState, action: fromRecipesAc
             };
         case fromRecipesActions.ADD_RECIPE_SUCCESS:
             return { ...state, recipes: [...state.recipes, action.payload], loading: false };
-
+        case fromRecipesActions.LOAD_RECIPES_FAIL:
+            return { ...state, error: action.payload, loading: false };
         case fromRecipesActions.ADD_RECIPE_FAIL:
             return { ...state, error: action.payload, loading: false };
 

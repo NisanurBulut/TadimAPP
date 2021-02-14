@@ -23,7 +23,7 @@ export class RecipeService {
     this.recipesChanged.next(this.recipes.slice());
   }
   getRecipes() {
-    return this.recipes.slice();
+   return this._http.get<Array<Recipe>>(environment.apiUrl).pipe(delay(500));
   }
   getRecipe(index: number) {
     return this.recipes[index];
