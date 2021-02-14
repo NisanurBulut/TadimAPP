@@ -1,11 +1,9 @@
-body{
-  min-height: 100%;
-}
+
 .bodyImage{
   background-image: url('./assets/backgroundHome.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
-html {
-  height: 100%;
-}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
