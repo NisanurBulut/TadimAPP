@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
@@ -13,6 +12,7 @@ import * as AuthActions from './auth.actions';
 const handleAuthentication = (authResponse: AuthResponseData) => {
     const expirationDate = new Date(new Date().getTime() + +authResponse.expiresIn * environment.expiresInDuraction);
     const activeUser = new User(authResponse.email, authResponse.localId, authResponse.idToken, expirationDate);
+    activeUser.redirect = true;
     localStorage.setItem('userData', JSON.stringify(activeUser));
     return (new AuthActions.LoginSuccess(activeUser));
 };
@@ -99,8 +99,10 @@ export class AuthEffects {
     @Effect({ dispatch: false })
     authRedirect = this.actions$.pipe(
         ofType(AuthActions.LOGIN_SUCCESS),
-        tap(() => {
-            this.router.navigate(['/']);
+        tap((authSuccess: AuthActions.LoginSuccess) => {
+            if (authSuccess.payload.redirect) {
+                this.router.navigate(['/']);
+            }
         })
     );
 
@@ -120,8 +122,8 @@ export class AuthEffects {
                         return handleError(errorRes);
                     }
                     )
-                    )
+                )
         )
     );
-    constructor(private actions$: Actions, private http: HttpClient, private router: Router, private authService: AuthService) { }
+    constructor(private actions$: Actions, private router: Router, private authService: AuthService) { }
 }
