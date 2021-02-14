@@ -10,7 +10,8 @@ import * as fromApp from '../store/app.reducer';
 import * as fromRecipeActions from './store/recipe.actions';
 import { Store } from '@ngrx/store';
 import { Actions, ofType } from '@ngrx/effects';
-import { take } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class RecipesResolverService implements Resolve<Recipe[]> {
@@ -20,7 +21,19 @@ export class RecipesResolverService implements Resolve<Recipe[]> {
   ) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    this.store.dispatch(new fromRecipeActions.FetchRecipes());
-    return this.actions$.pipe(ofType(fromRecipeActions.SET_RECIPES), take(1));
+   return this.store.select('recipes').pipe(
+     take(1),
+      map(recipeState => {
+        return recipeState.recipes;
+      }),
+      switchMap(recipes => {
+        if (recipes.length === 0) {
+          this.store.dispatch(new fromRecipeActions.FetchRecipes());
+          return this.actions$.pipe(ofType(fromRecipeActions.SET_RECIPES), take(1));
+        } else {
+          return of(recipes);
+        }
+      }));
+
   }
 }
