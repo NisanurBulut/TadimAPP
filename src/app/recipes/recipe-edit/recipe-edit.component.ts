@@ -46,6 +46,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     if (this.editMode === true) {
       this.store.dispatch(new fromRecipeActions.UpdateRecipe({ index: this.id, newRecipe: this.recipeForm.value }));
     } else {
+      console.log(this.recipeForm.value);
       this.store.dispatch(new fromRecipeActions.AddRecipe(this.recipeForm.value));
     }
     this.onCancel();

@@ -8,6 +8,26 @@ export const UPDATE_RECIPE = '[Recipe] Update Recipe';
 export const DELETE_RECIPE = '[Recipe] Delete Recipe';
 export const STORE_RECIPE = '[Recipe] store Recipe';
 
+
+export const ADD_RECIPE_SUCCESS = '[Recipe] Add Recipe Success';
+export const ADD_RECIPE_FAIL = '[Recipe] Add Recipe Fail';
+
+export class AddRecipe implements Action {
+    readonly type = ADD_RECIPE;
+    constructor(public payload: Recipe) {
+        console.log('AddRecipe', payload);
+     }
+}
+export class AddRecipeSuccess implements Action {
+    readonly type = ADD_RECIPE_SUCCESS;
+    constructor(public payload: Recipe) {
+        console.log('AddRecipeSuccess', payload);
+    }
+}
+export class AddRecipeFail implements Action {
+    readonly type = ADD_RECIPE_FAIL;
+    constructor(public payload: Error) { }
+}
 export class StoreRecipe implements Action {
     readonly type = STORE_RECIPE;
     constructor() { }
@@ -17,10 +37,7 @@ export class DeleteRecipe implements Action {
     constructor(public payload: number) {
     }
 }
-export class AddRecipe implements Action {
-    readonly type = ADD_RECIPE;
-    constructor(public payload: Recipe) { }
-}
+
 export class UpdateRecipe implements Action {
     readonly type = UPDATE_RECIPE;
     constructor(public payload: { index: number, newRecipe: Recipe }) { }
@@ -39,4 +56,6 @@ export type RecipesActions = SetRecipes |
     AddRecipe |
     UpdateRecipe |
     DeleteRecipe |
-    StoreRecipe;
+    StoreRecipe |
+    AddRecipeFail |
+    AddRecipeSuccess;

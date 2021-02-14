@@ -3,9 +3,13 @@ import * as fromRecipesActions from './recipe.actions';
 
 export interface State {
     recipes: Recipe[];
+    loading: boolean;
+    error: Error;
 }
 const initialState: State = {
-    recipes: []
+    recipes: [],
+    loading: false,
+    error: null
 };
 
 export function recipeReducer(state: State = initialState, action: fromRecipesActions.RecipesActions) {
@@ -18,8 +22,15 @@ export function recipeReducer(state: State = initialState, action: fromRecipesAc
         case fromRecipesActions.ADD_RECIPE:
             return {
                 ...state,
-                recipes: [...state.recipes, action.payload]
+                recipes: [...state.recipes, action.payload],
+                loading: true
             };
+        case fromRecipesActions.ADD_RECIPE_SUCCESS:
+            return { ...state, recipes: [...state.recipes, action.payload], loading: false };
+
+        case fromRecipesActions.ADD_RECIPE_FAIL:
+            return { ...state, error: action.payload, loading: false };
+
         case fromRecipesActions.UPDATE_RECIPE:
             const updatedRecipe = {
                 ...state.recipes[action.payload.index],

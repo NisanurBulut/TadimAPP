@@ -5,6 +5,9 @@ import { Store } from '@ngrx/store';
 import * as ShoppingListActions from '../shopping-list/store/shopping-list.actions';
 import * as fromApp from '../store/app.reducer';
 import { Recipe } from './recipe.model';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { delay } from 'rxjs/operators';
 
 @Injectable()
 export class RecipeService {
@@ -12,7 +15,7 @@ export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
   private recipes: Recipe[] = [];
 
-  constructor(
+  constructor(private _http: HttpClient,
     private store: Store<fromApp.AppState>) { }
 
   setRecipes(recipes: Recipe[]) {
@@ -29,8 +32,10 @@ export class RecipeService {
     this.store.dispatch(new ShoppingListActions.AddIngredients(ingredients));
   }
   addRecipe(recipe: Recipe) {
-    this.recipes.push(recipe);
-    this.recipesChanged.next(this.recipes.slice());
+    // this.recipes.push(recipe);
+    // this.recipesChanged.next(this.recipes.slice());
+    return this._http.post(environment.apiUrl, recipe)
+    .pipe(delay(500));
   }
   updateRecipe(index: number, updatedRecipe: Recipe) {
     this.recipes[index] = updatedRecipe;
