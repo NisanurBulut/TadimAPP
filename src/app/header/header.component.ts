@@ -23,9 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.userSub = this.store.select('auth').pipe(map(appSate => {
             return appSate.user;
         })).subscribe(user => {
-            console.log(user);
             this.isAuthenticated = !!user;
-            console.log(this.isAuthenticated, user);
         });
     }
     onSaveData() {
