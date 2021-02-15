@@ -23,7 +23,18 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private store: Store<fromApp.AppState>) { }
+    private store: Store<fromApp.AppState>) {
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = +params.id;
+          if (this.id) {
+            this.editMode = true;
+            this.initForm(); // seçileni yükle forma
+          }
+        }
+      );
+  }
   ngOnDestroy(): void {
     if (this.storeSub) {
       this.storeSub.unsubscribe();
@@ -31,17 +42,6 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // id değerini almak için
-    console.log("nnğkıg");
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = +params['id'];
-          // bir id değeri varsa düzenleme modundadır
-          this.editMode = params['id'] != null;
-          this.initForm(); // seçileni yükle forma
-        }
-      );
   }
   onsubmit() {
     if (this.editMode === true) {
@@ -65,10 +65,11 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     if (this.editMode === true) {
       this.storeSub = this.store.select('recipes').pipe(
         map((data) => {
-          return data.recipes.find((recipe, index) => {
-            return index === this.id
+          return data.recipes.find((recipe) => {
+            return recipe.id === this.id
           });
         })).subscribe(dataRecipe => {
+          console.log(dataRecipe);
           recipe = { ...dataRecipe };
         });
       recipeName = recipe.name;
@@ -113,6 +114,6 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   }
   onCancel() {
     //bir önceki ekrana gel
-    this.router.navigate(['../'], { relativeTo: this.route });
+    this.router.navigate(['/recipes'], { relativeTo: this.route });
   }
 }
