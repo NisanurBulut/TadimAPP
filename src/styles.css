@@ -2,7 +2,8 @@
 
 body.recipeList{
   background-image: none;
-  background-color: #5C6A79;
+  background-image: url('./assets/backRecipeList.PNG');
+  background-size: inherit;
 }
 body.auth{
   background-image: url('./assets/backgroundHome.png');
@@ -10,9 +11,11 @@ body.auth{
   background-size: cover;
 }
 body.recipeEdit{
-  background-image: url('./assets/back1.png');
+  background-image: url('./assets/backForm.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+
+  background-position: center;
 }
 
 html, body { height: 100%; }

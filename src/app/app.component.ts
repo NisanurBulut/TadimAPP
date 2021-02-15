@@ -16,8 +16,9 @@ export class AppComponent implements OnInit {
   constructor(private store: Store<fromApp.AppState>, @Inject(DOCUMENT) private document,
     private renderer: Renderer2, private router: Router,
     private activatedRoute: ActivatedRoute) { }
-  // this.store.dispatch(new fromAuthActions.AutoLogin());
+
   ngOnInit() {
+    this.store.dispatch(new fromAuthActions.AutoLogin());
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .pipe(map(() => this.activatedRoute))

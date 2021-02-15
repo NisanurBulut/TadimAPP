@@ -4,7 +4,10 @@ textarea.ng-invalid.ng-touched {
 }
 .formRow{
     display: flex;
-    justify-content: center;
+    margin-top: 5%;
+    margin-right: 10%;
+    float: right;
+    color:#fff;
 }
 form.recipeForm{
     width: 500px;
