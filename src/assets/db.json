@@ -3,42 +3,9 @@
     {
       "name": "test",
       "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
-      "description": "Nulla porttitor accumsan tincidunt. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec rutrum congue leo eget malesuada. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vivamus suscipit tortor eget felis porttitor volutpat. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Curabitur aliquet quam id dui posuere blandit.",
-      "ingredients": [
-        {
-          "name": "ghjghj",
-          "amount": 1
-        }
-      ],
-      "id": 1
-    },
-    {
-      "name": "test 2",
-      "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
-      "description": "Nulla porttitor accumsan tincidunt. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec rutrum congue leo eget malesuada. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vivamus suscipit tortor eget felis porttitor volutpat. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Curabitur aliquet quam id dui posuere blandit.",
-      "ingredients": [],
-      "id": 2
-    },
-    {
-      "name": "test 3",
-      "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
-      "description": "resr",
-      "ingredients": [],
-      "id": 3
-    },
-    {
-      "name": "test",
-      "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
       "description": "Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "ingredients": [],
       "id": 4
-    },
-    {
-      "name": "test",
-      "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
-      "description": "Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "ingredients": [],
-      "id": 5
     }
   ]
 }

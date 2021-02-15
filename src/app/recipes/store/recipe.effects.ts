@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar, SimpleSnackBar } from '@angular/material';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 
@@ -37,10 +38,20 @@ export class RecipeEffects {
             mergeMap(
                 (data) => this.recipeService.deleteRecipe(data.payload)
                     .pipe(
-                        map(() => new fromRecipeActions.DeleteRecipeSuccess(data.payload)),
-                        catchError((error) => of(new fromRecipeActions.DeleteRecipeFail(error)))
+                        map(() => {
+                            this.snackBarService.open('Deleted Recipe', 'Successfully', {
+                                duration: 500,
+                                horizontalPosition: 'center',
+                                verticalPosition: 'top',
+                              });
+                            return new fromRecipeActions.DeleteRecipeSuccess(data.payload);
+                        }),
+                        catchError((error) => {
+                            this.snackBarService.open(`${error.error} Failed`);
+                            return  of(new fromRecipeActions.DeleteRecipeFail(error));
+                        })
                     )
             )
         );
-    constructor(private actions$: Actions, private recipeService: RecipeService) { }
+    constructor(private actions$: Actions, private recipeService: RecipeService, private snackBarService: MatSnackBar) { }
 }
