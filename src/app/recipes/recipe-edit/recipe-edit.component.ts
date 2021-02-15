@@ -32,6 +32,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // id değerini almak için
+    console.log("nnğkıg");
     this.route.params
       .subscribe(
         (params: Params) => {

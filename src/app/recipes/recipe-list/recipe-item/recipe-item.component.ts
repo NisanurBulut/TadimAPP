@@ -5,6 +5,7 @@ import { Recipe } from '../../recipe.model';
 import * as fromRecipeActions from '../../store/recipe.actions';
 import * as fromApp from '../../../store/app.reducer';
 import { Store } from '@ngrx/store';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-item',
@@ -14,7 +15,8 @@ import { Store } from '@ngrx/store';
 export class RecipeItemComponent implements OnInit {
   @Input() recipe: Recipe;
   @Input() index: number; // recipe listten input olarak buraya gelecek
-  constructor(public dialog: MatDialog, public store: Store<fromApp.AppState>) { }
+  constructor(private route: ActivatedRoute,
+    private router: Router, public dialog: MatDialog, public store: Store<fromApp.AppState>) { }
   ngOnInit() {
   }
   openRecipeDetailPopup(item: Recipe): void {
@@ -28,5 +30,8 @@ export class RecipeItemComponent implements OnInit {
   }
   deleteRecipe(item: Recipe): void {
     this.store.dispatch(new fromRecipeActions.DeleteRecipe(item.id));
+  }
+  editRecipe(item: Recipe) {
+    this.router.navigate(['/edit', item.id], { relativeTo: this.route });
   }
 }

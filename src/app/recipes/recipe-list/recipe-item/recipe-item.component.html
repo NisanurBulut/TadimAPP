@@ -4,7 +4,7 @@
       {{ recipe.name }}
     </div>
     <div class="actions">
-      <span class="material-icons btnEdit"> app_registration </span>
+      <span class="material-icons btnEdit" (click)="editRecipe(recipe)"> app_registration </span>
       <span class="material-icons btnDelete" (click)="deleteRecipe(recipe)"> delete_forever </span>
       <span class="material-icons btnEye" (click)="openRecipeDetailPopup(recipe)"> visibility </span>
     </div>
