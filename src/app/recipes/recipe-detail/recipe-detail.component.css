@@ -1,18 +1,23 @@
 app-recipe-detail > .dialog-content-wrapper {
     max-width: 600px;
     min-width: 600px;
+    text-align: center;
 }
 app-recipe-detail .form-wrapper {
     max-height: calc(100vh - 120px);
+    text-align: center;
 }
 .content{
-    display: flex;
+     display: flex;
      flex-direction: column;
-     justify-content: center
+     justify-content: center;
 }
 .content img {
     width: 100%;
     max-width: 300px;
+}
+.content p{
+    margin-top: 2px;
 }
 .popupHeader{
     display: flex;
