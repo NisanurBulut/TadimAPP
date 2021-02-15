@@ -30,8 +30,8 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
           this.id = +params.id;
           if (this.id) {
             this.editMode = true;
-            this.initForm(); // seçileni yükle forma
           }
+          this.initForm(); // seçileni yükle forma
         }
       );
   }
