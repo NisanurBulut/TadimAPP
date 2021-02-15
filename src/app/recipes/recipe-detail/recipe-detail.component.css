@@ -26,3 +26,13 @@ app-recipe-detail .form-wrapper {
 .dialog-title{
     font-weight: 900;
 }
+
+ul > li {
+    display: inline-block;
+    zoom:1;
+    margin-left: 2px;
+    cursor:context-menu;
+}
+li:hover {
+    background-color: #ddd;
+  }
