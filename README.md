@@ -3,6 +3,7 @@
 Ana Ekran
 ![Ana Ekran - TASLAK](https://github.com/NisanurBulut/TadimAPP/blob/master/src/assets/Trailer/Trailer_TadimApp.gif)
 
+* Dynamic styles are created. As the components change, the style of the component also changes. For example, the background picture changes.
 * Materials less than zero and equal to zero cannot be added.
 * If the form is not filled in, add button cannot be active.
 * Submit operation is done via ngForm, not local reference.
