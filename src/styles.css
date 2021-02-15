@@ -1,10 +1,7 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 body.recipeList{
-  background-color: gainsboro;
-  /* background-image: none;
-  background-image: url('./assets/backRecipeList.PNG');
-  background-size: inherit; */
+background-color: #ECF2F4;
 }
 body.auth{
   background-image: url('./assets/backgroundHome.png');
@@ -12,10 +9,9 @@ body.auth{
   background-size: cover;
 }
 body.recipeEdit{
-  background-image: url('./assets/backForm.jpg');
+  background-image: url('./assets/backRecipeForm.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-
   background-position: center;
 }
 

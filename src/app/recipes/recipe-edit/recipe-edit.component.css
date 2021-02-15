@@ -7,7 +7,7 @@ textarea.ng-invalid.ng-touched {
     margin-top: 5%;
     margin-right: 10%;
     float: right;
-    color:#fff;
+    color:#000;
 }
 form.recipeForm{
     width: 500px;
