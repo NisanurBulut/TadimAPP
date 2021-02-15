@@ -1,4 +1,6 @@
-
+::ng-deep .bodyImage{
+background-color: aqua;
+}
 .formRow {
   margin: 15%;
   padding: 10px;

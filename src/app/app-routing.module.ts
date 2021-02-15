@@ -10,7 +10,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: './auth/auth.module#AuthModule'
+    loadChildren: './auth/auth.module#AuthModule',
+    data: { bodyClass: 'auth' }
   }
 ];
 

@@ -12,7 +12,7 @@ import * as fromAuthActions from '../auth/store/auth.actions';
 export class AuthService {
     private tokenExpirationTimer: any;
     constructor(private http: HttpClient,
-        private store: Store<fromApp.AppState>) { }
+                private store: Store<fromApp.AppState>) { }
 
     signup(pemail: string, ppassword: string) {
         return this.http
@@ -40,7 +40,7 @@ export class AuthService {
 
     setLogoutTimer(expirationDuration: number) {
         this.tokenExpirationTimer = setTimeout(() => {
-            this.store.dispatch(new fromAuthActions.Logout())
+            this.store.dispatch(new fromAuthActions.Logout());
         }, expirationDuration);
     }
     clearLogoutTimer() {

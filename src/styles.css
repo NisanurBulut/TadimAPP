@@ -1,7 +1,16 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-.bodyImage{
+body.recipeList{
+  background-image: none;
+  background-color: #5C6A79;
+}
+body.auth{
   background-image: url('./assets/backgroundHome.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+body.recipeEdit{
+  background-image: url('./assets/back1.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
