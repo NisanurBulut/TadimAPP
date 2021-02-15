@@ -20,17 +20,18 @@ export class RecipeDetailComponent implements OnInit {
     private router: Router,
     private store: Store<fromApp.AppState>,
     public dialogRef: MatDialogRef<RecipeDetailComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: number) {
-    this.id = data;
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.id = this.data.id;
   }
 
   ngOnInit() {
     this.store.select('recipes')
       .pipe(
         map(data => {
-          return this.recipe = data.recipes.find((item, index) => index === 0);
+          return this.recipe = data.recipes.find((item) => item.id === this.id);
         })
       ).subscribe(result => {
+        console.log(result);
         this.recipe = result;
       });
   }

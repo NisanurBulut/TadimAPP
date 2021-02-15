@@ -5,7 +5,15 @@ app-recipe-detail > .dialog-content-wrapper {
 app-recipe-detail .form-wrapper {
     max-height: calc(100vh - 120px);
 }
-
+.content{
+    display: flex;
+     flex-direction: column;
+     justify-content: center
+}
+.content img {
+    width: 100%;
+    max-width: 300px;
+}
 .popupHeader{
     display: flex;
     justify-content: space-between;

@@ -23,7 +23,7 @@ export class RecipeItemComponent implements OnInit {
     this.dialog.open(RecipeDetailComponent, {
       disableClose: true,
       panelClass: 'form-dialog',
-      data: {}
+      data: { id: item.id }
     }).afterClosed().subscribe((res) => {
       console.log('popup kapandı');
     });
@@ -33,6 +33,5 @@ export class RecipeItemComponent implements OnInit {
   }
   editRecipe(item: Recipe) {
     this.router.navigateByUrl('recipes/edit/' + item.id);
-    // this.router.navigate(['/edit', item.id], { relativeTo: this.route });
   }
 }
