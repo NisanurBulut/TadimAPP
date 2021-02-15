@@ -3,9 +3,11 @@ import { Recipe } from '../recipe.model';
 
 export const SET_RECIPES = '[Recipes] Set Recipes';
 export const UPDATE_RECIPE = '[Recipe] Update Recipe';
-export const DELETE_RECIPE = '[Recipe] Delete Recipe';
 export const STORE_RECIPE = '[Recipe] store Recipe';
 
+export const DELETE_RECIPE = '[Recipe] Delete Recipe';
+export const DELETE_RECIPE_SUCCESS = '[Recipe] Delete Recipe Success';
+export const DELETE_RECIPE_FAIL = '[Recipe] Delete Recipe Fail';
 
 export const LOAD_RECIPES = '[Recipe] Load Recipe';
 export const LOAD_RECIPES_SUCCESS = '[Recipe] Load Recipe Success';
@@ -29,7 +31,7 @@ export class LoadRecipesFail implements Action {
 export class AddRecipe implements Action {
     readonly type = ADD_RECIPE;
     constructor(public payload: Recipe) {
-     }
+    }
 }
 export class AddRecipeSuccess implements Action {
     readonly type = ADD_RECIPE_SUCCESS;
@@ -43,6 +45,16 @@ export class AddRecipeFail implements Action {
 export class StoreRecipe implements Action {
     readonly type = STORE_RECIPE;
     constructor() { }
+}
+
+export class DeleteRecipeSuccess implements Action {
+    readonly type = DELETE_RECIPE_SUCCESS;
+    constructor(public payload: number) {
+    }
+}
+export class DeleteRecipeFail implements Action {
+    readonly type = DELETE_RECIPE_FAIL;
+    constructor(public payload: Error) { }
 }
 export class DeleteRecipe implements Action {
     readonly type = DELETE_RECIPE;
@@ -62,10 +74,12 @@ export class SetRecipes implements Action {
 }
 
 export type RecipesActions = SetRecipes |
-    AddRecipe |
     UpdateRecipe |
     DeleteRecipe |
+    DeleteRecipeSuccess |
+    DeleteRecipeFail |
     StoreRecipe |
+    AddRecipe |
     AddRecipeFail |
     AddRecipeSuccess |
     LoadRecipes |
