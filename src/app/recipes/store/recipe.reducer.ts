@@ -27,6 +27,8 @@ export function recipeReducer(state: State = initialState, action: fromRecipesAc
             return {
                 ...state, loading: false, recipes: action.payload
             };
+        case fromRecipesActions.LOAD_RECIPES_FAIL:
+            return { ...state, error: action.payload, loading: false };
         case fromRecipesActions.ADD_RECIPE:
             return {
                 ...state,
@@ -35,8 +37,7 @@ export function recipeReducer(state: State = initialState, action: fromRecipesAc
             };
         case fromRecipesActions.ADD_RECIPE_SUCCESS:
             return { ...state, recipes: [...state.recipes, action.payload], loading: false };
-        case fromRecipesActions.LOAD_RECIPES_FAIL:
-            return { ...state, error: action.payload, loading: false };
+
         case fromRecipesActions.ADD_RECIPE_FAIL:
             return { ...state, error: action.payload, loading: false };
 
@@ -55,9 +56,21 @@ export function recipeReducer(state: State = initialState, action: fromRecipesAc
         case fromRecipesActions.DELETE_RECIPE:
             return {
                 ...state,
-                recipes: state.recipes.filter((recipe, index) => {
-                    return index !== action.payload;
+                loading: true
+            };
+        case fromRecipesActions.DELETE_RECIPE_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                recipes: state.recipes.filter((recipe) => {
+                    return recipe.id !== action.payload;
                 })
+            };
+        case fromRecipesActions.DELETE_RECIPE_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload
             };
         default:
             return state;

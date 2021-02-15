@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
-import { from, of } from 'rxjs';
+import { of } from 'rxjs';
 
 import { catchError, map, mergeMap } from 'rxjs/operators';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { RecipeService } from '../recipe.service';
 import * as fromRecipeActions from './recipe.actions';
 
@@ -33,6 +31,16 @@ export class RecipeEffects {
                     )
             )
         );
-
-    constructor(private actions$: Actions, private recipeService: RecipeService, private dataStorageService: DataStorageService) { }
+    @Effect() deleteRecipe$ = this.actions$
+        .pipe(
+            ofType<fromRecipeActions.DeleteRecipe>(fromRecipeActions.DELETE_RECIPE),
+            mergeMap(
+                (data) => this.recipeService.deleteRecipe(data.payload)
+                    .pipe(
+                        map(() => new fromRecipeActions.DeleteRecipeSuccess(data.payload)),
+                        catchError((error) => of(new fromRecipeActions.DeleteRecipeFail(error)))
+                    )
+            )
+        );
+    constructor(private actions$: Actions, private recipeService: RecipeService) { }
 }

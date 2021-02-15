@@ -2,6 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { RecipeDetailComponent } from '../../recipe-detail/recipe-detail.component';
 import { Recipe } from '../../recipe.model';
+import * as fromRecipeActions from '../../store/recipe.actions';
+import * as fromApp from '../../../store/app.reducer';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-recipe-item',
@@ -11,7 +14,7 @@ import { Recipe } from '../../recipe.model';
 export class RecipeItemComponent implements OnInit {
   @Input() recipe: Recipe;
   @Input() index: number; // recipe listten input olarak buraya gelecek
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, public store: Store<fromApp.AppState>) { }
   ngOnInit() {
   }
   openRecipeDetailPopup(item: Recipe): void {
@@ -22,5 +25,8 @@ export class RecipeItemComponent implements OnInit {
     }).afterClosed().subscribe((res) => {
       console.log('popup kapandı');
     });
+  }
+  deleteRecipe(item: Recipe): void {
+    this.store.dispatch(new fromRecipeActions.DeleteRecipe(item.id));
   }
 }

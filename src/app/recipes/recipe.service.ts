@@ -23,7 +23,7 @@ export class RecipeService {
     this.recipesChanged.next(this.recipes.slice());
   }
   getRecipes() {
-   return this._http.get<Array<Recipe>>(environment.apiUrl).pipe(delay(500));
+    return this._http.get<Array<Recipe>>(environment.apiUrl).pipe(delay(500));
   }
   getRecipe(index: number) {
     return this.recipes[index];
@@ -32,17 +32,15 @@ export class RecipeService {
     this.store.dispatch(new ShoppingListActions.AddIngredients(ingredients));
   }
   addRecipe(recipe: Recipe) {
-    // this.recipes.push(recipe);
-    // this.recipesChanged.next(this.recipes.slice());
     return this._http.post(environment.apiUrl, recipe)
-    .pipe(delay(500));
+      .pipe(delay(500));
   }
   updateRecipe(index: number, updatedRecipe: Recipe) {
     this.recipes[index] = updatedRecipe;
     this.recipesChanged.next(this.recipes.slice());
   }
-  deleteRecipe(index: number) {
-    this.recipes.splice(index, 1);
-    this.recipesChanged.next(this.recipes.slice());
+  deleteRecipe(id: number) {
+    return this._http.delete(`${environment.apiUrl}/${id}`)
+      .pipe(delay(500));
   }
 }

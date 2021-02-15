@@ -39,20 +39,6 @@
       "description": "Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "ingredients": [],
       "id": 5
-    },
-    {
-      "name": "test",
-      "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
-      "description": "Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "ingredients": [],
-      "id": 6
-    },
-    {
-      "name": "test",
-      "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
-      "description": "Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "ingredients": [],
-      "id": 7
     }
   ]
 }
