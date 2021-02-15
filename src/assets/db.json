@@ -2,24 +2,10 @@
   "recipes": [
     {
       "name": "test",
-      "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
-      "description": "Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "ingredients": [],
-      "id": 4
-    },
-    {
-      "name": "test",
       "imagePath": "https://cdn.ye-mek.net/App_UI/Img/out/650/2020/05/kofteli-patates-dizmesi-resimli-yemek-tarifi(16).jpg?w=650&h=487",
       "description": "this.initForm(); // seçileni yükle forma",
       "ingredients": [],
       "id": 5
-    },
-    {
-      "name": "Köfte",
-      "imagePath": "https://im.haberturk.com/2019/10/16/ver1603445491/2531466_1024x576.jpg",
-      "description": "Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.",
-      "ingredients": [],
-      "id": 6
     },
     {
       "name": "test",
