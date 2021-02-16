@@ -15,9 +15,10 @@ body.recipeEdit{
   background-position: center;
 }
 body.ingredientList{
-  background-image: url('./assets/backpepper.jpg');
+  background-image: url('./assets/bakIngredients.jpg');
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

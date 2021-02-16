@@ -1,40 +1,28 @@
-<div class="row">
-  <div class="col-xs-12">
-    <form (ngSubmit)="onAddItem(f)" #f="ngForm">
-      <div class="row">
-        <div class="col-sm-5 form-group">
-          <label for="name">İsim</label>
-          <input type="text"
-          id="name"
-          class="form-control"
-          name="name" ngModel required />
+
+  <form (ngSubmit)="onAddItem(f)" #f="ngForm" class="form">
+    <input type="text"
+        id="name"
+        placeholder="Name"
+        class="form-control"
+        name="name" ngModel required />
+        <input type="text"
+        id="amount"
+        placeholder="Amount"
+        class="form-control"
+        name="amount" ngModel required
+        pattern="^[1-9]+[0-9]*$"/>
+        <div class="btn-group" style="margin-top: 10px;">
+          <button class="btn btn-success btn-sm"
+          type="submit" [disabled]="!f.valid">
+          {{editMode ? 'Güncelle' : 'Kaydet'}}</button>
+          <button class="btn btn-danger btn-sm"
+          type="button"
+          *ngIf="editMode"
+           (click)="onDeleteItem()">Sil</button>
+          <button class="btn btn-dark btn-sm"
+          type="button"
+          (click)="onClear()"
+          >Temizle</button>
         </div>
-        <div class="col-sm-2 form-group">
-          <label for="amount">Miktar</label>
-          <input type="text"
-          id="amount"
-          class="form-control"
-          name="amount" ngModel required
-          pattern="^[1-9]+[0-9]*$"/>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="btn-group">
-            <button class="btn btn-success btn-sm"
-            type="submit" [disabled]="!f.valid">
-            {{editMode ? 'Güncelle' : 'Kaydet'}}</button>
-            <button class="btn btn-danger btn-sm"
-            type="button"
-            *ngIf="editMode"
-             (click)="onDeleteItem()">Sil</button>
-            <button class="btn btn-dark btn-sm"
-            type="button"
-            (click)="onClear()"
-            >Temizle</button>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
+
+  </form>
