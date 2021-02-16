@@ -9,6 +9,8 @@
     margin-right: 10%;
     float: right;
     min-width: 600px;
+    font-weight: 900;
+    font-size: large;
   }
   .ingredients{
     margin-top: 10px;
