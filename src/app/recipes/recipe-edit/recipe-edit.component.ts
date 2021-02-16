@@ -1,8 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
-import { RecipeService } from '../recipe.service';
 import * as fromApp from '../../store/app.reducer';
 import { Store } from '@ngrx/store';
 import * as fromRecipeActions from '../store/recipe.actions';
@@ -21,7 +19,6 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   editMode = false;
   recipeForm: FormGroup;
   private storeSub: Subscription;
-  private activeUser: User;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -43,11 +40,9 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnInit() {
-    this.getActiveUser();
-  }
+  ngOnInit() {}
   onsubmit() {
-    const recipeItem = { userId: this.activeUser.id, ...this.recipeForm.value } as Recipe;
+    const recipeItem = { ...this.recipeForm.value } as Recipe;
     if (this.editMode === true) {
       this.store.dispatch(new fromRecipeActions.UpdateRecipe({ index: this.id, newRecipe: recipeItem }));
     } else {
@@ -118,14 +113,5 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   onCancel() {
     // bir önceki ekrana gel
     this.router.navigate(['/recipes'], { relativeTo: this.route });
-  }
-  getActiveUser() {
-    this.store.select('auth').pipe(
-      map((data) => {
-        return data.user;
-      })
-    ).subscribe((user) => {
-      this.activeUser = user;
-    });
   }
 }
