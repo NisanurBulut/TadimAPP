@@ -19,10 +19,12 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="isAuthenticated">
-         <a>{{this.activeUser.email}}</a>
+         <a> {{this.activeUser.email}}</a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a (click)="logOut()">Log Out</a>
+          <a (click)="logOut()"><span class="material-icons">
+            logout
+            </span></a>
         </li>
       </ul>
     </div>
