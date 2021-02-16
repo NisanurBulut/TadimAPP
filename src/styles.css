@@ -4,18 +4,18 @@ body.recipeList{
 background-color: #ECF2F4;
 }
 body.auth{
-  background-image: url('./assets/backgroundHome.png');
+  background-image: url('./assets/images/backgroundHome.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
 body.recipeEdit{
-  background-image: url('./assets/backRecipeForm.jpg');
+  background-image: url('./assets/images/backRecipeForm.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 body.ingredientList{
-  background-image: url('./assets/bakIngredients.jpg');
+  background-image: url('./assets/images/bakIngredients.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
