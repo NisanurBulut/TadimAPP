@@ -4,6 +4,16 @@
   }
   .mainRow{
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    margin-top: 5%;
+    margin-right: 10%;
+    float: right;
+    min-width: 600px;
+  }
+  .ingredients{
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  .list-group-item{
+    margin-top: 2px;
   }

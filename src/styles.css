@@ -14,6 +14,11 @@ body.recipeEdit{
   background-size: cover;
   background-position: center;
 }
-
+body.ingredientList{
+  background-image: url('./assets/ingredientList.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

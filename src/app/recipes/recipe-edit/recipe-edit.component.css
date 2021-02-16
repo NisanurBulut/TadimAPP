@@ -12,6 +12,3 @@ textarea.ng-invalid.ng-touched {
 form.recipeForm{
     width: 500px;
   }
-  ::ng-deep .bodyImage{
-    background-color:rebeccapurple;
-    }
