@@ -33,7 +33,7 @@ div.ingredients{
   overflow-x: hidden;
 }
 button{
-
+outline: none !important;
 font-weight: bold;
 }
 
