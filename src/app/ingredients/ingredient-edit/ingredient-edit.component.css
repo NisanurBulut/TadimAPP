@@ -1,3 +1,5 @@
+@import '../../shared/button.style.css';
+
 .form{
     display: flex;
     justify-content: center;

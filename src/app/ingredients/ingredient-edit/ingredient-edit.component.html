@@ -12,17 +12,32 @@
         name="amount" ngModel required
         pattern="^[1-9]+[0-9]*$"/>
         <div class="btn-group" style="margin-top: 10px;">
-          <button class="btn btn-success btn-sm"
-          type="submit" [disabled]="!f.valid">
-          {{editMode ? 'Güncelle' : 'Kaydet'}}</button>
-          <button class="btn btn-danger btn-sm"
+          <button class="btn btn-sm btnAdd"
+          type="submit" [disabled]="!f.valid" *ngIf="editMode">
+          <span class="material-icons">
+            auto_fix_high
+            </span>
+          </button>
+          <button class="btn btn-sm btnAdd"
+          type="submit" [disabled]="!f.valid" *ngIf="!editMode">
+          <span class="material-icons">
+            <span class="material-icons">
+              done_outline
+              </span>
+            </span>
+          </button>
+          <button class="btn btn-sm btnSave"
           type="button"
           *ngIf="editMode"
-           (click)="onDeleteItem()">Sil</button>
-          <button class="btn btn-dark btn-sm"
+           (click)="onDeleteItem()"><span class="material-icons">
+            delete_outline
+            </span></button>
+          <button class="btn btn-sm btnCancel"
           type="button"
           (click)="onClear()"
-          >Temizle</button>
+          ><span class="material-icons">
+            backspace
+            </span></button>
         </div>
 
   </form>

@@ -1,3 +1,5 @@
+@import '../../shared/button.style.css';
+
 input.ng-invalid.ng-touched,
 textarea.ng-invalid.ng-touched {
     border:1px solid red;
@@ -32,72 +34,3 @@ div.ingredients{
   overflow-y: auto;
   overflow-x: hidden;
 }
-button{
-outline: none !important;
-font-weight: bold;
-}
-
-.btnSave{
-background-color: #4E8395;
-}
-.btnCancel{
-  background-color: #ca7b21;
-}
-
-
-.btnCancel {background-image: linear-gradient(to right, #FFB75E 0%, #ED8F03  51%, #FFB75E  100%)}
-.btnCancel {
-   text-align: center;
-   text-transform: uppercase;
-   transition: 0.5s;
-   background-size: 200% auto;
-   color: white;
-   box-shadow: 0 0 20px #eee;
-   border-radius: 10px;
-   display: block;
- }
-
- .btnCancel:hover {
-   background-position: right center; /* change the direction of the change here */
-   color: #fff;
-   text-decoration: none;
- }
-
-.btnSave {background-image: linear-gradient(to right, #e52d27 0%, #b31217  51%, #e52d27  100%)}
-.btnSave {
-   text-align: center;
-   text-transform: uppercase;
-   transition: 0.5s;
-   background-size: 200% auto;
-   color: white;
-   box-shadow: 0 0 20px #eee;
-   border-radius: 10px;
-   display: block;
- }
-
- .btnSave:hover {
-   background-position: right center; /* change the direction of the change here */
-   color: #fff;
-   text-decoration: none;
- }
-
-
-
-
-.btnAdd {background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%)}
-.btnAdd {
-   text-align: center;
-   text-transform: uppercase;
-   transition: 0.5s;
-   background-size: 200% auto;
-   color: white;
-   box-shadow: 0 0 20px #eee;
-   border-radius: 10px;
-   display: block;
- }
-
- .btnAdd:hover {
-   background-position: right center; /* change the direction of the change here */
-   color: #fff;
-   text-decoration: none;
- }

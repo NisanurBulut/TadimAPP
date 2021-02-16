@@ -6,17 +6,23 @@
         [disabled]="!recipeForm.valid"
         class="btn btn-sm btnSave"
       >
-        save
+      <span class="material-icons">
+        done_outline
+        </span>
       </button>
       <button type="submit" class="btn btn-sm btnCancel" (click)="onCancel()">
-        cancel
+        <span class="material-icons">
+          cancel
+          </span>
       </button>
       <button
       class="btn btn-sm btnAdd"
       type="button"
       (click)="onAddIngredient()"
     >
-      add
+    <span class="material-icons">
+      create_new_folder
+      </span>
     </button>
     </div>
     <input
