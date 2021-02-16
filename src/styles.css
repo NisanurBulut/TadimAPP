@@ -15,9 +15,8 @@ body.recipeEdit{
   background-position: center;
 }
 body.ingredientList{
-  background-image: url('./assets/ingredientList.jpg');
+  background-image: url('./assets/backpepper.jpg');
   background-repeat: no-repeat;
-  background-size: cover;
   background-position: center;
 }
 html, body { height: 100%; }
