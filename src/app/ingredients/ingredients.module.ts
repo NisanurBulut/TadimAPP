@@ -2,29 +2,30 @@ import { NgModule } from '@angular/core';
 
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
-import { ShoppingListComponent } from './shopping-list.component';
+import { IngredientEditComponent } from './ingredient-edit/ingredient-edit.component';
+import { IngredientListComponent } from './ingredient-list.component';
+
 @NgModule({
     declarations: [
-        ShoppingListComponent,
-        ShoppingEditComponent
+        IngredientListComponent,
+        IngredientEditComponent
     ],
     imports: [
         RouterModule.forChild(
             [{
                 // lazy loading yapıyorsan burasının empty olmasına dikkat et
                 path: '',
-                component: ShoppingListComponent,
+                component: IngredientListComponent,
             }
             ]
         ),
         SharedModule
     ],
     exports: [
-        ShoppingListComponent,
-        ShoppingEditComponent
+        IngredientListComponent,
+        IngredientEditComponent
     ]
 })
-export class ShoppingListModule {
+export class IngredientsModule {
 
 }

@@ -39,7 +39,7 @@ export class StopEdit implements Action {
     }
 }
 // multiple action olduğu için payload erişimi olabilmesi adına bu tanımlama yapıldı
-export type ShoppingListActions =
+export type IngredientActions =
     AddIngredient |
     AddIngredients |
     UpdateIngredient |

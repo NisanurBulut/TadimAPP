@@ -1,7 +1,7 @@
 import { Subject } from 'rxjs';
 import { Ingredient } from '../shared/ingredient.model';
 
-export class ShoppingListService {
+export class IngredientsService {
   // eventemitter subjet'e dönüştü
   ingredientsChanged = new Subject<Ingredient[]>();
   // subject sınıfı generic tipte

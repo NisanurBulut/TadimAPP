@@ -5,8 +5,8 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule' },
   {
-    path: 'shopping-list',
-    loadChildren: './shopping-list/shopping-list.module#ShoppingListModule',
+    path: 'ingredient-list',
+    loadChildren: './ingredients/ingredients.module#IngredientsModule',
     data: { bodyClass: 'ingredientList' }
   },
   {

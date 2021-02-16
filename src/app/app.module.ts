@@ -11,7 +11,7 @@ import { CoreModule } from './core.module';
 import { SharedModule } from './shared/shared.module';
 import { RecipeEffects } from './recipes/store/recipe.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './shared/material.module';
+
 
 @NgModule({
   declarations: [

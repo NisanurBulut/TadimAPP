@@ -1,6 +1,6 @@
 
 import { Ingredient } from 'src/app/shared/ingredient.model';
-import * as ShoppingListActions from './shopping-list.actions';
+import * as fromIngredientActions from './ingredients.actions';
 
 export interface State {
     ingredients: Ingredient[];
@@ -8,7 +8,7 @@ export interface State {
     editedIngredientIndex: number;
 }
 export interface AppState {
-    shoppingList: State;
+    ingredientList: State;
 }
 const initialState: State = {
     ingredients: [
@@ -19,21 +19,21 @@ const initialState: State = {
     editedIngredientIndex: -1
 };
 // buradaki actiona aslında bir interface
-export function shoppingListReducer(
+export function IngredientsReducer(
     state: State = initialState,
-    action: ShoppingListActions.ShoppingListActions) {
+    action: fromIngredientActions.IngredientActions) {
     switch (action.type) {
-        case ShoppingListActions.ADD_INGREDIENT:
+        case fromIngredientActions.ADD_INGREDIENT:
             return {
                 ...state,
                 ingredients: [...state.ingredients, action.payload]
             };
-        case ShoppingListActions.ADD_INGREDIENTS:
+        case fromIngredientActions.ADD_INGREDIENTS:
             return {
                 ...state,
                 ingredients: [...state.ingredients, ...action.payload]
             };
-        case ShoppingListActions.UPDATE_INGREDIENT:
+        case fromIngredientActions.UPDATE_INGREDIENT:
             const ingredient = state.ingredients[state.editedIngredientIndex];
             const updatedIngredient = {
                 ...ingredient,
@@ -48,7 +48,7 @@ export function shoppingListReducer(
                 editedIngredientIndex: -1,
                 editedIngredient: null
             };
-        case ShoppingListActions.DELETE_INGREDIENT:
+        case fromIngredientActions.DELETE_INGREDIENT:
             // ... spread operator
             return {
                 ...state,
@@ -56,14 +56,14 @@ export function shoppingListReducer(
                     return igIndex !== state.editedIngredientIndex;
                 })
             };
-        case ShoppingListActions.START_EDIT:
+        case fromIngredientActions.START_EDIT:
             // ... spread operator
             return {
                 ...state,
                 editedIngredientIndex: action.payload,
                 editedIngredient: { ...state.ingredients[action.payload] }
             };
-        case ShoppingListActions.STOP_EDIT:
+        case fromIngredientActions.STOP_EDIT:
             // ... spread operator
             return {
                 ...state,
