@@ -19,7 +19,10 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="isAuthenticated">
-          <a style="cursor: pointer;" (click)="logOut()">Log Out</a>
+         <a>{{this.activeUser.email}}</a>
+        </li>
+        <li *ngIf="isAuthenticated">
+          <a (click)="logOut()">Log Out</a>
         </li>
       </ul>
     </div>

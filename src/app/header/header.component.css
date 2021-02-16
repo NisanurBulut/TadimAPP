@@ -12,3 +12,9 @@
 .navbar-default .navbar-nav > .active > a{
     color:#ddd !important;
 }
+
+li>a{
+    cursor: pointer;
+    font-size: large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

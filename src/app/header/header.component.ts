@@ -7,6 +7,7 @@ import * as AuthActions from '../auth/store/auth.actions';
 import * as fromRecipeActions from '../recipes/store/recipe.actions';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
+import { User } from '../auth/user.model';
 
 @Component({
     selector: 'app-header',
@@ -16,18 +17,16 @@ import { map } from 'rxjs/operators';
 export class HeaderComponent implements OnInit, OnDestroy {
     private userSub: Subscription;
     isAuthenticated = false;
-
-    constructor(private dss: DataStorageService, private as: AuthService, private store: Store<fromApp.AppState>) { }
+    private activeUser: User;
+    constructor(private store: Store<fromApp.AppState>) { }
 
     ngOnInit() {
         this.userSub = this.store.select('auth').pipe(map(appSate => {
             return appSate.user;
         })).subscribe(user => {
+            this.activeUser = user;
             this.isAuthenticated = !!user;
         });
-    }
-    onSaveData() {
-        this.dss.storeRecipes();
     }
 
     logOut() {
