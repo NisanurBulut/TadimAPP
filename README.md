@@ -22,3 +22,4 @@ Ana Ekran
 * Buttons cannot be active if validations are not provided in the relevant screens and forms.
 * Directive dropdown is written.
 * Cookie information is kept when the user logs on. The session closes automatically when the expire time expires. When the user opens the application within the Expire period, they do not need to login.
+* Active user is shown on header
