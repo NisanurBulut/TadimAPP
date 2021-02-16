@@ -3,8 +3,13 @@
     {
       "name": "test",
       "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
-      "description": "zadfsafd",
-      "ingredients": [],
+      "description": "asSs",
+      "ingredients": [
+        {
+          "name": "assa",
+          "amount": 1
+        }
+      ],
       "userId": "uJmaht9pOHXxlk4vqG1qsWiYMJs1",
       "id": 1
     }
