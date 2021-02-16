@@ -4,13 +4,20 @@
       <button
         type="submit"
         [disabled]="!recipeForm.valid"
-        class="btn btn-success btn-sm"
+        class="btn btn-sm btnSave"
       >
-        Kaydet
+        save
       </button>
-      <button type="submit" class="btn btn-danger btn-sm" (click)="onCancel()">
-        İptal
+      <button type="submit" class="btn btn-sm btnCancel" (click)="onCancel()">
+        cancel
       </button>
+      <button
+      class="btn btn-sm btnAdd"
+      type="button"
+      (click)="onAddIngredient()"
+    >
+      add
+    </button>
     </div>
     <input
       placeholder="Meal"
@@ -42,8 +49,8 @@
       rows="6"
     ></textarea>
 
-    <div class="row">
-      <div class="col-xs-12" formArrayName="ingredients">
+
+      <div class="ingredients" formArrayName="ingredients">
         <div
           class="row"
           style="margin-top: 10px"
@@ -70,19 +77,6 @@
             </button>
           </div>
         </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <button
-              class="btn btn-success btn-sm"
-              type="button"
-              style="margin-top: 10px"
-              (click)="onAddIngredient()"
-            >
-              Malzeme Ekle
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
   </form>
 </div>
