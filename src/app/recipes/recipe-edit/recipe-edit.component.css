@@ -2,13 +2,28 @@ input.ng-invalid.ng-touched,
 textarea.ng-invalid.ng-touched {
     border:1px solid red;
 }
-.formRow{
+.mainRow{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
-    margin-top: 5%;
+    align-items: center;
+    justify-content: flex-end;
     margin-right: 10%;
-    float: right;
-    color:#000;
-}
-form.recipeForm{
-    width: 500px;
   }
+
+form.recipeForm{
+    width: 40%;
+    padding: 5px;
+    height: 20px;
+    margin: 10px;
+    line-height: 20px;
+    text-align: right;
+  }
+form>input{
+    margin-top: 5px;
+}
+form>textarea{
+    margin-top: 5px;
+}

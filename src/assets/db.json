@@ -1,0 +1,42 @@
+{
+  "recipes": [
+    {
+      "userId": "uJmaht9pOHXxlk4vqG1qsWiYMJs1",
+      "name": "test",
+      "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
+      "description": "Vivamus suscipit tortor eget felis porttitor volutpat. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Sed porttitor lectus nibh.",
+      "ingredients": [
+        {
+          "name": "wewewew",
+          "amount": 1
+        },
+        {
+          "name": "wewewewe",
+          "amount": 1
+        }
+      ],
+      "id": 1
+    },
+    {
+      "name": "test",
+      "imagePath": "https://cdn.ye-mek.net/App_UI/Img/out/650/2020/05/kofteli-patates-dizmesi-resimli-yemek-tarifi(16).jpg?w=650&h=487",
+      "description": "Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.",
+      "ingredients": [
+        {
+          "name": "sdsdsd",
+          "amount": 1
+        }
+      ],
+      "userId": "uJmaht9pOHXxlk4vqG1qsWiYMJs1",
+      "id": 2
+    },
+    {
+      "name": "test",
+      "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
+      "description": "Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Nulla quis lorem ut libero malesuada feugiat.",
+      "ingredients": [],
+      "userId": "uJmaht9pOHXxlk4vqG1qsWiYMJs1",
+      "id": 3
+    }
+  ]
+}
