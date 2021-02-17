@@ -18,9 +18,9 @@
   ],
   "recipes": [
     {
-      "name": "test",
+      "name": "tesMantı Yemeği",
       "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
-      "description": "sadasd",
+      "description": "Donec rutrum congue leo eget malesuada. Cras ultricies ligula sed magna dictum porta. Donec rutrum congue leo eget malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.",
       "ingredients": [],
       "id": 1,
       "userId": "uJmaht9pOHXxlk4vqG1qsWiYMJs1"

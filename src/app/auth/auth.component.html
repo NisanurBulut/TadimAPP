@@ -38,13 +38,13 @@
       <div class="formGroup">
         <button
           type="submit"
-          class="btn btn-primary"
+          class="btn btn-login"
           [disabled]="!authForm.valid"
         >
           {{ isLogingMode ? "Login" : "SignUp" }}
         </button>
 
-        <button type="button" class="btn btn-success" (click)="onSwitchMode()">
+        <button type="button" class="btn btn-signup" (click)="onSwitchMode()">
           {{ isLogingMode ? "SignUp" : "Login" }}
         </button>
       </div>

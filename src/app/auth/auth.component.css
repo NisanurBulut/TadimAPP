@@ -10,12 +10,49 @@ background-color: aqua;
 form{
   width: 300px;
 }
-.btn-primary{
+.btn-login{
   float: left;
 }
-.btn-success{
+.btn-signup{
   float: right;
 }
 button {
   outline: none;
 }
+
+
+.btn-login {background-image: linear-gradient(to right, #8E0E00 0%, #1F1C18  51%, #8E0E00  100%)}
+.btn-login {
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+ }
+
+ .btn-login:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+
+ .btn-signup {background-image: linear-gradient(to right, #00bf8f 0%, #001510  51%, #00bf8f  100%)}
+ .btn-signup {
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+  }
+
+  .btn-signup:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
