@@ -1,5 +1,6 @@
 
   <form (ngSubmit)="onAddItem(f)" #f="ngForm" class="form">
+    <input type="hidden" name="id" ngModel class="form-control" />
     <input type="text"
         id="name"
         placeholder="Name"
@@ -9,8 +10,7 @@
         id="amount"
         placeholder="Amount"
         class="form-control"
-        name="amount" ngModel required
-        pattern="^[1-9]+[0-9]*$"/>
+        name="amount" ngModel required/>
         <div class="btn-group" style="margin-top: 10px;">
           <button class="btn btn-sm btnAdd"
           type="submit" [disabled]="!f.valid" *ngIf="editMode">

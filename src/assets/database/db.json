@@ -1,11 +1,6 @@
 {
   "ingredients": [
     {
-      "amount": "1",
-      "name": "test",
-      "id": 1
-    },
-    {
       "amount": "2",
       "name": "test",
       "id": 2

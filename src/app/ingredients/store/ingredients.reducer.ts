@@ -4,11 +4,13 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
 import * as fromIngredientsActions from './ingredients.actions';
 
 export interface State {
+    ingredient: Ingredient,
     ingredients: Ingredient[];
     loading: boolean;
     error: Error;
 }
 const initialState: State = {
+    ingredient: null,
     ingredients: [],
     loading: false,
     error: null
@@ -51,6 +53,17 @@ export function IngredientReducer(state: State = initialState, action: fromIngre
             return {
                 ...state,
                 loading: true
+            };
+        case fromIngredientsActions.SET_INGREDIENT:
+            return {
+                ...state,
+                ingredient: state.ingredients.find(a => a.id === action.payload),
+                loading: false
+            };
+        case fromIngredientsActions.GET_INGREDIENT:
+            return {
+                ...state,
+                loading: false
             };
         case fromIngredientsActions.DELETE_INGREDIENT_SUCCESS:
             return {

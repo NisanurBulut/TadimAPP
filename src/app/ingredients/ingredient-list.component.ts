@@ -13,6 +13,7 @@ import { Ingredient } from '../shared/ingredient.model';
 })
 export class IngredientListComponent implements OnInit, OnDestroy {
   ingredients: Observable<{ ingredients: Ingredient[] }>;
+  ingredient: Ingredient;
   constructor(
     private store: Store<fromApp.AppState>) {
     this.store.dispatch(new fromIngredientActions.LoadIngredients());
@@ -23,7 +24,7 @@ export class IngredientListComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
   }
-  onEditItem(index: number) {
-
+  onEditItem(item: Ingredient) {
+    this.store.dispatch(new fromIngredientActions.SetIngredient(item.id));
   }
 }
