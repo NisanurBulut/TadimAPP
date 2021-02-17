@@ -7,6 +7,7 @@ import * as fromRecipeActions from '../store/recipe.actions';
 import { map } from 'rxjs/operators';
 import { Recipe } from '../recipe.model';
 import { Subscription } from 'rxjs';
+import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -17,19 +18,28 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   id: number;
   editMode = false;
   recipeForm: FormGroup;
+  ingredients: Ingredient[];
   private storeSub: Subscription;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private store: Store<fromApp.AppState>) {
+    this.store.select(a => a.ingredients).pipe(
+      map((data) => {
+        return data.ingredients;
+      })
+    ).subscribe(data => {
+      this.ingredients = data;
+    });
     this.route.params
       .subscribe(
         (params: Params) => {
           this.id = +params.id;
           if (this.id) {
+            debugger;
             this.editMode = true;
+            this.initForm(); // seçileni yükle forma
           }
-          this.initForm(); // seçileni yükle forma
         }
       );
   }
@@ -53,10 +63,8 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     return (this.recipeForm.get('ingredients') as FormArray).controls;
   }
   initForm() {
-    let recipe: Recipe;
-    let recipeName = '';
-    let recipeImagePath = '';
-    let recipeDescription = '';
+    debugger;
+    let recipe = new Recipe('', '', '', []);
     // varsayılan boş olsun istiyoruz
     const recipeIngredients = new FormArray([]);
     if (this.editMode === true) {
@@ -65,29 +73,27 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
           return data.recipes.find(item => item.id === this.id);
         })).subscribe(dataRecipe => {
           recipe = { ...dataRecipe };
+          console.log(dataRecipe);
         });
-      recipeName = recipe.name;
-      recipeImagePath = recipe.imagePath;
-      recipeDescription = recipe.description;
+
 
       if (recipe.ingredients) {
         for (const itemr of recipe.ingredients) {
+          console.log(itemr['ingredient']);
           recipeIngredients.push(new FormGroup(
             {
-              name: new FormControl(itemr.name, Validators.required),
-              amount: new FormControl(itemr.amount,
-                [Validators.required,
-                Validators.pattern('^[1-9]+[0-9]*$')])
+              ingredient: new FormControl(itemr['ingredient'].id, Validators.required)
             }
           ));
         }
       }
     }
+
     this.recipeForm = new FormGroup(
       {
-        name: new FormControl(recipeName, Validators.required),
-        imagePath: new FormControl(recipeImagePath, Validators.required),
-        description: new FormControl(recipeDescription, Validators.required),
+        name: new FormControl(recipe.name, Validators.required),
+        imagePath: new FormControl(recipe.imagePath, Validators.required),
+        description: new FormControl(recipe.description, Validators.required),
         ingredients: recipeIngredients
       }
     );
@@ -96,9 +102,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     (this.recipeForm.get('ingredients') as FormArray).push(
       new FormGroup(
         {
-          name: new FormControl(null, Validators.required),
-          amount: new FormControl(null, [Validators.required,
-          Validators.pattern('^[1-9]+[0-9]*$')])
+          ingredient: new FormControl(null, Validators.required)
         }
       )
     );

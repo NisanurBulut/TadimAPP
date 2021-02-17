@@ -2,6 +2,7 @@ import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
 import * as fromAuthActions from './auth/store/auth.actions';
+import * as fromIngredientActions from './ingredients/store/ingredients.actions';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/internal/operators/filter';
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit {
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.store.dispatch(new fromIngredientActions.LoadIngredients());
     this.store.dispatch(new fromAuthActions.AutoLogin());
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))

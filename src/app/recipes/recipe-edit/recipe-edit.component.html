@@ -6,24 +6,18 @@
         [disabled]="!recipeForm.valid"
         class="btn btn-sm btnSave"
       >
-      <span class="material-icons">
-        done_outline
-        </span>
+        <span class="material-icons"> done_outline </span>
       </button>
       <button type="submit" class="btn btn-sm btnCancel" (click)="onCancel()">
-        <span class="material-icons">
-          cancel
-          </span>
+        <span class="material-icons"> cancel </span>
       </button>
       <button
-      class="btn btn-sm btnAdd"
-      type="button"
-      (click)="onAddIngredient()"
-    >
-    <span class="material-icons">
-      create_new_folder
-      </span>
-    </button>
+        class="btn btn-sm btnAdd"
+        type="button"
+        (click)="onAddIngredient()"
+      >
+        <span class="material-icons"> create_new_folder </span>
+      </button>
     </div>
     <input
       placeholder="Meal"
@@ -55,34 +49,30 @@
       rows="6"
     ></textarea>
 
-
-      <div class="ingredients" formArrayName="ingredients">
-        <div
-          class="row"
-          style="margin-top: 10px"
-          *ngFor="let ingredientControl of controls; let i = index"
-          [formGroupName]="i"
-        >
-          <div class="col-xs-8">
-            <input type="text" class="form-control" formControlName="name" />
-          </div>
-          <div class="col-xs-2">
-            <input
-              type="number"
-              class="form-control"
-              formControlName="amount"
-            />
-          </div>
-          <div class="col-xs-2">
-            <button
-              type="button"
-              (click)="deleteIngredient(i)"
-              class="btn btn-danger"
-            >
-              X
-            </button>
-          </div>
+    <div class="ingredients" formArrayName="ingredients">
+      <div
+        class="row"
+        style="margin-top: 10px"
+        *ngFor="let ingredientControl of controls; let i = index"
+        [formGroupName]="i"
+      >
+        <div class="col-xs-10">
+          <select formControlName="ingredient" class="form-control">
+            <option [value]="item.id" *ngFor="let item of ingredients">
+              {{ item.name }}-{{ item.amount }}
+            </option>
+          </select>
         </div>
+        <div class="col-xs-2">
+          <button
+            type="button"
+            (click)="deleteIngredient(i)"
+            class="btn btn-danger"
+          >
+            X
+          </button>
+        </div>
+      </div>
     </div>
   </form>
 </div>

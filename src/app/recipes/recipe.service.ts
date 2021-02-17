@@ -12,8 +12,6 @@ import { User } from '../auth/user.model';
 @Injectable()
 export class RecipeService {
   private activeUser: User;
-  private recipes: Recipe[] = [];
-
   constructor(private _http: HttpClient, private store: Store<fromApp.AppState>) {
     this.store.select('auth')
       .pipe(
@@ -27,9 +25,6 @@ export class RecipeService {
 
   getRecipes() {
     return this._http.get<Array<Recipe>>(`${environment.apiUrl}?userId=${this.activeUser.id}`).pipe(delay(500));
-  }
-  getRecipe(index: number) {
-    return this.recipes[index];
   }
 
   addRecipe(recipe: Recipe) {

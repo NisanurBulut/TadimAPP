@@ -1,7 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Recipe } from '../recipe.model';
 
-
 export const UPDATE_RECIPE = '[Recipe] Update Recipe';
 export const UPDATE_RECIPE_SUCCESS = '[Recipe] Update Recipe Success';
 export const UPDATE_RECIPE_FAIL = '[Recipe] Update Recipe Fail';

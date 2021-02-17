@@ -16,7 +16,6 @@ export class IngredientListComponent implements OnInit, OnDestroy {
   ingredient: Ingredient;
   constructor(
     private store: Store<fromApp.AppState>) {
-    this.store.dispatch(new fromIngredientActions.LoadIngredients());
   }
 
   ngOnInit() {

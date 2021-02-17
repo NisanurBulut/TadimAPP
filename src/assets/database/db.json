@@ -2,34 +2,27 @@
   "ingredients": [
     {
       "id": 2,
-      "name": "test",
-      "amount": "2"
+      "name": "sarmısak",
+      "amount": "2 diş"
     },
     {
       "id": 3,
-      "name": "test",
-      "amount": "3"
+      "name": "sarmmısak",
+      "amount": "3 diş"
     },
     {
-      "amount": "6",
-      "name": "test",
-      "id": 4
+      "id": 4,
+      "name": "sarmısak",
+      "amount": "6 diş "
     }
   ],
   "recipes": [
     {
-      "name": "Mantı Yemeği",
-      "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
-      "description": "Cras ultricies ligula sed magna dictum porta. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.",
-      "ingredients": [],
-      "id": 2,
-      "userId": "uJmaht9pOHXxlk4vqG1qsWiYMJs1"
-    },
-    {
       "name": "test",
       "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
-      "description": "sasas",
-      "id": 3,
+      "description": "sadasd",
+      "ingredients": [],
+      "id": 1,
       "userId": "uJmaht9pOHXxlk4vqG1qsWiYMJs1"
     }
   ]
