@@ -15,8 +15,22 @@ export class IngredientEffects {
             mergeMap(
                 () => this.ingredientsService.getIngredients()
                     .pipe(
-                        map(data => new fromIngredientsActions.LoadIngredientsSuccess(data)),
-                        catchError((error) => of(new fromIngredientsActions.LoadIngredientsFail(error)))
+                        map((data) => {
+                            this.snackBarService.open('Ingredients listed', 'Successfully', {
+                                duration: 500,
+                                horizontalPosition: 'center',
+                                verticalPosition: 'top',
+                            });
+                            return new fromIngredientsActions.LoadIngredientsSuccess(data);
+                        }),
+                        catchError((error) => {
+                            this.snackBarService.open('Ingredient listed', 'Failed', {
+                                duration: 500,
+                                horizontalPosition: 'center',
+                                verticalPosition: 'top',
+                            });
+                            return of(new fromIngredientsActions.LoadIngredientsFail(error));
+                        })
                     )
             )
         );
@@ -27,7 +41,7 @@ export class IngredientEffects {
                 (data) => this.ingredientsService.addIngredient(data.payload)
                     .pipe(
                         map(() => {
-                            this.snackBarService.open('Ingredient added succefully', 'Successfully', {
+                            this.snackBarService.open('Ingredient added', 'Successfully', {
                                 duration: 500,
                                 horizontalPosition: 'center',
                                 verticalPosition: 'top',
@@ -35,7 +49,7 @@ export class IngredientEffects {
                             return new fromIngredientsActions.AddIngredientSuccess(data.payload);
                         }),
                         catchError((error) => {
-                            this.snackBarService.open('Updated Ingredient Successfully', 'Successfully', {
+                            this.snackBarService.open('Updated Ingredient', 'Failed', {
                                 duration: 500,
                                 horizontalPosition: 'center',
                                 verticalPosition: 'top',
@@ -52,7 +66,7 @@ export class IngredientEffects {
                 (data) => this.ingredientsService.updateIngredient(data.payload)
                     .pipe(
                         map(() => {
-                            this.snackBarService.open('Updated Ingredient Successfully', 'Successfully', {
+                            this.snackBarService.open('Updated Ingredient', 'Successfully', {
                                 duration: 500,
                                 horizontalPosition: 'center',
                                 verticalPosition: 'top',
@@ -60,7 +74,7 @@ export class IngredientEffects {
                             return new fromIngredientsActions.UpdateIngredientSuccess(data.payload);
                         }),
                         catchError((error) => {
-                            this.snackBarService.open(`${error.message} Failed`, 'Successfully', {
+                            this.snackBarService.open(`${error.message}`, 'Failed', {
                                 duration: 500,
                                 horizontalPosition: 'center',
                                 verticalPosition: 'top',
@@ -85,7 +99,7 @@ export class IngredientEffects {
                             return new fromIngredientsActions.DeleteIngredientSuccess(data.payload);
                         }),
                         catchError((error) => {
-                            this.snackBarService.open(`${error.message} Failed`, 'Successfully', {
+                            this.snackBarService.open(`${error.message}`, 'Failed', {
                                 duration: 500,
                                 horizontalPosition: 'center',
                                 verticalPosition: 'top',

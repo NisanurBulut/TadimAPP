@@ -1,5 +1,5 @@
 
-  <form (ngSubmit)="onAddItem(f)" #f="ngForm" class="form">
+  <form (ngSubmit)="onAddItem(f,$event)" #f="ngForm" class="form">
     <input type="hidden" name="id" ngModel class="form-control" />
     <input type="text"
         id="name"

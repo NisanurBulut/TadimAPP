@@ -32,7 +32,6 @@ export class IngredientEditComponent implements OnInit, OnDestroy {
   initForm(): void {
     if (this.editedItem) {
       this.editMode = true;
-      console.log(this.editedItem);
       this.slForm.setValue({
         id: this.editedItem.id,
         name: this.editedItem.name,
@@ -40,9 +39,9 @@ export class IngredientEditComponent implements OnInit, OnDestroy {
       });
     }
   }
-  onAddItem(form: NgForm) {
-    const value = form.value;
-    const newIngredient = new Ingredient(value.name, value.amount);
+  onAddItem(form: NgForm, $event) {
+    $event.preventDefault();
+    const newIngredient = {...form.value};
     if (this.editMode === true) {
       this.store.dispatch(new fromIngredientActions.UpdateIngredient(newIngredient));
     } else {
