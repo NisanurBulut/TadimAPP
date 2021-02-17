@@ -14,8 +14,8 @@ import { map, mergeMap } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
   constructor(private store: Store<fromApp.AppState>, @Inject(DOCUMENT) private document,
-    private renderer: Renderer2, private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+              private renderer: Renderer2, private router: Router,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.store.dispatch(new fromAuthActions.AutoLogin());
@@ -34,7 +34,6 @@ export class AppComponent implements OnInit {
   }
 
   private updateBodyClass(customBodyClass: string) {
-    console.log(customBodyClass);
     this.renderer.setAttribute(this.document.body, 'class', '');
     if (customBodyClass) {
       this.renderer.addClass(this.document.body, customBodyClass);
