@@ -79,7 +79,6 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
 
       if (recipe.ingredients) {
         for (const itemr of recipe.ingredients) {
-          console.log(itemr['ingredient']);
           recipeIngredients.push(new FormGroup(
             {
               ingredient: new FormControl(itemr['ingredient'].id, Validators.required)
