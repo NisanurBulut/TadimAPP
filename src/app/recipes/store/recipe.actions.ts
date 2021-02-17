@@ -61,7 +61,7 @@ export class DeleteRecipe implements Action {
 
 export class UpdateRecipe implements Action {
     readonly type = UPDATE_RECIPE;
-    constructor(public payload: { index: number, newRecipe: Recipe }) { }
+    constructor(public payload: Recipe) { }
 }
 export class UpdateRecipeSuccess implements Action {
     readonly type = UPDATE_RECIPE_SUCCESS;
