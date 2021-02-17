@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AuthService } from './auth/auth.service';
 import * as fromApp from './store/app.reducer';
 import * as fromAuthActions from './auth/store/auth.actions';
 import { DOCUMENT } from '@angular/common';
