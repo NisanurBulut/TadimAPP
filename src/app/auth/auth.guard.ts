@@ -8,7 +8,6 @@ import * as fromApp from '../store/app.reducer';
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
   constructor(
-    private as: AuthService,
     private router: Router,
     private store: Store<fromApp.AppState>) {
 
@@ -33,11 +32,6 @@ export class AuthGuard implements CanActivate {
         }
         return this.router.createUrlTree(['/auth']);
       })
-      // tap(isAuth => {
-      //   if (!isAuth) {
-      //     this.router.navigate(['/auth']);
-      //   }
-      // })
     );
   }
 }
