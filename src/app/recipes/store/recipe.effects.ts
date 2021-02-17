@@ -32,6 +32,17 @@ export class RecipeEffects {
                     )
             )
         );
+    @Effect() updateRecipe$ = this.actions$
+        .pipe(
+            ofType<fromRecipeActions.UpdateRecipe>(fromRecipeActions.UPDATE_RECIPE),
+            mergeMap(
+                (data) => this.recipeService.updateRecipe(data.payload)
+                    .pipe(
+                        map(() => new fromRecipeActions.UpdateRecipeSuccess(data.payload)),
+                        catchError((error) => of(new fromRecipeActions.UpdateRecipeFail(error)))
+                    )
+            )
+        );
     @Effect() deleteRecipe$ = this.actions$
         .pipe(
             ofType<fromRecipeActions.DeleteRecipe>(fromRecipeActions.DELETE_RECIPE),
@@ -43,12 +54,12 @@ export class RecipeEffects {
                                 duration: 500,
                                 horizontalPosition: 'center',
                                 verticalPosition: 'top',
-                              });
+                            });
                             return new fromRecipeActions.DeleteRecipeSuccess(data.payload);
                         }),
                         catchError((error) => {
                             this.snackBarService.open(`${error.error} Failed`);
-                            return  of(new fromRecipeActions.DeleteRecipeFail(error));
+                            return of(new fromRecipeActions.DeleteRecipeFail(error));
                         })
                     )
             )
