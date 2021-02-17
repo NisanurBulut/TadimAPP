@@ -31,9 +31,7 @@ export class RecipeService {
   getRecipe(index: number) {
     return this.recipes[index];
   }
-  addIngredientsToShoppingList(ingredients: Ingredient[]) {
-    this.store.dispatch(new fromIngredientActions.AddIngredients(ingredients));
-  }
+
   addRecipe(recipe: Recipe) {
     const newRecipe = { ...recipe, userId: this.activeUser.id };
     return this._http.post(environment.apiUrl, newRecipe)
