@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../store/app.reducer';
-import * as ingredientListActions from './store/ingredients.actions';
+import * as fromIngredientActions from './store/ingredients.actions';
 import { Ingredient } from '../shared/ingredient.model';
 
 
@@ -14,14 +14,16 @@ import { Ingredient } from '../shared/ingredient.model';
 export class IngredientListComponent implements OnInit, OnDestroy {
   ingredients: Observable<{ ingredients: Ingredient[] }>;
   constructor(
-    private store: Store<fromApp.AppState>) { }
+    private store: Store<fromApp.AppState>) {
+    this.store.dispatch(new fromIngredientActions.LoadIngredients());
+  }
 
   ngOnInit() {
-    this.ingredients = this.store.select('ingredientList');
+    this.ingredients = this.store.select(a => a.ingredients);
   }
   ngOnDestroy(): void {
   }
   onEditItem(index: number) {
-   this.store.dispatch(new ingredientListActions.StartEdit(index));
+
   }
 }
