@@ -1,18 +1,22 @@
 {
-  "recipes": [
+  "ingredients": [
     {
-      "name": "Mantı Yemeği",
-      "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
-      "description": "asSs",
-      "ingredients": [
-        {
-          "name": "assa",
-          "amount": 1
-        }
-      ],
-      "id": 1,
-      "userId": "uJmaht9pOHXxlk4vqG1qsWiYMJs1"
+      "amount": "1",
+      "name": "test",
+      "id": 1
     },
+    {
+      "amount": "2",
+      "name": "test",
+      "id": 2
+    },
+    {
+      "amount": "3",
+      "name": "test",
+      "id": 3
+    }
+  ],
+  "recipes": [
     {
       "name": "Mantı Yemeği",
       "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
@@ -28,6 +32,5 @@
       "id": 3,
       "userId": "uJmaht9pOHXxlk4vqG1qsWiYMJs1"
     }
-  ],
-  "ingredients":[]
+  ]
 }
