@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Resolve,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot
-} from '@angular/router';
+import { Resolve } from '@angular/router';
 
 import { Recipe } from './recipe.model';
 import * as fromApp from '../store/app.reducer';
@@ -20,9 +16,9 @@ export class RecipesResolverService implements Resolve<Recipe[]> {
     private actions$: Actions
   ) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-   return this.store.select('recipes').pipe(
-     take(1),
+  resolve() {
+    return this.store.select('recipes').pipe(
+      take(1),
       map(recipeState => {
         return recipeState.recipes;
       }),

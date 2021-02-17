@@ -60,7 +60,7 @@ export class RecipeEffects {
                             return new fromRecipeActions.UpdateRecipeSuccess(data.payload);
                         }),
                         catchError((error) => {
-                            this.snackBarService.open(`${error.error} Failed`, 'Successfully', {
+                            this.snackBarService.open(`${error.message} Failed`, 'Successfully', {
                                 duration: 500,
                                 horizontalPosition: 'center',
                                 verticalPosition: 'top',
@@ -85,7 +85,7 @@ export class RecipeEffects {
                             return new fromRecipeActions.DeleteRecipeSuccess(data.payload);
                         }),
                         catchError((error) => {
-                            this.snackBarService.open(`${error.error} Failed`, 'Successfully', {
+                            this.snackBarService.open(`${error.message} Failed`, 'Successfully', {
                                 duration: 500,
                                 horizontalPosition: 'center',
                                 verticalPosition: 'top',

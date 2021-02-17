@@ -14,18 +14,16 @@ const routes: Routes = [
     component: RecipesComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: '', component: RecipeListComponent, data: { bodyClass: 'recipeList'} },
-      { path: 'new', component: RecipeEditComponent, data: { bodyClass: 'recipeEdit'} },
+      { path: '', component: RecipeListComponent, data: { bodyClass: 'recipeList' } },
+      { path: 'new', component: RecipeEditComponent, data: { bodyClass: 'recipeEdit' } },
       {
         path: ':id',
         component: RecipeDetailComponent,
-        resolve: [RecipesResolverService]
       },
       {
         path: 'edit/:id',
         component: RecipeEditComponent,
-        resolve: [RecipesResolverService],
-        data: { bodyClass: 'recipeEdit'}
+        data: { bodyClass: 'recipeEdit' }
       }
     ]
   }
@@ -35,4 +33,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class RecipesRoutingModule {}
+export class RecipesRoutingModule { }
