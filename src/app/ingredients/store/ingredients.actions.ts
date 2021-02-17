@@ -18,16 +18,16 @@ export const UPDATE_INGREDIENT = '[Ingredient] Update Ingredient';
 export const UPDATE_INGREDIENT_SUCCESS = '[Ingredient] Update Ingredient Success';
 export const UPDATE_INGREDIENT_FAIL = '[Ingredient] Update Ingredient Fail';
 
-export class UpdateRecipe implements Action {
+export class UpdateIngredient implements Action {
     readonly type = UPDATE_INGREDIENT;
     constructor(public payload: Ingredient) { }
 }
-export class UpdateRecipeSuccess implements Action {
+export class UpdateIngredientSuccess implements Action {
     readonly type = UPDATE_INGREDIENT_SUCCESS;
     constructor(public payload: Ingredient) {
     }
 }
-export class UpdateRecipeFail implements Action {
+export class UpdateIngredientFail implements Action {
     readonly type = UPDATE_INGREDIENT_FAIL;
     constructor(public payload: Error) { }
 }
@@ -39,7 +39,7 @@ export class LoadIngredientsSuccess implements Action {
     readonly type = LOAD_INGREDIENTS_SUCCESS;
     constructor(public payload: Array<Ingredient>) { }
 }
-export class LoadIngredientFail implements Action {
+export class LoadIngredientsFail implements Action {
     readonly type = LOAD_INGREDIENTS_FAIL;
     constructor(public payload: Error) { }
 }
@@ -74,11 +74,7 @@ export class DeleteIngredient implements Action {
     constructor(public payload: number) {
     }
 }
-export class UpdateIngredient implements Action {
-    readonly type = UPDATE_INGREDIENT;
-    constructor(public payload: Ingredient ) {
-    }
-}
+
 
 
 // multiple action olduğu için payload erişimi olabilmesi adına bu tanımlama yapıldı
@@ -87,6 +83,11 @@ export type IngredientActions =
     AddIngredientSuccess |
     AddIngredientFail |
     UpdateIngredient |
+    UpdateIngredientSuccess|
+    UpdateIngredientFail|
     DeleteIngredient |
-    StartEdit |
-    StopEdit;
+    DeleteIngredientSuccess|
+    DeleteIngredientFail|
+    LoadIngredients |
+    LoadIngredientsSuccess |
+    LoadIngredientsFail;
