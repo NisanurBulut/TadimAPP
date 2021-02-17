@@ -24,6 +24,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private store: Store<fromApp.AppState>) {
+
     this.store.select(a => a.ingredients).pipe(
       map((data) => {
         return data.ingredients;
@@ -36,12 +37,24 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
         (params: Params) => {
           this.id = +params.id;
           if (this.id) {
-            debugger;
             this.editMode = true;
             this.initForm(); // seçileni yükle forma
+          } else {
+            this.createForm();
           }
         }
       );
+  }
+  createForm(): void {
+    debugger;
+    this.recipeForm = new FormGroup(
+      {
+        name: new FormControl(null, Validators.required),
+        imagePath: new FormControl(null, Validators.required),
+        description: new FormControl(null, Validators.required),
+        ingredients: new FormArray([])
+      }
+    );
   }
   ngOnDestroy(): void {
     if (this.storeSub) {
@@ -50,7 +63,8 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() { }
-  onsubmit() {
+  onsubmit($event) {
+    $event.preventDefault();
     const recipeItem = { ...this.recipeForm.value, id: this.id } as Recipe;
     if (this.editMode === true) {
       this.store.dispatch(new fromRecipeActions.UpdateRecipe(recipeItem));
@@ -63,7 +77,6 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     return (this.recipeForm.get('ingredients') as FormArray).controls;
   }
   initForm() {
-    debugger;
     let recipe = new Recipe('', '', '', []);
     // varsayılan boş olsun istiyoruz
     const recipeIngredients = new FormArray([]);
@@ -73,7 +86,6 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
           return data.recipes.find(item => item.id === this.id);
         })).subscribe(dataRecipe => {
           recipe = { ...dataRecipe };
-          console.log(dataRecipe);
         });
 
 

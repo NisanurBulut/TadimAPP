@@ -1,11 +1,6 @@
 {
   "ingredients": [
     {
-      "id": 2,
-      "name": "sarmısak",
-      "amount": "2 diş"
-    },
-    {
       "id": 3,
       "name": "sarmmısak",
       "amount": "3 diş"
@@ -14,15 +9,47 @@
       "id": 4,
       "name": "sarmısak",
       "amount": "6 diş "
+    },
+    {
+      "id": 5,
+      "name": "Maydonoz",
+      "amount": "1 Demet"
     }
   ],
   "recipes": [
     {
-      "name": "tesMantı Yemeği",
+      "name": "Mantı Yemeği",
       "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
       "description": "Donec rutrum congue leo eget malesuada. Cras ultricies ligula sed magna dictum porta. Donec rutrum congue leo eget malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.",
       "ingredients": [],
       "id": 1,
+      "userId": "uJmaht9pOHXxlk4vqG1qsWiYMJs1"
+    },
+    {
+      "name": "testtepside patates",
+      "imagePath": "https://cdn.ye-mek.net/App_UI/Img/out/650/2020/05/kofteli-patates-dizmesi-resimli-yemek-tarifi(16).jpg?w=650&h=487",
+      "description": "Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Sed porttitor lectus nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.",
+      "ingredients": [
+        {
+          "ingredient": "3"
+        }
+      ],
+      "id": 2,
+      "userId": "uJmaht9pOHXxlk4vqG1qsWiYMJs1"
+    },
+    {
+      "name": "test",
+      "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
+      "description": "aSasAS",
+      "ingredients": [
+        {
+          "ingredient": 3
+        },
+        {
+          "ingredient": 3
+        }
+      ],
+      "id": 3,
       "userId": "uJmaht9pOHXxlk4vqG1qsWiYMJs1"
     }
   ]

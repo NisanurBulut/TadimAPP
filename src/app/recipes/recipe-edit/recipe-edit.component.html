@@ -1,5 +1,5 @@
 <div class="mainRow">
-  <form class="recipeForm" [formGroup]="recipeForm" (submit)="onsubmit()">
+  <form class="recipeForm" [formGroup]="recipeForm" (submit)="onsubmit($event)">
     <div class="btn-group">
       <button
         type="submit"
@@ -8,7 +8,7 @@
       >
         <span class="material-icons"> done_outline </span>
       </button>
-      <button type="submit" class="btn btn-sm btnCancel" (click)="onCancel()">
+      <button type="button" class="btn btn-sm btnCancel" (click)="onCancel()">
         <span class="material-icons"> cancel </span>
       </button>
       <button
@@ -57,8 +57,8 @@
         [formGroupName]="i"
       >
         <div class="col-xs-10">
-          <select formControlName="ingredient" class="form-control">
-            <option [value]="item.id" *ngFor="let item of ingredients">
+          <select formControlName="ingredients" class="form-control">
+            <option [value]="item.id" *ngFor="let item of ingredients" [ngValue]="item">
               {{ item.name }}-{{ item.amount }}
             </option>
           </select>
