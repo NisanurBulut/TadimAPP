@@ -1,9 +1,10 @@
 import { Action } from '@ngrx/store';
 import { Recipe } from '../recipe.model';
 
-export const SET_RECIPES = '[Recipes] Set Recipes';
+
 export const UPDATE_RECIPE = '[Recipe] Update Recipe';
-export const STORE_RECIPE = '[Recipe] store Recipe';
+export const UPDATE_RECIPE_SUCCESS = '[Recipe] Update Recipe Success';
+export const UPDATE_RECIPE_FAIL = '[Recipe] Update Recipe Fail';
 
 export const DELETE_RECIPE = '[Recipe] Delete Recipe';
 export const DELETE_RECIPE_SUCCESS = '[Recipe] Delete Recipe Success';
@@ -42,10 +43,6 @@ export class AddRecipeFail implements Action {
     readonly type = ADD_RECIPE_FAIL;
     constructor(public payload: Error) { }
 }
-export class StoreRecipe implements Action {
-    readonly type = STORE_RECIPE;
-    constructor() { }
-}
 
 export class DeleteRecipeSuccess implements Action {
     readonly type = DELETE_RECIPE_SUCCESS;
@@ -66,19 +63,21 @@ export class UpdateRecipe implements Action {
     readonly type = UPDATE_RECIPE;
     constructor(public payload: { index: number, newRecipe: Recipe }) { }
 }
-
-export class SetRecipes implements Action {
-    readonly type = SET_RECIPES;
-    constructor(public payload: Recipe[]) {
+export class UpdateRecipeSuccess implements Action {
+    readonly type = UPDATE_RECIPE_SUCCESS;
+    constructor(public payload: Recipe) {
     }
 }
-
-export type RecipesActions = SetRecipes |
+export class UpdateRecipeFail implements Action {
+    readonly type = UPDATE_RECIPE_FAIL;
+    constructor(public payload: Error) { }
+}
+export type RecipesActions = UpdateRecipeSuccess |
+    UpdateRecipeFail |
     UpdateRecipe |
     DeleteRecipe |
     DeleteRecipeSuccess |
     DeleteRecipeFail |
-    StoreRecipe |
     AddRecipe |
     AddRecipeFail |
     AddRecipeSuccess |
