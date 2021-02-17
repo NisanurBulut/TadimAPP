@@ -2,23 +2,31 @@ import { Action } from '@ngrx/store';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 
 
-export const ADD_INGREDIENT = 'ADD_INGREDIENT';
-export const ADD_INGREDIENTS = 'ADD_INGREDIENTS';
+export const ADD_INGREDIENT = '[Ingredient] Add Ingredient';
+export const ADD_INGREDIENT_SUCCESS = '[Ingredient] Add Ingredient Success';
+export const ADD_INGREDIENT_FAIL = '[Ingredient] Add Ingredient Fail';
+
 export const UPDATE_INGREDIENT = 'UPDATE_INGREDIENT';
 export const DELETE_INGREDIENT = 'DELETE_INGREDIENT';
 export const START_EDIT = 'START_EDIT';
 export const STOP_EDIT = 'STOP_EDIT';
+
 export class AddIngredient implements Action {
     readonly type = ADD_INGREDIENT;
     constructor(public payload: Ingredient) {
-
     }
 }
-// önce action tanımı yapılır
-export class AddIngredients implements Action {
-    readonly type = ADD_INGREDIENTS;
-    constructor(public payload: Ingredient[]) { }
+
+export class AddIngredientSuccess implements Action {
+    readonly type = ADD_INGREDIENT_SUCCESS;
+    constructor(public payload: Ingredient) {
+    }
 }
+export class AddIngredientFail implements Action {
+    readonly type = ADD_INGREDIENT_FAIL;
+    constructor(public payload: Error) { }
+}
+
 export class UpdateIngredient implements Action {
     readonly type = UPDATE_INGREDIENT;
     constructor(public payload: Ingredient ) {
@@ -41,7 +49,8 @@ export class StopEdit implements Action {
 // multiple action olduğu için payload erişimi olabilmesi adına bu tanımlama yapıldı
 export type IngredientActions =
     AddIngredient |
-    AddIngredients |
+    AddIngredientSuccess |
+    AddIngredientFail |
     UpdateIngredient |
     DeleteIngredient |
     StartEdit |
