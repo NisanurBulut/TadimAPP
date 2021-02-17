@@ -42,8 +42,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
 
   ngOnInit() { }
   onsubmit() {
-    const recipeItem = { ...this.recipeForm.value } as Recipe;
-    console.log('editmode', this.editMode, recipeItem);
+    const recipeItem = { ...this.recipeForm.value, id: this.id } as Recipe;
     if (this.editMode === true) {
       this.store.dispatch(new fromRecipeActions.UpdateRecipe(recipeItem));
     } else {
@@ -68,7 +67,6 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
             return recipe.id === this.id
           });
         })).subscribe(dataRecipe => {
-          console.log(dataRecipe);
           recipe = { ...dataRecipe };
         });
       recipeName = recipe.name;
@@ -112,7 +110,6 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
   }
   onCancel() {
-    // bir önceki ekrana gel
     this.router.navigate(['/recipes'], { relativeTo: this.route });
   }
 }
