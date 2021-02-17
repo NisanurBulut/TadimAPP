@@ -1,35 +1,71 @@
 
+
 import { Ingredient } from 'src/app/shared/ingredient.model';
-import * as fromIngredientActions from './ingredients.actions';
+import * as fromIngredientsActions from './ingredients.actions';
 
 export interface State {
     ingredients: Ingredient[];
     loading: boolean;
     error: Error;
 }
-export interface AppState {
-    ingredientList: State;
-}
 const initialState: State = {
     ingredients: [],
     loading: false,
     error: null
 };
-// buradaki actiona aslında bir interface
-export function IngredientsReducer(
-    state: State = initialState,
-    action: fromIngredientActions.IngredientActions) {
+
+export function IngredientReducer(state: State = initialState, action: fromIngredientsActions.IngredientActions) {
     switch (action.type) {
-        case fromIngredientActions.ADD_INGREDIENT:
+        case fromIngredientsActions.LOAD_INGREDIENTS:
+            return { ...state, loading: true };
+        case fromIngredientsActions.LOAD_INGREDIENTS_SUCCESS:
+            return {
+                ...state, loading: false, ingredients: action.payload
+            };
+        case fromIngredientsActions.LOAD_INGREDIENTS_FAIL:
+            return { ...state, error: action.payload, loading: false };
+        case fromIngredientsActions.ADD_INGREDIENT:
             return {
                 ...state,
                 ingredients: [...state.ingredients, action.payload],
                 loading: true
             };
-        case fromIngredientActions.ADD_INGREDIENT_SUCCESS:
-                return { ...state, ingredients: [...state.ingredients, action.payload], loading: false };
-        case fromIngredientActions.ADD_INGREDIENT_FAIL:
-                return { ...state, error: action.payload, loading: false };
+        case fromIngredientsActions.ADD_INGREDIENT_SUCCESS:
+            return { ...state, ingredients: [...state.ingredients, action.payload], loading: false };
+
+        case fromIngredientsActions.ADD_INGREDIENT_FAIL:
+            return { ...state, error: action.payload, loading: false };
+
+        case fromIngredientsActions.UPDATE_INGREDIENT:
+            return {
+                ...state,
+                ingredients: [...state.ingredients, action.payload],
+                loading: true
+            };
+        case fromIngredientsActions.UPDATE_INGREDIENT_SUCCESS:
+            return { ...state, ingredients: [...state.ingredients, action.payload], loading: false };
+
+        case fromIngredientsActions.UPDATE_INGREDIENT_FAIL:
+            return { ...state, error: action.payload, loading: false };
+        case fromIngredientsActions.DELETE_INGREDIENT:
+            return {
+                ...state,
+                loading: true
+            };
+        case fromIngredientsActions.DELETE_INGREDIENT_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                ingredients: state.ingredients.filter((recipe) => {
+                    return recipe.id !== action.payload;
+                })
+            };
+        case fromIngredientsActions.DELETE_INGREDIENT_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload
+            };
         default:
             return state;
     }
