@@ -16,3 +16,6 @@ form{
 .btn-success{
   float: right;
 }
+button {
+  outline: none;
+}
