@@ -9,7 +9,6 @@ import * as fromRecipeActions from './recipe.actions';
 
 @Injectable()
 export class RecipeEffects {
-
     @Effect() loadRecipes$ = this.actions$
         .pipe(
             ofType<fromRecipeActions.LoadRecipes>(fromRecipeActions.LOAD_RECIPES),
@@ -27,8 +26,22 @@ export class RecipeEffects {
             mergeMap(
                 (data) => this.recipeService.addRecipe(data.payload)
                     .pipe(
-                        map(() => new fromRecipeActions.AddRecipeSuccess(data.payload)),
-                        catchError((error) => of(new fromRecipeActions.AddRecipeFail(error)))
+                        map(() => {
+                            this.snackBarService.open('Recipe added succefully', 'Successfully', {
+                                duration: 500,
+                                horizontalPosition: 'center',
+                                verticalPosition: 'top',
+                            });
+                            return new fromRecipeActions.AddRecipeSuccess(data.payload);
+                        }),
+                        catchError((error) => {
+                            this.snackBarService.open('Updated Recipe Successfully', 'Successfully', {
+                                duration: 500,
+                                horizontalPosition: 'center',
+                                verticalPosition: 'top',
+                            });
+                            return of(new fromRecipeActions.AddRecipeFail(error));
+                        })
                     )
             )
         );
@@ -38,8 +51,22 @@ export class RecipeEffects {
             mergeMap(
                 (data) => this.recipeService.updateRecipe(data.payload)
                     .pipe(
-                        map(() => new fromRecipeActions.UpdateRecipeSuccess(data.payload)),
-                        catchError((error) => of(new fromRecipeActions.UpdateRecipeFail(error)))
+                        map(() => {
+                            this.snackBarService.open('Updated Recipe Successfully', 'Successfully', {
+                                duration: 500,
+                                horizontalPosition: 'center',
+                                verticalPosition: 'top',
+                            });
+                            return new fromRecipeActions.UpdateRecipeSuccess(data.payload);
+                        }),
+                        catchError((error) => {
+                            this.snackBarService.open(`${error.error} Failed`, 'Successfully', {
+                                duration: 500,
+                                horizontalPosition: 'center',
+                                verticalPosition: 'top',
+                            });
+                            return of(new fromRecipeActions.UpdateRecipeFail(error));
+                        })
                     )
             )
         );
@@ -58,7 +85,11 @@ export class RecipeEffects {
                             return new fromRecipeActions.DeleteRecipeSuccess(data.payload);
                         }),
                         catchError((error) => {
-                            this.snackBarService.open(`${error.error} Failed`);
+                            this.snackBarService.open(`${error.error} Failed`, 'Successfully', {
+                                duration: 500,
+                                horizontalPosition: 'center',
+                                verticalPosition: 'top',
+                            });
                             return of(new fromRecipeActions.DeleteRecipeFail(error));
                         })
                     )
