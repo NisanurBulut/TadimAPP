@@ -36,11 +36,14 @@ export class RecipeService {
   }
   addRecipe(recipe: Recipe) {
     const newRecipe = { ...recipe, userId: this.activeUser.id };
-    console.log('newRecipe', newRecipe);
     return this._http.post(environment.apiUrl, newRecipe)
       .pipe(delay(500));
   }
-
+  updateRecipe(recipe: Recipe) {
+    const newRecipe = { ...recipe, userId: this.activeUser.id };
+    return this._http.put(`${environment.apiUrl}/${newRecipe.id}`, newRecipe)
+      .pipe(delay(500));
+  }
   deleteRecipe(id: number) {
     return this._http.delete(`${environment.apiUrl}/${id}`)
       .pipe(delay(500));
