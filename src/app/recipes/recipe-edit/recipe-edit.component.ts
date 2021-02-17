@@ -7,7 +7,6 @@ import * as fromRecipeActions from '../store/recipe.actions';
 import { map } from 'rxjs/operators';
 import { Recipe } from '../recipe.model';
 import { Subscription } from 'rxjs';
-import { User } from 'src/app/auth/user.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -51,7 +50,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     this.onCancel();
   }
   get controls() { // a getter!
-    return (<FormArray>this.recipeForm.get('ingredients')).controls;
+    return (this.recipeForm.get('ingredients') as FormArray).controls;
   }
   initForm() {
     let recipe: Recipe;
@@ -59,13 +58,11 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     let recipeImagePath = '';
     let recipeDescription = '';
     // varsayılan boş olsun istiyoruz
-    let recipeIngredients = new FormArray([]);
+    const recipeIngredients = new FormArray([]);
     if (this.editMode === true) {
       this.storeSub = this.store.select('recipes').pipe(
         map((data) => {
-          return data.recipes.find((recipe) => {
-            return recipe.id === this.id
-          });
+          return data.recipes.find(item => item.id === this.id);
         })).subscribe(dataRecipe => {
           recipe = { ...dataRecipe };
         });
@@ -73,14 +70,14 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
       recipeImagePath = recipe.imagePath;
       recipeDescription = recipe.description;
 
-      if (recipe['ingredients']) {
-        for (let itemr of recipe.ingredients) {
+      if (recipe.ingredients) {
+        for (const itemr of recipe.ingredients) {
           recipeIngredients.push(new FormGroup(
             {
-              'name': new FormControl(itemr.name, Validators.required),
-              'amount': new FormControl(itemr.amount,
+              name: new FormControl(itemr.name, Validators.required),
+              amount: new FormControl(itemr.amount,
                 [Validators.required,
-                Validators.pattern("^[1-9]+[0-9]*$")])
+                Validators.pattern('^[1-9]+[0-9]*$')])
             }
           ));
         }
@@ -88,26 +85,26 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     }
     this.recipeForm = new FormGroup(
       {
-        'name': new FormControl(recipeName, Validators.required),
-        'imagePath': new FormControl(recipeImagePath, Validators.required),
-        'description': new FormControl(recipeDescription, Validators.required),
-        'ingredients': recipeIngredients
+        name: new FormControl(recipeName, Validators.required),
+        imagePath: new FormControl(recipeImagePath, Validators.required),
+        description: new FormControl(recipeDescription, Validators.required),
+        ingredients: recipeIngredients
       }
     );
   }
   onAddIngredient() {
-    (<FormArray>this.recipeForm.get('ingredients')).push(
+    (this.recipeForm.get('ingredients') as FormArray).push(
       new FormGroup(
         {
-          'name': new FormControl(null, Validators.required),
-          'amount': new FormControl(null, [Validators.required,
-          Validators.pattern("^[1-9]+[0-9]*$")])
+          name: new FormControl(null, Validators.required),
+          amount: new FormControl(null, [Validators.required,
+          Validators.pattern('^[1-9]+[0-9]*$')])
         }
       )
     );
   }
   deleteIngredient(index: number) {
-    (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
+    (this.recipeForm.get('ingredients') as FormArray).removeAt(index);
   }
   onCancel() {
     this.router.navigate(['/recipes'], { relativeTo: this.route });
