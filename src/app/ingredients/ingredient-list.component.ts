@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import * as fromApp from '../store/app.reducer';
 import * as fromIngredientActions from './store/ingredients.actions';
 import { Ingredient } from '../shared/ingredient.model';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -12,14 +13,21 @@ import { Ingredient } from '../shared/ingredient.model';
   styleUrls: ['./ingredient-list.component.css'],
 })
 export class IngredientListComponent implements OnInit, OnDestroy {
-  ingredients: Observable<{ ingredients: Ingredient[] }>;
+  ingredients: Ingredient[];
   ingredient: Ingredient;
   constructor(
     private store: Store<fromApp.AppState>) {
   }
 
   ngOnInit() {
-    this.ingredients = this.store.select(a => a.ingredients);
+    this.store.select(a => a.ingredients)
+      .pipe(
+        map((data) => {
+          return data.ingredients;
+        })
+      ).subscribe((items) => {
+        this.ingredients = [...items];
+      });
   }
   ngOnDestroy(): void {
   }
