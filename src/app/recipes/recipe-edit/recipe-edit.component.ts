@@ -18,7 +18,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   id: number;
   editMode = false;
   recipeForm: FormGroup;
-  ingredients: Ingredient[];
+  ingredientList: Ingredient[];
   recipeItem: Recipe;
   recipeIngredients = new FormArray([]);
   private storeSub: Subscription;
@@ -60,7 +60,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
         return data.ingredients;
       })
     ).subscribe(data => {
-      this.ingredients = data;
+      this.ingredientList = data;
     });
   }
   createForm(): void {
