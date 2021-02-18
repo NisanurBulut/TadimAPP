@@ -26,29 +26,7 @@
       "name": "Mantı Yemeği",
       "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Sed porttitor lectus nibh. Donec rutrum congue leo eget malesuada.",
-      "ingredients": [
-        {
-          "ingredient": {
-            "id": 6,
-            "name": "sarmısak",
-            "amount": "2 diş"
-          }
-        },
-        {
-          "ingredient": {
-            "id": 8,
-            "name": "Nane",
-            "amount": "1 tatlı kaşığı"
-          }
-        },
-        {
-          "ingredient": {
-            "id": 9,
-            "name": "Kekik",
-            "amount": "1 Çay kaşığı"
-          }
-        }
-      ],
+      "ingredients": [],
       "id": 1,
       "userId": "uJmaht9pOHXxlk4vqG1qsWiYMJs1"
     }
