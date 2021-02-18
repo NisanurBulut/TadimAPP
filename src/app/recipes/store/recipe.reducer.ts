@@ -26,7 +26,6 @@ export function recipeReducer(state: State = initialState, action: fromRecipesAc
         case fromRecipesActions.ADD_RECIPE:
             return {
                 ...state,
-                recipes: [...state.recipes, action.payload],
                 loading: true
             };
         case fromRecipesActions.ADD_RECIPE_SUCCESS:
