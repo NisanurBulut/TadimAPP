@@ -57,7 +57,7 @@
         [formGroupName]="i"
       >
         <div class="col-xs-10">
-          <select formControlName="ingredients" class="form-control">
+          <select formControlName="ingredient" class="form-control">
             <option [value]="item.id" *ngFor="let item of ingredients" [ngValue]="item">
               {{ item.name }}-{{ item.amount }}
             </option>

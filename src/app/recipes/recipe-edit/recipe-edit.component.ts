@@ -4,7 +4,7 @@ import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import * as fromApp from '../../store/app.reducer';
 import { Store } from '@ngrx/store';
 import * as fromRecipeActions from '../store/recipe.actions';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Recipe } from '../recipe.model';
 import { Subscription } from 'rxjs';
 import { Ingredient } from 'src/app/shared/ingredient.model';
@@ -19,24 +19,40 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   editMode = false;
   recipeForm: FormGroup;
   ingredients: Ingredient[];
+  recipeItem: Recipe;
+  recipeIngredients = new FormArray([]);
   private storeSub: Subscription;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private store: Store<fromApp.AppState>) {
-    this.getIngredients();
+
+
     this.route.params
-      .subscribe(
+      .pipe(
+        tap(() => {
+          this.getIngredients();
+        })
+      ).subscribe(
         (params: Params) => {
           this.id = +params.id;
           if (this.id) {
             this.editMode = true;
+            this.getRecipeData();
             this.initForm(); // seçileni yükle forma
           } else {
             this.createForm();
           }
         }
       );
+  }
+  getRecipeData() {
+    this.storeSub = this.store.select('recipes').pipe(
+      map((data) => {
+        return data.recipes.find(item => item.id === this.id);
+      })).subscribe(dataRecipe => {
+        this.recipeItem = { ...dataRecipe } as Recipe;
+      });
   }
   getIngredients(): void {
     this.store.select(a => a.ingredients).pipe(
@@ -48,7 +64,6 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     });
   }
   createForm(): void {
-    debugger;
     this.recipeForm = new FormGroup(
       {
         name: new FormControl(null, Validators.required),
@@ -78,39 +93,29 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   get controls() { // a getter!
     return (this.recipeForm.get('ingredients') as FormArray).controls;
   }
-  initForm() {
-    let recipe = new Recipe('', '', '', []);
-    // varsayılan boş olsun istiyoruz
-    const recipeIngredients = new FormArray([]);
-    if (this.editMode === true) {
-      this.storeSub = this.store.select('recipes').pipe(
-        map((data) => {
-          return data.recipes.find(item => item.id === this.id);
-        })).subscribe(dataRecipe => {
-          recipe = { ...dataRecipe };
-        });
-
-
-      if (recipe.ingredients) {
-        for (const itemr of recipe.ingredients) {
-          recipeIngredients.push(new FormGroup(
-            {
-              ingredient: new FormControl(itemr['ingredient'].id, Validators.required)
-            }
-          ));
-        }
+  prepareIngredientsForm(): void {
+    if (this.recipeItem.ingredients) {
+      for (const itemr of this.recipeItem.ingredients) {
+        this.recipeIngredients.push(new FormGroup(
+          {
+            ingredient: new FormControl(itemr['ingredient'].id, Validators.required)
+          }
+        ));
       }
     }
-
+  }
+  initForm() {
+    this.prepareIngredientsForm();
     this.recipeForm = new FormGroup(
       {
-        name: new FormControl(recipe.name, Validators.required),
-        imagePath: new FormControl(recipe.imagePath, Validators.required),
-        description: new FormControl(recipe.description, Validators.required),
-        ingredients: recipeIngredients
+        name: new FormControl(this.recipeItem.name, Validators.required),
+        imagePath: new FormControl(this.recipeItem.imagePath, Validators.required),
+        description: new FormControl(this.recipeItem.description, Validators.required),
+        ingredients: this.recipeIngredients
       }
     );
   }
+
   onAddIngredient() {
     (this.recipeForm.get('ingredients') as FormArray).push(
       new FormGroup(
