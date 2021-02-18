@@ -58,9 +58,10 @@ export function IngredientReducer(state: State = initialState, action: fromIngre
                 ingredient: state.ingredients.find(a => a.id === action.payload),
                 loading: false
             };
-        case fromIngredientsActions.GET_INGREDIENT:
+        case fromIngredientsActions.CLEAR_INGREDIENT:
             return {
                 ...state,
+                ingredient: null,
                 loading: false
             };
         case fromIngredientsActions.DELETE_INGREDIENT_SUCCESS:

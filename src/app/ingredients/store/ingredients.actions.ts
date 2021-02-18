@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 
-export const GET_INGREDIENT = '[Ingredient] Get Ingredient';
+export const CLEAR_INGREDIENT = '[Ingredient] Clear Ingredient';
 export const SET_INGREDIENT = '[Ingredient] Set Ingredient';
 
 export const LOAD_INGREDIENTS = '[Ingredient] Load Ingredients';
@@ -76,8 +76,8 @@ export class DeleteIngredient implements Action {
     constructor(public payload: number) {
     }
 }
-export class GetIngredient implements Action {
-    readonly type = GET_INGREDIENT;
+export class ClearIngredient implements Action {
+    readonly type = CLEAR_INGREDIENT;
     constructor() {
     }
 }
@@ -92,7 +92,7 @@ export class SetIngredient implements Action {
 // multiple action olduğu için payload erişimi olabilmesi adına bu tanımlama yapıldı
 export type IngredientActions =
     SetIngredient |
-    GetIngredient |
+    ClearIngredient |
     AddIngredient |
     AddIngredientSuccess |
     AddIngredientFail |
