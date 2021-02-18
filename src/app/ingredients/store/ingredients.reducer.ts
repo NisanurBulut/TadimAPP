@@ -29,7 +29,6 @@ export function IngredientReducer(state: State = initialState, action: fromIngre
         case fromIngredientsActions.ADD_INGREDIENT:
             return {
                 ...state,
-                ingredients: [...state.ingredients, action.payload],
                 loading: true
             };
         case fromIngredientsActions.ADD_INGREDIENT_SUCCESS:
@@ -41,7 +40,6 @@ export function IngredientReducer(state: State = initialState, action: fromIngre
         case fromIngredientsActions.UPDATE_INGREDIENT:
             return {
                 ...state,
-                ingredients: [...state.ingredients, action.payload],
                 loading: true
             };
         case fromIngredientsActions.UPDATE_INGREDIENT_SUCCESS:
