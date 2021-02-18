@@ -1,11 +1,9 @@
-::ng-deep .bodyImage{
-background-color: aqua;
-}
+
 .formRow {
   margin: 15%;
   padding: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: left;
 }
 form{
   width: 300px;
