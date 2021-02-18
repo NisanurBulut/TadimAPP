@@ -84,7 +84,6 @@ export class GetIngredient implements Action {
 export class SetIngredient implements Action {
     readonly type = SET_INGREDIENT;
     constructor(public payload: number) {
-        console.log(payload);
     }
 }
 
