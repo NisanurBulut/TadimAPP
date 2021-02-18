@@ -35,7 +35,7 @@ export class RecipeEffects {
                             return new fromRecipeActions.AddRecipeSuccess(data.payload);
                         }),
                         catchError((error) => {
-                            this.snackBarService.open('Updated Recipe Successfully', 'Successfully', {
+                            this.snackBarService.open('Updated Recipe', 'Failed', {
                                 duration: 500,
                                 horizontalPosition: 'center',
                                 verticalPosition: 'top',
@@ -52,7 +52,7 @@ export class RecipeEffects {
                 (data) => this.recipeService.updateRecipe(data.payload)
                     .pipe(
                         map(() => {
-                            this.snackBarService.open('Updated Recipe Successfully', 'Successfully', {
+                            this.snackBarService.open('Updated Recipe', 'Successfully', {
                                 duration: 500,
                                 horizontalPosition: 'center',
                                 verticalPosition: 'top',
@@ -60,7 +60,7 @@ export class RecipeEffects {
                             return new fromRecipeActions.UpdateRecipeSuccess(data.payload);
                         }),
                         catchError((error) => {
-                            this.snackBarService.open(`${error.message} Failed`, 'Successfully', {
+                            this.snackBarService.open(`${error.message}`, 'Failed', {
                                 duration: 500,
                                 horizontalPosition: 'center',
                                 verticalPosition: 'top',
@@ -85,7 +85,7 @@ export class RecipeEffects {
                             return new fromRecipeActions.DeleteRecipeSuccess(data.payload);
                         }),
                         catchError((error) => {
-                            this.snackBarService.open(`${error.message} Failed`, 'Successfully', {
+                            this.snackBarService.open(`${error.message}`, 'Failed', {
                                 duration: 500,
                                 horizontalPosition: 'center',
                                 verticalPosition: 'top',
