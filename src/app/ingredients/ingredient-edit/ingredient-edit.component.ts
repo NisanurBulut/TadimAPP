@@ -52,7 +52,8 @@ export class IngredientEditComponent implements OnInit, OnDestroy {
   onClear() {
     this.slForm.reset();
     this.editMode = false;
-    this.editedItem = null;
+
+    this.store.dispatch(new fromIngredientActions.ClearIngredient());
   }
   onDeleteItem() {
     this.store.dispatch(new fromIngredientActions.DeleteIngredient(this.editedItem.id));
