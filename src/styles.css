@@ -4,7 +4,7 @@ body.recipeList{
 background-color: #ECF2F4;
 }
 body.auth{
-  background-image: url('./assets/images/backgroundHome.png');
+  background-image: url('./assets/images/backgroundHome.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
