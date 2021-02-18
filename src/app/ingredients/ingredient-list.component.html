@@ -2,14 +2,12 @@
     <div class="formEdit">
         <app-ingredient-edit>
         </app-ingredient-edit>
-       <div class="ingredients">
         <ul class="list">
-            <a class="list-item"
+            <p class="list-item"
             *ngFor="let ingredient of (ingredients); let i=index"
             (click)="onEditItem(ingredient)"
             >{{ingredient.name}} {{ingredient.amount}}
-        </a>
+        </p>
         </ul>
-    </div>
    </div>
 </div>

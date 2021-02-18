@@ -13,29 +13,29 @@
   }
   .formEdit{
     width: 40%;
-    padding: 5px;
+    padding: 5px 0px 5px 0px;
     height: 20px;
     margin: 10px;
     line-height: 20px;
     text-align: center;
   }
 
-  .ingredients{
+  .list{
     margin-top: 10px;
     cursor: pointer;
-
-  }
-
-  .list{
-    margin-top: 2px;
     display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+  .list p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:#59676d;
+    font-weight: 800;
   }
   .list-item{
-
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 16px;
+    box-shadow: 0 4px 8px 0 #7c8e96;
+    padding: 20px;
+    border-radius: 5px;
     text-align: center;
     background-color: #f1f1f1;
   }
