@@ -24,14 +24,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private store: Store<fromApp.AppState>) {
-
-    this.store.select(a => a.ingredients).pipe(
-      map((data) => {
-        return data.ingredients;
-      })
-    ).subscribe(data => {
-      this.ingredients = data;
-    });
+    this.getIngredients();
     this.route.params
       .subscribe(
         (params: Params) => {
@@ -44,6 +37,15 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
           }
         }
       );
+  }
+  getIngredients(): void {
+    this.store.select(a => a.ingredients).pipe(
+      map((data) => {
+        return data.ingredients;
+      })
+    ).subscribe(data => {
+      this.ingredients = data;
+    });
   }
   createForm(): void {
     debugger;
