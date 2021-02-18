@@ -38,26 +38,61 @@
   ],
   "recipes": [
     {
-      "name": "Mantı Yemeği",
-      "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Sed porttitor lectus nibh. Donec rutrum congue leo eget malesuada.",
+      "name": "Çiğköfte",
+      "imagePath": "https://cdn.yemek.com/mncrop/313/280/uploads/2019/03/etsiz-cig-kofte-yeni.jpg",
+      "description": "Cras ultricies ligula sed magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Proin eget tortor risus. Proin eget tortor risus.",
       "ingredients": [
         {
-          "ingredient": {
-            "id": 9,
-            "name": "Kekik",
-            "amount": "1 Çay kaşığı"
-          }
+          "id": 5,
+          "name": "Maydonoz",
+          "amount": "2 Demet"
         },
         {
-          "ingredient": {
-            "id": 8,
-            "name": "Nane",
-            "amount": "1 tatlı kaşığı"
-          }
+          "id": 12,
+          "name": "bulgur",
+          "amount": "yarım kilo"
+        },
+        {
+          "id": 10,
+          "name": "Domates",
+          "amount": "3  adet"
         }
       ],
-      "id": 1,
+      "id": 2,
+      "userId": "uJmaht9pOHXxlk4vqG1qsWiYMJs1"
+    },
+    {
+      "name": "Mantı Yemeği",
+      "imagePath": "https://cdn.yemek.com/mncrop/500/333/uploads/2017/07/alinazik-tarifi-one-cikan-yeni.jpg",
+      "description": "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.",
+      "ingredients": [
+        {
+          "id": 6,
+          "name": "sarmısak",
+          "amount": "2 diş"
+        },
+        {
+          "id": 10,
+          "name": "Domates",
+          "amount": "3  adet"
+        },
+        {
+          "id": 12,
+          "name": "bulgur",
+          "amount": "yarım kilo"
+        },
+        {
+          "id": 8,
+          "name": "Nane",
+          "amount": "1 tatlı kaşığı"
+        },
+        {
+          "id": 9,
+          "name": "Kekik",
+          "amount": "1 Çay kaşığı"
+        }
+      ],
+      "id": 3,
       "userId": "uJmaht9pOHXxlk4vqG1qsWiYMJs1"
     }
   ]

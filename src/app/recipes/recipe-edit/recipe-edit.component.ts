@@ -26,8 +26,6 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private store: Store<fromApp.AppState>) {
-
-
     this.route.params
       .pipe(
         tap(() => {
@@ -52,6 +50,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
         return data.recipes.find(item => item.id === this.id);
       })).subscribe(dataRecipe => {
         this.recipeItem = { ...dataRecipe } as Recipe;
+        console.log(this.recipeItem);
       });
   }
   getIngredients(): void {
@@ -82,7 +81,16 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   ngOnInit() { }
   onsubmit($event) {
     $event.preventDefault();
+    debugger;
     const recipeItem = { ...this.recipeForm.value, id: this.id } as Recipe;
+    if (recipeItem.ingredients) {
+      recipeItem.ingredients.map(
+        (item, index) => {
+          recipeItem.ingredients[index] = this.ingredientList.find(a => a.id === item['ingredient']);
+        }
+      );
+    }
+    console.log(recipeItem);
     if (this.editMode === true) {
       this.store.dispatch(new fromRecipeActions.UpdateRecipe(recipeItem));
     } else {
@@ -96,8 +104,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   prepareIngredientsForm(): void {
     let index = 0;
     if (this.recipeItem.ingredients) {
-      for (const itemr of this.recipeItem.ingredients) {
-        const item = itemr['ingredient'] as Ingredient;
+      for (const item of this.recipeItem.ingredients) {
         this.recipeIngredients.push(new FormGroup(
           {
             ingredient: new FormControl(item.id, Validators.required)
