@@ -4,6 +4,13 @@ input.ng-invalid.ng-touched,
 textarea.ng-invalid.ng-touched {
     border:1px solid red;
 }
+.ingredientsForm{
+  float:left;
+  width: 100%;
+  height: 50px;
+  border: 2px #acc1cc solid;
+  text-align: center;
+}
 .mainRow{
     display: -webkit-box;
     display: -moz-box;
@@ -33,4 +40,7 @@ div.ingredients{
   height: 250px;
   overflow-y: auto;
   overflow-x: hidden;
+}
+.btn-danger{
+  margin-top: 5px;
 }

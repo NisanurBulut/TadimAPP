@@ -57,7 +57,7 @@
         [formGroupName]="i"
       >
         <div class="col-xs-10">
-          <mat-form-field appearance="outlined">
+          <mat-form-field appearance="outlined" class="ingredientsForm">
             <mat-select formControlName="ingredient">
               <mat-option
                 *ngFor="let item of ingredientList"
@@ -67,13 +67,6 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <!-- <select formControlName="ingredient" class="form-control">
-            <option *ngFor="let item of ingredientList" value={{item.id}}
-            [ngValue]="item"
-            [selected]="item.id===controls[i].value.ingredient">
-              {{ item.name }}-{{ item.amount }}
-            </option>
-          </select> -->
         </div>
         <div class="col-xs-2">
           <button
