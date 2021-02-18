@@ -43,7 +43,8 @@ export function IngredientReducer(state: State = initialState, action: fromIngre
                 loading: true
             };
         case fromIngredientsActions.UPDATE_INGREDIENT_SUCCESS:
-            return { ...state, ingredients: [...state.ingredients, action.payload], loading: false };
+            const items = state.ingredients.filter(a => a.id !== action.payload.id);
+            return { ...state, ingredients: [...items, action.payload], loading: false };
 
         case fromIngredientsActions.UPDATE_INGREDIENT_FAIL:
             return { ...state, error: action.payload, loading: false };
