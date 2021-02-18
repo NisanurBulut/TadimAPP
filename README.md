@@ -1,7 +1,7 @@
-# TadimAPP
+# Tadım
 
-Ana Ekran
-![Ana Ekran - TASLAK](https://github.com/NisanurBulut/TadimAPP/blob/master/src/assets/Trailer/Trailer_TadimApp.gif)
+![Tadım](https://github.com/NisanurBulut/TadimAPP/blob/master/src/assets/Trailer/Trailer_TadimApp.gif)
+### You can create recipes with Tadım. You can save food ingredients and use them while creating this recipe.
 
 * Alert notifications are made using SnackBarModule.
 * Dynamic styles are created. As the components change, the style of the component also changes. For example, the background picture changes.
