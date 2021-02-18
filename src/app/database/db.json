@@ -19,6 +19,21 @@
       "id": 9,
       "name": "Kekik",
       "amount": "1 Çay kaşığı"
+    },
+    {
+      "id": 10,
+      "name": "Domates",
+      "amount": "3  adet"
+    },
+    {
+      "id": 11,
+      "name": "Salatalık",
+      "amount": "5 adet"
+    },
+    {
+      "id": 12,
+      "name": "bulgur",
+      "amount": "yarım kilo"
     }
   ],
   "recipes": [

@@ -15,6 +15,7 @@ import { IngredientListComponent } from './ingredient-list.component';
     imports: [
         FormsModule,
         CommonModule,
+        SharedModule,
         RouterModule.forChild(
             [{
                 // lazy loading yapıyorsan burasının empty olmasına dikkat et

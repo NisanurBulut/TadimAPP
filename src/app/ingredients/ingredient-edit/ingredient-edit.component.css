@@ -6,6 +6,17 @@
     flex-direction: row;
 }
 input{
-    max-width: 20%;
     margin: 10px;
   }
+  .btn-group{
+      margin-top: 5px;
+      width: 20%;
+  }
+  .inputName{
+      text-align: center;
+      width: 40%;
+  }
+  .inputAmount{
+    text-align: center;
+    width: 40%;
+}

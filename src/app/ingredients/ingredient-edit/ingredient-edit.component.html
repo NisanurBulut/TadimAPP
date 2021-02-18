@@ -1,17 +1,19 @@
 
   <form (ngSubmit)="onAddItem(f,$event)" #f="ngForm" class="form">
     <input type="hidden" name="id" ngModel class="form-control" />
+
     <input type="text"
         id="name"
         placeholder="Name"
-        class="form-control"
+        class="form-control inputName"
         name="name" ngModel required />
-        <input type="text"
+
+        <input type="text" matInput
         id="amount"
         placeholder="Amount"
-        class="form-control"
+        class="form-control inputAmount"
         name="amount" ngModel required/>
-        <div class="btn-group" style="margin-top: 10px;">
+        <div class="btn-group">
           <button class="btn btn-sm btnAdd"
           type="submit" [disabled]="!f.valid" *ngIf="editMode">
           <span class="material-icons">
