@@ -37,12 +37,15 @@ export function recipeReducer(state: State = initialState, action: fromRecipesAc
         case fromRecipesActions.UPDATE_RECIPE:
             return {
                 ...state,
-                recipes: [...state.recipes, action.payload],
                 loading: true
             };
         case fromRecipesActions.UPDATE_RECIPE_SUCCESS:
-            return { ...state, recipes: [...state.recipes, action.payload], loading: false };
-
+            const items = state.recipes.filter(a => a.id !== action.payload.id);
+            return {
+                ...state,
+                recipes: [...items, action.payload],
+                loading: true
+            };
         case fromRecipesActions.UPDATE_RECIPE_FAIL:
             return { ...state, error: action.payload, loading: false };
         case fromRecipesActions.DELETE_RECIPE:
