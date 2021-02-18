@@ -3,8 +3,8 @@
         <app-ingredient-edit>
         </app-ingredient-edit>
        <div class="ingredients">
-        <ul class="list-group">
-            <a class="list-group-item"
+        <ul class="list">
+            <a class="list-item"
             *ngFor="let ingredient of (ingredients); let i=index"
             (click)="onEditItem(ingredient)"
             >{{ingredient.name}} {{ingredient.amount}}

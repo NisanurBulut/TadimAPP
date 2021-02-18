@@ -69,6 +69,21 @@
       "id": 19,
       "name": "Bezelye",
       "amount": "1 kilo"
+    },
+    {
+      "id": 20,
+      "name": "biber",
+      "amount": "3 adet"
+    },
+    {
+      "id": 21,
+      "name": "Patates",
+      "amount": "5 adet"
+    },
+    {
+      "id": 22,
+      "name": "Kıyma",
+      "amount": "1 kilo"
     }
   ],
   "recipes": [
@@ -182,6 +197,20 @@
       "description": "Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta dapibus.",
       "ingredients": [],
       "id": 7,
+      "userId": "uJmaht9pOHXxlk4vqG1qsWiYMJs1"
+    },
+    {
+      "name": "patatesli köfte",
+      "imagePath": "https://cdn.ye-mek.net/App_UI/Img/out/650/2020/05/kofteli-patates-dizmesi-resimli-yemek-tarifi(16).jpg?w=650&h=487",
+      "description": "Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta dapibus.",
+      "ingredients": [
+        {
+          "id": 21,
+          "name": "Patates",
+          "amount": "5 adet"
+        }
+      ],
+      "id": 8,
       "userId": "uJmaht9pOHXxlk4vqG1qsWiYMJs1"
     }
   ]
