@@ -1,4 +1,8 @@
-# Tadım
+## Give a Star! :star:
+
+If you like or are using this project to learn or start your solution, please give it a star. Thanks!
+
+### Tadım
 
 ![Tadım](https://github.com/NisanurBulut/TadimAPP/blob/master/src/assets/Trailer/Trailer_TadimApp.gif)
 ### You can create recipes with Tadım. You can save food ingredients and use them while creating this recipe.
