@@ -19,7 +19,7 @@ If you like or are using this project to learn or start your solution, please gi
 * Recipe deletion can be done.
 * Recipe update can be done.
 * Recipe can be added.
-* Tariff material can be added.
+* Recipe material can be added.
 * The recipe photo can be previewed on the relevant screens.
 * After the transactions, page redirects are made.
 * Validations are made on the forms.
